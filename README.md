@@ -12,22 +12,22 @@ Typically I do the following when setting up a new workstation
 7. Install a Nerdfont on Windows.
 8. Replace JSON with json content from my repo for the Terminal Settings.
 9. From the Ubuntu Command Line install Zsh
-	'''apt install zsh'''
+	#apt install zsh
 10. Install ohmyzsh
-	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	#sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 11. Install zsh-autocompletions
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+	#git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 12. Add it to the plugins list in .zshrc
 13. Install zsh-completions
-	git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
-	fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+	#git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+	#fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 14. Get my dotfiles for .zsh and update the one that ohmyzsh made and add the .zsh folder
 15. Install anaconda on Ubuntu 
 16. Pull from a git repo
 17. Create an env from the repo
-	conda env create --name name --file=environment.devenv.yml
+	#conda env create --name name --file=environment.devenv.yml
 18. cd into the folder and add the package itself
-	pip install -e .
+	#pip install -e .
 19. Install Julia
-  curl -O https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.3-linux-x86_64.tar.gz
-  tar -xvzf julia-1.8.3-linux-x86_64.tar.gz
+  	#curl -O https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.3-linux-x86_64.tar.gz
+  	#tar -xvzf julia-1.8.3-linux-x86_64.tar.gz
