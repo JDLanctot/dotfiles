@@ -19,8 +19,8 @@ Typically I do the following when setting up a new workstation
 	#git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions  
 12. Add it to the plugins list in .zshrc
 13. Install zsh-completions  
-	#git clone https://github.com/zsh-users/zsh-completions \${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions  
-	#fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+	###git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions  
+	###fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 14. Get my dotfiles for .zsh and update the one that ohmyzsh made and add the .zsh folder
 15. Install anaconda on Ubuntu 
 16. Pull from a git repo
