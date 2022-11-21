@@ -12,7 +12,7 @@ Typically I do the following when setting up a new workstation
 7. Install a Nerdfont on Windows.
 8. Replace JSON with json content from my repo for the Terminal Settings.
 9. From the Ubuntu Command Line install Zsh
-	apt install zsh
+	'''apt install zsh'''
 10. Install ohmyzsh
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 11. Install zsh-autocompletions
