@@ -22,12 +22,14 @@ Typically I do the following when setting up a new workstation
 	```git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions  ```
 	```fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src```
 14. Get my dotfiles for .zsh and update the one that ohmyzsh made and add the .zsh folder
-15. Install anaconda on Ubuntu 
-16. Pull from a git repo
-17. Create an env from the repo  
+15. Install Starship
+	```curl -sS https://starship.rs/install.sh | sh```
+16. Install anaconda on Ubuntu 
+17. Pull from a git repo
+18. Create an env from the repo  
 	```conda env create --name name --file=environment.devenv.yml```
-18. cd into the folder and add the package itself  
+19. cd into the folder and add the package itself  
 	```pip install -e .```
-19. Install Julia  
+20. Install Julia  
   	```curl -O https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.3-linux-x86_64.tar.gz```   
   	```tar -xvzf julia-1.8.3-linux-x86_64.tar.gz```
