@@ -24,12 +24,17 @@ Typically I do the following when setting up a new workstation
 14. Get my dotfiles for .zsh and update the one that ohmyzsh made and add the .zsh folder
 15. Install Starship
 	```curl -sS https://starship.rs/install.sh | sh```
-16. Install anaconda on Ubuntu 
-17. Pull from a git repo
-18. Create an env from the repo  
+16. Install Unzip
+	```sudo apt-get install unzip```
+17. Install Exa 
+	```sudo apt-get update```
+	```sudo apt-get -y install exa```
+18. Install anaconda on Ubuntu 
+19. Pull from a git repo
+20. Create an env from the repo  
 	```conda env create --name name --file=environment.devenv.yml```
-19. cd into the folder and add the package itself  
+21. cd into the folder and add the package itself  
 	```pip install -e .```
-20. Install Julia  
+22. Install Julia  
   	```curl -O https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.3-linux-x86_64.tar.gz```   
   	```tar -xvzf julia-1.8.3-linux-x86_64.tar.gz```
