@@ -42,6 +42,20 @@ Typically I do the following when setting up a new workstation
 23. Install Julia  
   	```curl -O https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.5-linux-x86_64.tar.gz```   
   	```tar -xvzf julia-1.8.5-linux-x86_64.tar.gz```
-24. Install Packer
+24. Install version 0.9+ of Neovim (Here I use the unstable ppa because Ubuntu only has up to 0.6 in the stable repository but in the future /unstable will be sufficient. Last command here echos the version to check if you have installed a version that is 0.9+.)
+	```sudo add-apt-repository ppa:neovim-ppa/unstable```
+	```sudo apt-get update```
+	```sudo apt-get install neovim```
+	```nvim --version```
+25. Install Packer
 	```git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim```
+ 	~/.local/share/nvim/site/pack/packer/start/packer.nvim```
+26. Go to the nvim directory
+	```cd .config/nvim```
+27. Open this directory in Neovim
+	```nvim .```
+28. There will be a ton of errors. Navigate past them and navigate into the toofaeded folder in lua and open the packer.lua file.
+29. Source it and synch the packages (you may also have to source the init.lua in the .config/nvim folder).
+	```:so```
+	```:PackerSync```
+30. Quit nvim and restart it and all of the changes should be implemented.
