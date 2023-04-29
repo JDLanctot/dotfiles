@@ -42,3 +42,6 @@ Typically I do the following when setting up a new workstation
 23. Install Julia  
   	```curl -O https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.5-linux-x86_64.tar.gz```   
   	```tar -xvzf julia-1.8.5-linux-x86_64.tar.gz```
+24. Install Packer
+	```git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim```
