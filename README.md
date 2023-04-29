@@ -16,7 +16,8 @@ Typically I do the following when setting up a new workstation
 	```sudo apt install zsh```
 10. Get my dotfiles
 	```git clone https://github.com/JDLanctot/dotfiles.git```
-	```mv dotfiles/* .```
+	```mv dotfiles/{.,}* .```
+	```rm -r .git```
 	```rm -r dotfiles```
 11. Install ohmyzsh  
 	```sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"```
