@@ -9,7 +9,8 @@ Typically I do the following when setting up a new workstation
 4. git my username and email on the command line.
 5. add WSL, Git, python extensions for VSCODE.
 6. Install Ubuntu and Terminal from the app store on Windows.
-7. Install a Nerdfont on Windows.
+7. Install a Nerdfont on Windows (POWERSHELL):
+	```git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts```
 8. Replace JSON with json content from my repo for the Terminal Settings.
 9. From the Ubuntu Command Line install Zsh  
 	```sudo apt install zsh```
