@@ -39,7 +39,7 @@ Follow the steps below to set up a new workstation:
 1. add WSL, Git, python extensions for VSCODE.
 2. Replace JSON file in the Terminal applications settings with JSON content contained below
 3. From the Ubuntu Command Line install Zsh  
-	``
+	```
 	sudo apt install zsh
 	```
 4. Get my dotfiles
