@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://raw.githubusercontent.com/JDLanctot/jdlanctot.github.io/main/assets/css/style_min.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/JDLanctot/readme_formatting/main/assets/css/basic.css">
 <h1 align="center">
   My Dotfiles
 </h1>
@@ -7,11 +7,11 @@
   My Dotfiles is a collection of configurations for various applications and tools I use on my workstation. This repository contains my personal dotfiles, which can be used as a starting point for setting up a new workstation.
 </p>
 
-## Introduction
+<h2> Introduction </h2>
 
 Setting up a new workstation can be a time-consuming process. My dotfiles contain pre-configured settings and tools that can help you get up and running quickly.
 
-## Prerequisites
+<h2> Prerequisites </h2>
 
 Before you begin, ensure that the following prerequisites are met:
 
@@ -32,7 +32,7 @@ Before you begin, ensure that the following prerequisites are met:
   - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 
-## Steps
+<h2> Steps </h2>
 
 Follow the steps below to set up a new workstation:
 
@@ -139,7 +139,7 @@ Follow the steps below to set up a new workstation:
     ```
 24. Quit nvim and restart it and all of the changes should be implemented.
 
-## JSON For Nicer Terminal Settings
+<h2> JSON For Nicer Terminal Settings </h2>
 Just copy and paste the content below into the terminal settings json.
 
   ```
