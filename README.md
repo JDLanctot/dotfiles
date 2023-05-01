@@ -74,8 +74,7 @@ Follow the steps below to set up a new workstation:
 	```sudo apt-get install neovim```
 	```nvim --version```
 19. Install Packer
-	```git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- 	~/.local/share/nvim/site/pack/packer/start/packer.nvim```
+	```git clone --depth 1 https://github.com/wbthomason/packer.nvim\ ~/.local/share/nvim/site/pack/packer/start/packer.nvim```
 20. Go to the nvim directory
 	```cd .config/nvim```
 21. Open this directory in Neovim
