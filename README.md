@@ -9,11 +9,11 @@
 
 <h2> Introduction </h2>
 
-Setting up a new workstation can be a time-consuming process. My dotfiles contain pre-configured settings and tools that can help you get up and running quickly.
+<p>Setting up a new workstation can be a time-consuming process. My dotfiles contain pre-configured settings and tools that can help you get up and running quickly.</p>
 
 <h2> Prerequisites </h2>
 
-Before you begin, ensure that the following prerequisites are met:
+<p>Before you begin, ensure that the following prerequisites are met:</p>
 
 - Windows Subsystem for Linux (WSL) and Virtual Machine Platform are enabled. To enable these, open Control Panel, select Programs, then Turn Windows features on or off, and check the boxes next to Windows Subsystem for Linux and Virtual Machine Platform.
 
@@ -34,7 +34,7 @@ Before you begin, ensure that the following prerequisites are met:
 
 <h2> Steps </h2>
 
-Follow the steps below to set up a new workstation:
+<p>Follow the steps below to set up a new workstation:</p>
 
 1. add WSL, Git, python extensions for VSCODE.
 2. Replace JSON file in the Terminal applications settings with JSON content contained below
@@ -140,7 +140,7 @@ Follow the steps below to set up a new workstation:
 24. Quit nvim and restart it and all of the changes should be implemented.
 
 <h2> JSON For Nicer Terminal Settings </h2>
-Just copy and paste the content below into the terminal settings json.
+<p>Just copy and paste the content below into the terminal settings json.</p>
 
   ```
   {
