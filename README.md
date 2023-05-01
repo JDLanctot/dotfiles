@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://raw.githubusercontent.com/JDLanctot/jdlanctot.github.io/main/assets/css/style_min.css">
 <h1 align="center">
   My Dotfiles
   </h1>
