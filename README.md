@@ -84,7 +84,7 @@ Follow the steps below to set up a new workstation:
 	```
 	sudo apt-get update
 	```
-	``
+	```
 	sudo apt-get -y install exa
 	```
 13. Install anaconda on Ubuntu 
