@@ -144,6 +144,7 @@ Follow the steps below to set up a new workstation:
     :PackerSync
     ```
 24. Quit nvim and restart it and all of the changes should be implemented.
+25. If you want to install NPM and NodeJS on WSL to allow you to do web-development, following the guide on [Installing Node.js on Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl).
 
 ## Terminal Settings JSON
 Just copy and paste the content below into the terminal settings json.
