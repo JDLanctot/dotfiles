@@ -5,15 +5,21 @@
 
 <p align="center">
   My Dotfiles is a collection of configurations for various applications and tools I use on my workstation. This repository contains my personal dotfiles, which can be used as a starting point for setting up a new workstation.
-</p>
+  
+## Table of Contents
 
-<h2> Introduction </h2>
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Installation Steps](#installation-steps)
+- [Terminal Settings JSON](#terminal-settings-json)
 
-<p>Setting up a new workstation can be a time-consuming process. My dotfiles contain pre-configured settings and tools that can help you get up and running quickly.</p>
+## Introduction
 
-<h2> Prerequisites </h2>
+Setting up a new workstation can be a time-consuming process. My dotfiles contain pre-configured settings and tools that can help you get up and running quickly.
 
-<p>Before you begin, ensure that the following prerequisites are met:</p>
+## Prerequisites
+
+Before you begin, ensure that the following prerequisites are met:
 
 - Windows Subsystem for Linux (WSL) and Virtual Machine Platform are enabled. To enable these, open Control Panel, select Programs, then Turn Windows features on or off, and check the boxes next to Windows Subsystem for Linux and Virtual Machine Platform.
 
@@ -32,9 +38,9 @@
   - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 
-<h2> Steps </h2>
+## Installation Steps
 
-<p>Follow the steps below to set up a new workstation:</p>
+Follow the steps below to set up a new workstation:
 
 1. add WSL, Git, python extensions for VSCODE.
 2. Replace JSON file in the Terminal applications settings with JSON content contained below
@@ -139,8 +145,8 @@
     ```
 24. Quit nvim and restart it and all of the changes should be implemented.
 
-<h2> JSON For Nicer Terminal Settings </h2>
-<p>Just copy and paste the content below into the terminal settings json.</p>
+## Terminal Settings JSON
+Just copy and paste the content below into the terminal settings json.
 
   ```
   {
