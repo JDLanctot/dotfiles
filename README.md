@@ -9,6 +9,7 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Less Bloated Windows Install](#windows-install)
 - [Prerequisites](#prerequisites)
 - [Installation Steps](#installation-steps)
 - [Terminal Settings JSON](#terminal-settings-json)
@@ -16,6 +17,24 @@
 ## Introduction
 
 Setting up a new workstation can be a time-consuming process. My dotfiles contain pre-configured settings and tools that can help you get up and running quickly.
+
+## Windows Install
+
+If you would like to have a cleaner Windows 11 experience:
+
+1. Install with windows using the [ISO](https://www.microsoft.com/en-ca/software-download/windows11).
+2. Choose languague as English (World) instead of a regional english to avoid installing programs like Amazon Prime on install (You will need to change it to a regional English in your settings later to use the Windows Store).
+3. Right Click on the Windows Button on the taskbar and open terminal as admin.
+4. Run the following command in the Terminal to open Chris Titus install program -- this will give you a GUI to install useful Programs, Programming Languages, etc.
+    ```
+    irm christitus.com/win | iex
+    ```
+5. DO NOT USE THIS GUI TO INSTALL THE LANGUAGES UNLESS YOU WANT TO BE ACCESSING THEM FROM POWERSHELL. WE WILL BE INSTALLING OUR LANGUAGES ON LINUX IN A LATER STEP.
+6. Use the GUI to Install your favourite browser.
+7. Go to the Tweaks tab of the GUI and click the Desktop Recommended Selections button and it will check the good tweaks you should be running.
+8. Also add Remove Cortana as one of the selected Tweaks.
+9. Click the Run Tweaks Button.
+10. Restart your computer to have the tweaks take effect.
 
 ## Prerequisites
 
