@@ -35,6 +35,8 @@ If you would like to have a cleaner Windows 11 experience:
 8. Also add Remove Cortana as one of the selected Tweaks.
 9. Click the Run Tweaks Button.
 10. Restart your computer to have the tweaks take effect.
+11. OPTIONAL - Buy and Install [Start11](https://www.stardock.com/products/start11/) which will allow you to improve the look of the windows start menu and give improved features such as grouping the pinned programs in custom groups.
+12. OPTIONAL - Install and Run [Rectifier11](https://github.com/Rectify11/Installer) which will clean up aesthetic of control panel and other legacy OS parts of windows 11. (Make sure to choose Micah Alt for the Darkmode for best results)
 
 ## Prerequisites
 
