@@ -50,7 +50,7 @@ Before you begin, ensure that the following prerequisites are met:
     git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
     ```
 
-- Install Ubuntu and Terminal from the Microsoft Store on Windows.
+- Install Ubuntu and Windows Terminal from the Microsoft Store on Windows.
 
 - Install [VSCode](https://code.visualstudio.com/) on Windows.
 - Install the following extensions in VSCode:
