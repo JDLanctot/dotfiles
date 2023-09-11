@@ -48,7 +48,7 @@ Before you begin, ensure that the following prerequisites are met:
 
 - Install [Git for Windows}(https://gitforwindows.org/).
 
-- Nerd Fonts (I use JetBrainsMono Nerd Font) is installed on Windows. You can install it by running the following command in PowerShell (PowerShell needs to be opened as administrator by right clicking on it):
+- Nerd Fonts (I use JetBrainsMono Nerd Font) is installed on Windows. You can install it by downloading it manually from the [Nerd Fonts Download Page](https://www.nerdfonts.com/font-downloads) and installing the fonts contained in the download. Alternatively, you can setup your Git accound on the command line and running the following command in PowerShell to get all of the fonts (PowerShell needs to be opened as administrator by right clicking on it):
     ```
     git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
     ```
