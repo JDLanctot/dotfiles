@@ -45,7 +45,10 @@ Before you begin, ensure that the following prerequisites are met:
 - Windows Subsystem for Linux (WSL) and Virtual Machine Platform are enabled. To enable these, open Control Panel, select Programs, then Turn Windows features on or off, and check the boxes next to Windows Subsystem for Linux and Virtual Machine Platform.
 
 - Install the newest version of [Powershell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1) on Windows.
-- Nerd Fonts (I use JetBrainsMono Nerd Font) is installed on Windows. You can install it by running the following command in PowerShell:
+
+- Install [Git for Windows}(https://gitforwindows.org/).
+
+- Nerd Fonts (I use JetBrainsMono Nerd Font) is installed on Windows. You can install it by running the following command in PowerShell (PowerShell needs to be opened as administrator by right clicking on it):
     ```
     git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
     ```
