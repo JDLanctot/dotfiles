@@ -172,6 +172,10 @@ Follow the steps below to set up a new workstation:
     ```
 24. Quit nvim and restart it and all of the changes should be implemented.
 25. If you want to install NPM and NodeJS on WSL to allow you to do web-development, following the guide on [Installing Node.js on Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl).
+26. If you installed npm, install pnpm using npm so that you can use pnpm instead of npm which makes it so that it doesn't duplicate node modules being installed when they are used in multiple projects.
+    ```
+    npm install -g pnpm
+    ```
 
 ## Terminal Settings JSON
 Just copy and paste the content below into the terminal settings json.
