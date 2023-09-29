@@ -121,12 +121,45 @@ Follow the steps below to set up a new workstation:
     sudo apt-get -y install exa
     ```
 13. Install anaconda on Ubuntu 
-14. Pull from a git repo
+14. Pull from a git repo to get a code base for a Python project and `cd` into it. I don't have any public Python GitRepos at the moment, so you'll want probably want to make a directory, `cd` into it and have a file called `environment.devenv.yml` inside it that looks something like this (This will install of the packages listed in the yaml and the packages that they depend on. This yaml probably has things you don't need like Pytorch, TorchGeometric, tensorboard, cudatoolkit, etc):
+    ```
+    name: netrl
+
+    channels:
+      - pytorch
+      - rusty1s
+      - nvidia
+      - conda-forge
+      - defaults
+    
+    dependencies:
+      - cudatoolkit =11.1
+      - ipdb
+      - ipython
+      - matplotlib
+      - networkx >=2.0
+      - numpy
+      - pip
+      - python >=3.8
+      - pytorch =1.8
+      - pytorch-geometric <=1.7.2
+      - pytorch-scatter
+      - pytorch-sparse
+      - pyyaml
+      - tensorboard
+      - tqdm
+      - pip:
+          - abstractcp
+          - gym
+          - more-itertools
+          - simple-parsing
+          - wurlitzer
+    ```
 15. Create an env from the repo  
     ```
     conda env create --name name --file=environment.devenv.yml
     ```
-16. cd into the folder and add the package itself  
+16. As long as you are still `cd` into the folder, you can add the folder you are working on as a package it can call. This is useful when you want to be able to do python imports of scripts in the folder itself, allowing you to have calls to your own functions from other scripts. Eg. I can do something like `from netrl.visualize import Visualize` in one script in the folder so that it has access to the Visualize method. Note the `netrl` here will be based on the `--name` you did in the previous step, or the name from the yaml if you didn't use the `--name` flag in the previous step.
     ```
     pip install -e .
     ```
