@@ -12,6 +12,12 @@
 - [Less Bloated Windows Install](#windows-install)
 - [Prerequisites](#prerequisites)
 - [Installation Steps](#installation-steps)
+  - [Programs](#programs)
+  - [Make the Terminal Better (Autocomplete and Header Info)](#make-the-terminal-better-(autocomplete-and-header-info))
+  - [Python and Anaconda Environments](#python-and-anaconda-environments)
+  - [Julia](#julia)
+  - [Neovim (Better Code Editting on the Command Line)](#neovim-(better-code-editting-on-the-command-line))
+  - [Webdev with React and NextJs](#webdev-with-react-and-nextJs)
 - [Terminal Settings JSON](#terminal-settings-json)
 
 ## Introduction
