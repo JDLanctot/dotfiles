@@ -69,8 +69,11 @@ Before you begin, ensure that the following prerequisites are met:
 
 Follow the steps below to set up a new workstation:
 
+### Programs
 1. add WSL, Git, python extensions for VSCODE.
 2. Replace JSON file in the Terminal applications settings with JSON content contained below
+
+### Make the Terminal Better (Autocomplete and Header Info)
 3. From the Ubuntu Command Line install Zsh  
     ```
     sudo apt install zsh
@@ -120,6 +123,8 @@ Follow the steps below to set up a new workstation:
     ```
     sudo apt-get -y install exa
     ```
+    
+### Python and Anaconda Environments
 13. Install anaconda on Ubuntu 
 14. Pull from a git repo to get a code base for a Python project and `cd` into it. I don't have any public Python GitRepos at the moment, so you'll want probably want to make a directory, `cd` into it and have a file called `environment.devenv.yml` inside it that looks something like this (This will install of the packages listed in the yaml and the packages that they depend on. This yaml probably has things you don't need like Pytorch, TorchGeometric, tensorboard, cudatoolkit, etc):
     ```
@@ -163,6 +168,8 @@ Follow the steps below to set up a new workstation:
     ```
     pip install -e .
     ```
+
+### Julia
 17. Install Julia  
     ```
     curl -O https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.5-linux-x86_64.tar.gz
@@ -170,6 +177,8 @@ Follow the steps below to set up a new workstation:
     ```
     tar -xvzf julia-1.8.5-linux-x86_64.tar.gz
     ```
+
+### Neovim (Better Code Editting on the Command Line)
 18. Install version 0.9+ of Neovim (Here I use the unstable ppa because Ubuntu only has up to 0.6 in the stable repository but in the future /unstable will be sufficient. Last command here echos the version to check if you have installed a version that is 0.9+.)
     ```
     sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -204,6 +213,8 @@ Follow the steps below to set up a new workstation:
     :PackerSync
     ```
 24. Quit nvim and restart it and all of the changes should be implemented.
+
+### Webdev with React and NextJs
 25. If you want to install NPM and NodeJS on WSL to allow you to do web-development, following the guide on [Installing Node.js on Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl).
 26. If you installed npm, install pnpm using npm so that you can use pnpm instead of npm which makes it so that it doesn't duplicate node modules being installed when they are used in multiple projects.
     ```
@@ -211,7 +222,7 @@ Follow the steps below to set up a new workstation:
     ```
 
 ## Terminal Settings JSON
-Just copy and paste the content below into the terminal settings json.
+Just copy and paste the content below into the Terminal (the app) settings json.
 
   ```
   {
