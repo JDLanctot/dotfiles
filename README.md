@@ -52,7 +52,7 @@ Before you begin, ensure that the following prerequisites are met:
 
 - Install the newest version of [Powershell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1) on Windows.
 
-- Install [Git for Windows}(https://gitforwindows.org/).
+- Install [Git for Windows](https://gitforwindows.org/).
 
 - Nerd Fonts (I use JetBrainsMono Nerd Font) is installed on Windows. There are a few different options:
     - EASIEST -- You can install it by downloading it manually from the [Nerd Fonts Download Page](https://www.nerdfonts.com/font-downloads) and installing the fonts contained in the download. 
