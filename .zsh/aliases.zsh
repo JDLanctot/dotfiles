@@ -27,3 +27,4 @@ alias python="/usr/bin/python3"
 alias distro='cat /etc/*-release'
 alias sapu='sudo apt-get update'
 alias zshc='code $HOME/.zshrc'
+alias p='python3'
