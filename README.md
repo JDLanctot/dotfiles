@@ -132,7 +132,29 @@ Follow the steps below to set up a new workstation:
     
 ### Python and Anaconda Environments
 13. Install anaconda on Ubuntu 
-14. Pull from a git repo to get a code base for a Python project and `cd` into it. I don't have any public Python GitRepos at the moment, so you'll want probably want to make a directory, `cd` into it and have a file called `environment.devenv.yml` inside it that looks something like this (This will install of the packages listed in the yaml and the packages that they depend on. This yaml probably has things you don't need like Pytorch, TorchGeometric, tensorboard, cudatoolkit, etc):
+14. Pull from a git repo to get a code base for a Python project and `cd` into it. I don't have any public Python GitRepos at the moment, so you'll want probably want to make a directory, `cd` into it and have a file called `environment.devenv.yml` inside it that looks something like these two yaml examples (This will install of the packages listed in the yaml and the packages that they depend on. This yaml probably has things you don't need like Pytorch, TorchGeometric, tensorboard, cudatoolkit, etc):
+    ```
+    name: assignments
+
+    channels:
+      - conda-forge
+      - defaults
+    
+    dependencies:
+      - ipdb
+      - ipython
+      - matplotlib
+      - numpy
+      - openpyxl
+      - pandas
+      - pip
+      - python
+      - pyyaml
+      - tqdm
+      - pip:
+          - more-itertools
+          - simple-parsing
+    ```
     ```
     name: netrl
 
