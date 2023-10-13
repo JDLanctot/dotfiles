@@ -113,7 +113,20 @@ Follow the steps below to set up a new workstation:
     ```
     fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
     ```
-9. Get my dotfiles for .zsh and update the one that ohmyzsh made and add the .zsh folder
+9. Ohmyzsh likely overwrote the .zshrc and .zshenv so make sure that the .zshrc and .zshenv files you have now still contain the contents of my .zshrc and .zshenv from my github and that you still have the .zsh folder from my github with the same contents. This will now allow you to change between the bash shell (the default one) and the zsh shell (the one I prefer), but both should be customized. Just type either of the following to switch to the desired shell:
+    ```
+    bash
+    ```
+    ```
+    zsh
+    ```
+  Note that if there are issues that any of the aliases aren't working in the respective shell, you can do the following to make sure that the correct rc file is in the path while using the shell that should source it:
+    ```
+    source ~/.bashrc
+    ```
+    ```
+    source ~/.zshrc
+    ```
 10. Install Starship
     ```
     curl -sS https://starship.rs/install.sh | sh
@@ -192,13 +205,29 @@ Follow the steps below to set up a new workstation:
     ```
     conda env create --name name --file=environment.devenv.yml
     ```
-16. As long as you are still `cd` into the folder, you can add the folder you are working on as a package it can call. This is useful when you want to be able to do python imports of scripts in the folder itself, allowing you to have calls to your own functions from other scripts. Eg. I can do something like `from netrl.visualize import Visualize` in one script in the folder so that it has access to the Visualize method. Note the `netrl` here will be based on the `--name` you did in the previous step, or the name from the yaml if you didn't use the `--name` flag in the previous step.
+16. Activate the environment. You will need to do this in the terminal everytime you want python to have access to all these packages, but this means that as you add new environments for different purposes, conda is allowing Python to have access to different bundles of packages. This also means that different environments could even have different versions of packages in the case where something you are working on old works with old packages and not any of the recent updates.
+    ```
+    conda activate name
+    ```
+  If you aren't sure of the name you can list all of the environments you have set up with:
+    ```
+    conda env list
+    ```
+17. As long as you are still `cd` into the folder, you can add the folder you are working on as a package it can call. This is useful when you want to be able to do python imports of scripts in the folder itself, allowing you to have calls to your own functions from other scripts. Eg. I can do something like `from netrl.visualize import Visualize` in one script in the folder so that it has access to the Visualize method. Note the `netrl` here will be based on the `--name` you did in the previous step, or the name from the yaml if you didn't use the `--name` flag in the previous step.
     ```
     pip install -e .
     ```
-
+18. You can now run any python script that you have cd into the same folder as using:
+    ```
+    python3 filename.py
+    ```
+  If you have setup my zsh configs then you can do, because I have set p to be an alias for python3:
+    ```
+    p filename.py
+    ```
+    
 ### Julia
-17. Install Julia  
+19. Install Julia  
     ```
     curl -O https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.5-linux-x86_64.tar.gz
     ```
@@ -207,7 +236,7 @@ Follow the steps below to set up a new workstation:
     ```
 
 ### Neovim (Better Code Editting on the Command Line)
-18. Install version 0.9+ of Neovim (Here I use the unstable ppa because Ubuntu only has up to 0.6 in the stable repository but in the future /unstable will be sufficient. Last command here echos the version to check if you have installed a version that is 0.9+.)
+20. Install version 0.9+ of Neovim (Here I use the unstable ppa because Ubuntu only has up to 0.6 in the stable repository but in the future /unstable will be sufficient. Last command here echos the version to check if you have installed a version that is 0.9+.)
     ```
     sudo add-apt-repository ppa:neovim-ppa/unstable
     ```
@@ -220,31 +249,31 @@ Follow the steps below to set up a new workstation:
     ```
     nvim --version
     ```
-19. Install Packer
+21. Install Packer
     ```
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     ```
-20. Go to the nvim directory
+22. Go to the nvim directory
     ```
     cd .config/nvim
     ```
-21. Open this directory in Neovim
+23. Open this directory in Neovim
     ```
     nvim .
     ```
-22. There will be a ton of errors. Navigate past them and navigate into the toofaeded folder in lua and open the packer.lua file.
-23. Source it and synch the packages (you may also have to source the init.lua in the .config/nvim folder).
+24. There will be a ton of errors. Navigate past them and navigate into the toofaeded folder in lua and open the packer.lua file.
+25. Source it and synch the packages (you may also have to source the init.lua in the .config/nvim folder).
     ```
     :so
     ```
     ```
     :PackerSync
     ```
-24. Quit nvim and restart it and all of the changes should be implemented.
+26. Quit nvim and restart it and all of the changes should be implemented.
 
 ### Webdev with React and NextJs
-25. If you want to install NPM and NodeJS on WSL to allow you to do web-development, following the guide on [Installing Node.js on Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl).
-26. If you installed npm, install pnpm using npm so that you can use pnpm instead of npm which makes it so that it doesn't duplicate node modules being installed when they are used in multiple projects.
+27. If you want to install NPM and NodeJS on WSL to allow you to do web-development, following the guide on [Installing Node.js on Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl).
+28. If you installed npm, install pnpm using npm so that you can use pnpm instead of npm which makes it so that it doesn't duplicate node modules being installed when they are used in multiple projects.
     ```
     npm install -g pnpm
     ```
