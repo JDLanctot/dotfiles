@@ -127,14 +127,17 @@ Follow the steps below to set up a new workstation:
     ```
     source ~/.zshrc
     ```
+    
 10. Install Starship
     ```
     curl -sS https://starship.rs/install.sh | sh
     ```
+    
 11. Install Unzip
     ```
     sudo apt-get install unzip
     ```
+    
 12. Install Exa 
     ```
     sudo apt-get update
@@ -213,10 +216,12 @@ Follow the steps below to set up a new workstation:
     ```
     conda env list
     ```
+    
 17. As long as you are still `cd` into the folder, you can add the folder you are working on as a package it can call. This is useful when you want to be able to do python imports of scripts in the folder itself, allowing you to have calls to your own functions from other scripts. Eg. I can do something like `from netrl.visualize import Visualize` in one script in the folder so that it has access to the Visualize method. Note the `netrl` here will be based on the `--name` you did in the previous step, or the name from the yaml if you didn't use the `--name` flag in the previous step.
     ```
     pip install -e .
     ```
+    
 18. You can now run any python script that you have cd into the same folder as using:
     ```
     python3 filename.py
