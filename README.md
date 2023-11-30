@@ -80,6 +80,15 @@ Follow the steps below to set up a new workstation:
 2. Replace JSON file in the Terminal applications settings with JSON content contained below
 
 ### Make the Terminal Better (Autocomplete and Header Info)
+All of these steps should also make it so that when `Powershell` is run from `Terminal`, you will have better formatting and autocomplete -- not just when `Terminal` is running an instance of the `WSL terminal`.
+A small note if you plan to use both: You will need to install conda on the PC side of things as well (which you can do through just installing the `Anaconda Navigator`, and this will give you `Anaconda Prompt`
+for `Terminal` as well to be able to set up Conda environments for your PC/Powershell which can be useful if some packages you want are not released on Linux. If you choose to do this: 
+2-b. Open `Anaconda Prompt` and run 
+  ```
+  conda init powershell
+  ```
+This will make it so `Powershell` can run all of the conda commands and you will never have to open `Anaconda Prompt` again.
+
 3. From the Ubuntu Command Line install Zsh  
     ```
     sudo apt install zsh
