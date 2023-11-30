@@ -83,7 +83,7 @@ Follow the steps below to set up a new workstation:
 All of these steps should also make it so that when `Powershell` is run from `Terminal`, you will have better formatting and autocomplete -- not just when `Terminal` is running an instance of the `WSL terminal`.
 A small note if you plan to use both: You will need to install conda on the PC side of things as well (which you can do through just installing the `Anaconda Navigator`, and this will give you `Anaconda Prompt`
 for `Terminal` as well to be able to set up Conda environments for your PC/Powershell which can be useful if some packages you want are not released on Linux. If you choose to do this: 
-  a) Open `Anaconda Prompt` and run 
+i. Open `Anaconda Prompt` and run 
   ```
   conda init powershell
   ```
