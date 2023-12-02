@@ -18,6 +18,12 @@
   - [Julia](#julia)
   - [Neovim (Better Code Editting on the Command Line)](#neovim-(better-code-editting-on-the-command-line))
   - [Webdev with React and NextJs](#webdev-with-react-and-nextJs)
+- [GitHub SSH Setup for PowerShell and WSL](#github-ssh-setup-for-powershell-and-wsl)
+  - [SSH Prerequisites](#ssh-prerequisites)
+  - [Common Steps](#common-steps)
+  - [For Powershell](#for-powershell)
+  - [For WSL](#for-wsl)
+  - [Repository Configuration](#repository-configuration)
 - [Terminal Settings JSON](#terminal-settings-json)
 
 ## Introduction
@@ -292,6 +298,76 @@ This will make it so `Powershell` can run all of the conda commands and you will
     ```
     npm install -g pnpm
     ```
+## GitHub SSH Setup for PowerShell and WSL
+This is a step-by-step walkthrough for setting up SSH keys to access GitHub repositories in PowerShell and WSL (Windows Subsystem for Linux).
+
+### SSH Prerequisites
+- A GitHub account.
+- PowerShell for Windows `Run as Administrator`.
+- WSL installed for Linux commands.
+
+### Common Steps
+30. **Generate an SSH Key**:
+    ```bash
+    ssh-keygen -t ed25519 -C "your_email@example.com"
+    ```
+    - Follow the prompts to save the key to the default location.
+    - Set a passphrase (optional but recommended).
+
+31. **Add SSH Key to GitHub**:
+    ```bash
+    cat ~/.ssh/id_ed25519.pub
+    ```
+    - Copy the displayed key to your clipboard.
+    - In GitHub, go to Settings → SSH and GPG keys → New SSH key.
+    - Paste the key and save it.
+
+### For PowerShell
+32. **Start and Configure ssh-agent**:
+    - Open PowerShell as Administrator.
+    - Enable `ssh-agent` service:
+      ```powershell
+      Set-Service -Name ssh-agent -StartupType Automatic
+      ```
+    - Start the service:
+      ```powershell
+      Start-Service ssh-agent
+      ```
+
+33. **Add SSH Key to ssh-agent**:
+    ```powershell
+    ssh-add ~/.ssh/id_ed25519
+    ```
+
+34. **Test SSH Connection**:
+    ```powershell
+    ssh -T git@github.com
+    ```
+
+### For WSL
+32. **Start and Configure ssh-agent**:
+    - Open WSL terminal.
+    - Start ssh-agent:
+      ```bash
+      eval "$(ssh-agent -s)"
+      ```
+
+33. **Add SSH Key to ssh-agent**:
+    ```bash
+    ssh-add ~/.ssh/id_ed25519
+    ```
+
+34. **Test SSH Connection**:
+    ```bash
+    ssh -T git@github.com
+    ```
+
+### Repository Configuration
+For each Git repository:
+- Change the remote URL to SSH if needed:
+  ```bash
+  git remote set-url origin git@github.com:username/repo.git
+  ```
 
 ## Terminal Settings JSON
 Just copy and paste the content below into the Terminal (the app) settings json.
