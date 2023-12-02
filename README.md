@@ -38,7 +38,7 @@ If you would like to have a cleaner Windows 11 experience:
 2. Choose languague as English (World) instead of a regional english to avoid installing programs like Amazon Prime on install (You will need to change it to a regional English in your settings later to use the Windows Store).
 3. Right Click on the Windows Button on the taskbar and open terminal as admin.
 4. Run the following command in the Terminal to open Chris Titus install program -- this will give you a GUI to install useful Programs, Programming Languages, etc.
-    ```
+    ```bash
     irm christitus.com/win | iex
     ```
 5. DO NOT USE THIS GUI TO INSTALL THE LANGUAGES UNLESS YOU WANT TO BE ACCESSING THEM FROM POWERSHELL. WE WILL BE INSTALLING OUR LANGUAGES ON LINUX IN A LATER STEP.
@@ -63,7 +63,7 @@ Before you begin, ensure that the following prerequisites are met:
 - Nerd Fonts (I use JetBrainsMono Nerd Font) is installed on Windows. There are a few different options:
     - EASIEST -- You can install it by downloading it manually from the [Nerd Fonts Download Page](https://www.nerdfonts.com/font-downloads) and installing the fonts contained in the download. 
     - Alternatively, you can setup your Git Account on the command line and running the following command in PowerShell to get all of the fonts (PowerShell needs to be opened as administrator by right clicking on it):
-    ```
+    ```bash
     git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
     ```
     - Or you can see more options on the [Nerd Fonts Github Repo](https://github.com/ryanoasis/nerd-fonts).
@@ -91,42 +91,42 @@ A small note if you plan to use both: You will need to install `conda` on the PC
 for `Terminal` as well to be able to set up Conda environments for your PC/Powershell -- which can be useful if some packages you want are not released on Linux. If you choose to do this: 
 
 3. ***OPTIONAL*** -- Install Anaconda Navigator, Open `Anaconda Prompt` and run 
-  ```
+  ```bash
   conda init powershell
   ```
 This will make it so `Powershell` can run all of the conda commands and you will never have to open `Anaconda Prompt` again.
 
 4. From the Ubuntu Command Line install Zsh  
-    ```
+    ```bash
     sudo apt install zsh
     ```
 5. Get my dotfiles
-    ```
+    ```bash
     git clone https://github.com/JDLanctot/dotfiles.git
     ```
-    ```
+    ```bash
     mv dotfiles/{.,}* .
     ```
-    ```
+    ```bash
     rm -r .git
     ```
-    ```
+    ```bash
     rm -r dotfiles
     ```
 6. Install ohmyzsh  
-    ```
+    ```bash
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     ```
 7. Install zsh-autocompletions  
-    ```
+    ```bash
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     ```
 8. Add it to the plugins list in .zshrc
 9. Install zsh-completions  
-    ```
+    ```bash
     git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
     ```
-    ```
+    ```bash
     fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
     ```
 10. Ohmyzsh likely overwrote the .zshrc and .zshenv so make sure that the .zshrc and .zshenv files you have now still contain the contents of my .zshrc and .zshenv from my github and that you still have the .zsh folder from my github with the same contents. This will now allow you to change between the bash shell (the default one) and the zsh shell (the one I prefer), but both should be customized. Just type either of the following to switch to the desired shell:
@@ -137,35 +137,35 @@ This will make it so `Powershell` can run all of the conda commands and you will
     zsh
     ```
   Note that if there are issues that any of the aliases aren't working in the respective shell, you can do the following to make sure that the correct rc file is in the path while using the shell that should source it:
-    ```
+    ```bash
     source ~/.bashrc
     ```
-    ```
+    ```bash
     source ~/.zshrc
     ```
     
 11. Install Starship
-    ```
+    ```bash
     curl -sS https://starship.rs/install.sh | sh
     ```
     
 12. Install Unzip
-    ```
+    ```bash
     sudo apt-get install unzip
     ```
     
 13. Install Exa 
-    ```
+    ```bash
     sudo apt-get update
     ```
-    ```
+    ```bash
     sudo apt-get -y install exa
     ```
     
 ### Python and Anaconda Environments
 14. Install anaconda on Ubuntu 
 15. Pull from a git repo to get a code base for a Python project and `cd` into it. I don't have any public Python GitRepos at the moment, so you'll want probably want to make a directory, `cd` into it and have a file called `environment.devenv.yml` inside it that looks something like these two yaml examples (This will install of the packages listed in the yaml and the packages that they depend on. This yaml probably has things you don't need like Pytorch, TorchGeometric, tensorboard, cudatoolkit, etc):
-    ```
+    ```yml
     name: assignments
 
     channels:
@@ -187,7 +187,7 @@ This will make it so `Powershell` can run all of the conda commands and you will
           - more-itertools
           - simple-parsing
     ```
-    ```
+    ```yml
     name: netrl
 
     channels:
@@ -221,73 +221,73 @@ This will make it so `Powershell` can run all of the conda commands and you will
           - wurlitzer
     ```
 16. Create an env from the repo  
-    ```
+    ```bash
     conda env create --name name --file=environment.devenv.yml
     ```
 17. Activate the environment. You will need to do this in the terminal everytime you want python to have access to all these packages, but this means that as you add new environments for different purposes, conda is allowing Python to have access to different bundles of packages. This also means that different environments could even have different versions of packages in the case where something you are working on old works with old packages and not any of the recent updates.
-    ```
+    ```bash
     conda activate name
     ```
   If you aren't sure of the name you can list all of the environments you have set up with:
-    ```
+    ```bash
     conda env list
     ```
     
 18. As long as you are still `cd` into the folder, you can add the folder you are working on as a package it can call. This is useful when you want to be able to do python imports of scripts in the folder itself, allowing you to have calls to your own functions from other scripts. Eg. I can do something like `from netrl.visualize import Visualize` in one script in the folder so that it has access to the Visualize method. Note the `netrl` here will be based on the `--name` you did in the previous step, or the name from the yaml if you didn't use the `--name` flag in the previous step.
-    ```
+    ```bash
     pip install -e .
     ```
     
 19. You can now run any python script that you have cd into the same folder as using:
-    ```
+    ```bash
     python3 filename.py
     ```
   If you have setup my zsh configs then you can do, because I have set p to be an alias for python3:
-    ```
+    ```bash
     p filename.py
     ```
     
 ### Julia
 20. Install Julia  
-    ```
+    ```bash
     curl -O https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.5-linux-x86_64.tar.gz
     ```
-    ```
+    ```bash
     tar -xvzf julia-1.8.5-linux-x86_64.tar.gz
     ```
 
 ### Neovim (Better Code Editting on the Command Line)
 21. Install version 0.9+ of Neovim (Here I use the unstable ppa because Ubuntu only has up to 0.6 in the stable repository but in the future /unstable will be sufficient. Last command here echos the version to check if you have installed a version that is 0.9+.)
-    ```
+    ```bash
     sudo add-apt-repository ppa:neovim-ppa/unstable
     ```
-    ```
+    ```bash
     sudo apt-get update
     ```
-    ```
+    ```bash
     sudo apt-get install neovim
     ```
-    ```
+    ```bash
     nvim --version
     ```
 22. Install Packer
-    ```
+    ```bash
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     ```
 23. Go to the nvim directory
-    ```
+    ```bash
     cd .config/nvim
     ```
 24. Open this directory in Neovim
-    ```
+    ```bash
     nvim .
     ```
 25. There will be a ton of errors. Navigate past them and navigate into the toofaeded folder in lua and open the packer.lua file.
 26. Source it and synch the packages (you may also have to source the init.lua in the .config/nvim folder).
-    ```
+    ```vim
     :so
     ```
-    ```
+    ```vim
     :PackerSync
     ```
 27. Quit nvim and restart it and all of the changes should be implemented.
@@ -295,7 +295,7 @@ This will make it so `Powershell` can run all of the conda commands and you will
 ### Webdev with React and NextJs
 28. If you want to install NPM and NodeJS on WSL to allow you to do web-development, following the guide on [Installing Node.js on Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl).
 29. If you installed npm, install pnpm using npm so that you can use pnpm instead of npm which makes it so that it doesn't duplicate node modules being installed when they are used in multiple projects.
-    ```
+    ```bash
     npm install -g pnpm
     ```
 ## GitHub SSH Setup for PowerShell and WSL
@@ -372,7 +372,7 @@ For each Git repository:
 ## Terminal Settings JSON
 Just copy and paste the content below into the Terminal (the app) settings json.
 
-  ```
+  ```json
   {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
