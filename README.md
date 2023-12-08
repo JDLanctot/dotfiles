@@ -258,7 +258,7 @@ THE FOLLOWING STEPS ARE ALL LINUX UNLESS LINUX AND POWERSHELL OPTIONS ARE GIVEN.
     tar -xvzf julia-1.8.5-linux-x86_64.tar.gz
     ```
 
-### Neovim (Better Code Editting on the Command Line)
+### Neovim - Better Code Editting on the Command Line
 21. Install version 0.9+ of Neovim (Here I use the unstable ppa because Ubuntu only has up to 0.6 in the stable repository but in the future /unstable will be sufficient. Last command here echos the version to check if you have installed a version that is 0.9+.)
     ```bash
     sudo add-apt-repository ppa:neovim-ppa/unstable
