@@ -14,7 +14,10 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+local path_sep = package.config:sub(1,1) -- This will be '\\' on Windows and '/' on Unix-like systems
+local home = os.getenv("HOME") or os.getenv("USERPROFILE")
+local undodir = home .. path_sep .. ".vim" .. path_sep .. "undodir"
+vim.opt.undodir = undodir
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
