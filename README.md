@@ -270,27 +270,32 @@ This will make it so `Powershell` can run all of the conda commands and you will
     ```bash
     nvim --version
     ```
-22. Install Packer
+22. Install Packer (This is currently not maintained and I may have to move over to Lazy NVIM at some point, but works fine for now)
+    Linux
     ```bash
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     ```
-23. Go to the nvim directory
+    PowerShell
+    ```bash
+    git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+    ```
+24. Go to the nvim directory
     ```bash
     cd .config/nvim
     ```
-24. Open this directory in Neovim
+25. Open this directory in Neovim
     ```bash
     nvim .
     ```
-25. There will be a ton of errors. Navigate past them and navigate into the toofaeded folder in lua and open the packer.lua file.
-26. Source it and synch the packages (you may also have to source the init.lua in the .config/nvim folder).
+26. There will be a ton of errors. Navigate past them and navigate into the toofaeded folder in lua and open the packer.lua file.
+27. Source it and synch the packages (you may also have to source the init.lua in the .config/nvim folder).
     ```vim
     :so
     ```
     ```vim
     :PackerSync
     ```
-27. Quit nvim and restart it and all of the changes should be implemented.
+28. Quit nvim and restart it and all of the changes should be implemented.
 
 ### Webdev with React and NextJs
 28. If you want to install NPM and NodeJS on WSL to allow you to do web-development, following the guide on [Installing Node.js on Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl).
