@@ -16,7 +16,7 @@
   - [Make the Terminal Better (Autocomplete and Header Info)](#make-the-terminal-better-(autocomplete-and-header-info))
   - [Python and Anaconda Environments](#python-and-anaconda-environments)
   - [Julia](#julia)
-  - [Neovim (Better Code Editting on the Command Line)](#neovim-(better-code-editting-on-the-command-line))
+  - [Neovim (Better Code Editting on the Command Line)](#neovim-better-code-editting-on-the-command-line)
   - [Webdev with React and NextJs](#webdev-with-react-and-nextJs)
 - [GitHub SSH Setup for PowerShell and WSL](#github-ssh-setup-for-powershell-and-wsl)
   - [SSH Prerequisites](#ssh-prerequisites)
@@ -95,6 +95,8 @@ for `Terminal` as well to be able to set up Conda environments for your PC/Power
   conda init powershell
   ```
 This will make it so `Powershell` can run all of the conda commands and you will never have to open `Anaconda Prompt` again.
+
+THE FOLLOWING STEPS ARE ALL LINUX UNLESS LINUX AND POWERSHELL OPTIONS ARE GIVEN. I FIND IT USEFUL TO SETUP BOTH TO BE ABLE TO BE FLEXIBLE DEPENDING ON IF YOU NEED TO CODE IN SOMETHING THAT MIGHT ONLY HAVE PACKAGES FOR ONE OS.
 
 4. From the Ubuntu Command Line install Zsh  
     ```bash
@@ -279,23 +281,48 @@ This will make it so `Powershell` can run all of the conda commands and you will
     ```bash
     git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
     ```
-24. Go to the nvim directory
+24. Go to the nvim directory. Powershell will require that you download my dotfiles in this step, because you only have them on the WSL at this point, and then do some modifying of what 
+    Linux
     ```bash
     cd .config/nvim
     ```
-25. Open this directory in Neovim
+    PowerShell
+    ```bash
+    cd C:\Users\Jordi\AppData\Local
+    ```
+    ```bash
+    git clone https://github.com/JDLanctot/dotfiles.git nvim
+    ```
+    ```bash
+    cd nvim
+    ```
+    Move only the items we need for Windows to the top level
+    ```bash
+    Move-Item .config/nvim/* .
+    ```
+    Remove Linux related files and reference to the Github repo
+    ```bash
+    Remove-Item .config -Recurse -Force
+    Remove-Item .zsh -Recurse -Force
+    Remove-Item .bashrc -Force
+    Remove-Item .zshrc -Force
+    Remove-Item .zshenv -Force
+    Remove-Item README.md -Force
+    Remove-Item .git -Recurse -Force
+    ```
+26. Open this directory in Neovim
     ```bash
     nvim .
     ```
-26. There will be a ton of errors. Navigate past them and navigate into the toofaeded folder in lua and open the packer.lua file.
-27. Source it and synch the packages (you may also have to source the init.lua in the .config/nvim folder).
+27. There will be a ton of errors. Navigate past them and navigate into the toofaeded folder in lua and open the packer.lua file.
+28. Source it and synch the packages (you may also have to source the init.lua in the .config/nvim folder).
     ```vim
     :so
     ```
     ```vim
     :PackerSync
     ```
-28. Quit nvim and restart it and all of the changes should be implemented.
+29. Quit nvim and restart it and all of the changes should be implemented.
 
 ### Webdev with React and NextJs
 28. If you want to install NPM and NodeJS on WSL to allow you to do web-development, following the guide on [Installing Node.js on Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl).
