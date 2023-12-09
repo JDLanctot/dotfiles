@@ -273,6 +273,7 @@ THE FOLLOWING STEPS ARE ALL LINUX UNLESS LINUX AND POWERSHELL OPTIONS ARE GIVEN.
     nvim --version
     ```
 22. Install Packer (This is currently not maintained and I may have to move over to Lazy NVIM at some point, but works fine for now)
+
     Linux
     ```bash
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
@@ -282,6 +283,7 @@ THE FOLLOWING STEPS ARE ALL LINUX UNLESS LINUX AND POWERSHELL OPTIONS ARE GIVEN.
     git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
     ```
 24. Go to the nvim directory. Powershell will require that you download my dotfiles in this step, because you only have them on the WSL at this point, and then do some modifying of what 
+
     Linux
     ```bash
     cd .config/nvim
