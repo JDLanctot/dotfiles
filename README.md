@@ -282,15 +282,13 @@ THE FOLLOWING STEPS ARE ALL LINUX UNLESS LINUX AND POWERSHELL OPTIONS ARE GIVEN.
     ```bash
     git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
     ```
+    You should have Chocolatey installed from the Chris Titus debloat tool run during the prequisite steps, so now you can do:
+    ```bash
+    choco install neovim
+    ```
     You will need to add nvim to your Path on Windows, so search for "Edit the system environment variables" in the Search Bar in Windows Settings, and Click the "Environment Variables..." button. Then click on Path in the User Variables table (the top one of the two displayed in this window), and click Edit. Now click the New button and add the following location followed by hitting the Ok button in that window and in the previously opened window with the tables:
-    
-    Windows 11
     ```bash
     C:\tools\neovim\nvim-win64\bin
-    ```
-    Windows 10
-    ```bash
-    C:\Program Files\Neovim\bin\
     ```
     If `nvim` is not working on the PowerShell, try restarting the PowerShell and make sure that the new path you added is indeed in the path variable we were just modifying by navigating back to the same window with the same steps and confirming it is there.
 24. Go to the nvim directory. Powershell will require that you download my dotfiles in this step, because you only have them on the WSL at this point, and then do some modifying of what 
