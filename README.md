@@ -1,10 +1,6 @@
-<link rel="stylesheet" href="https://raw.githubusercontent.com/JDLanctot/readme_formatting/main/assets/css/basic.css">
-<h1 align="center">
-  My Dotfiles
-</h1>
+#My Dotfiles
 
-<p align="center">
-  My Dotfiles is a collection of configurations for various applications and tools I use on my workstation. This repository contains my personal dotfiles, which can be used as a starting point for setting up a new workstation.
+My Dotfiles is a collection of configurations for various applications and tools I use on my workstation. This repository contains my personal dotfiles, which can be used as a starting point for setting up a new workstation.
   
 ## Table of Contents
 
@@ -25,6 +21,11 @@
   - [For WSL](#for-wsl)
   - [Repository Configuration](#repository-configuration)
 - [Terminal Settings JSON](#terminal-settings-json)
+- [Academic Resources](#academic-resources)
+	- [LaTex Template](#latex-template)
+	- [Scholarship Applications](#scholarship-applications)
+- [[#Contributing|Contributing]]
+- [[#License|License]]
 
 ## Introduction
 
@@ -75,7 +76,6 @@ Before you begin, ensure that the following prerequisites are met:
   - [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
   - [Git](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
   - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-
 
 ## Installation Steps
 
@@ -798,3 +798,20 @@ Just copy and paste the content below into the Terminal (the app) settings json.
     "useAcrylicInTabRow": true
   }
   ```
+
+## Academic Resources
+Other GitHub repos to help you with Academic Success.
+
+### LaTex Template
+Visit my LaTex Template repo for a template to start writing academic publications in LaTex quick: [LaTex Template](https://github.com/JDLanctot/latex_template). [[Latex Scientific Writing Template]]
+
+### Scholarship Applications
+Visit my Scholarship Applications repo for instructions templates for applying to Graduate Level Scholarships, such as NSERC: [Scholarship Applications](https://github.com/JDLanctot/Scholarship-Applications). [[Scholarship Applications]]
+
+## Contributing
+
+If you have any suggestions or improvements for this template, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details. [[LICENSE]]
