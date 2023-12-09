@@ -1,4 +1,4 @@
-#My Dotfiles
+# My Dotfiles
 
 My Dotfiles is a collection of configurations for various applications and tools I use on my workstation. This repository contains my personal dotfiles, which can be used as a starting point for setting up a new workstation.
   
@@ -24,8 +24,8 @@ My Dotfiles is a collection of configurations for various applications and tools
 - [Academic Resources](#academic-resources)
 	- [LaTex Template](#latex-template)
 	- [Scholarship Applications](#scholarship-applications)
-- [[#Contributing|Contributing]]
-- [[#License|License]]
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Introduction
 
