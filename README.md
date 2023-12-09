@@ -24,6 +24,7 @@ My Dotfiles is a collection of configurations for various applications and tools
 - [Academic Resources](#academic-resources)
 	- [LaTex Template](#latex-template)
 	- [Scholarship Applications](#scholarship-applications)
+	- [Portfolio Website](#portfolio-website)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -807,6 +808,9 @@ Visit my LaTex Template repo for a template to start writing academic publicatio
 
 ### Scholarship Applications
 Visit my Scholarship Applications repo for instructions templates for applying to Graduate Level Scholarships, such as NSERC: [Scholarship Applications](https://github.com/JDLanctot/Scholarship-Applications). [[Scholarship Applications]]
+
+### Portfolio Website
+Visit Portfolio Website repo for instructions and code to an easy Portfolio Website and host it for FREE using GitHub: [Portfolio Website](https://github.com/JDLanctot/jdlanctot.github.io)). [[J.D.Lanctot's Portfolio]]
 
 ## Contributing
 
