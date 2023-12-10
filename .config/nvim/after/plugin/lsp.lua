@@ -2,16 +2,15 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
--- Fix Undefined global 'vim'
-lsp.configure('lua-language-server', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
+lsp.ensure_installed({
+  'tsserver',
+  'tailwindcss',
+  'pyright',
+  'julials',
 })
+
+-- Fix Undefined global 'vim'
+lsp.nvim_workspace()
 
 
 local cmp = require('cmp')
