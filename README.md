@@ -1,5 +1,4 @@
-# My Dotfiles
-
+# dotfiles
 My Dotfiles is a collection of configurations for various applications and tools I use on my workstation. This repository contains my personal dotfiles, which can be used as a starting point for setting up a new workstation.
   
 ## Table of Contents
@@ -261,42 +260,15 @@ THE FOLLOWING STEPS ARE ALL LINUX UNLESS LINUX AND POWERSHELL OPTIONS ARE GIVEN.
 
 ### Neovim - Better Code Editting on the Command Line
 21. Install version 0.9+ of Neovim (Here I use the unstable ppa because Ubuntu only has up to 0.6 in the stable repository but in the future /unstable will be sufficient. Last command here echos the version to check if you have installed a version that is 0.9+.)
-
-    Linux
     ```bash
     sudo add-apt-repository ppa:neovim-ppa/unstable
+    ```
+    ```bash
     sudo apt-get update
+    ```
+    ```bash
     sudo apt-get install neovim
-    nvim --version
     ```
-    Also you will need Zig. These lines will need to have `[version]` replaced by looking at https://ziglang.org/downloads for the most recent download available. Make sure
-    ```bash
-    cd ~
-    ```
-    ```bash
-    wget https://ziglang.org/builds/zig-linux-x86_64-[version].tar.xz
-    ````
-    ```bash
-    tar -xf zig-linux-x86_64-[version].tar.xz
-    ```
-    ```bash
-    sudo mv zig-linux-x86_64-[version] /usr/local/zig
-    ```
-    ```bash
-    zig --version
-    ```
-
-    PowerShell
-    You should have Chocolatey installed from the Chris Titus debloat tool run during the prequisite steps, so now you can do:
-    ```bash
-    choco install neovim
-    choco install zig
-    ```
-    You will need to add nvim to your Path on Windows, so search for "Edit the system environment variables" in the Search Bar in Windows Settings, and Click the "Environment Variables..." button. Then click on Path in the User Variables table (the top one of the two displayed in this window), and click Edit. Now click the New button and add the following location followed by hitting the Ok button in that window and in the previously opened window with the tables:
-    ```bash
-    C:\tools\neovim\nvim-win64\bin
-    ```
-    If `nvim` is not working on the PowerShell, try restarting the PowerShell and make sure that the new path you added is indeed in the path variable we were just modifying by navigating back to the same window with the same steps and confirming it is there. Then running nvim should confirm it.
     ```bash
     nvim --version
     ```
@@ -310,6 +282,15 @@ THE FOLLOWING STEPS ARE ALL LINUX UNLESS LINUX AND POWERSHELL OPTIONS ARE GIVEN.
     ```bash
     git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
     ```
+    You should have Chocolatey installed from the Chris Titus debloat tool run during the prequisite steps, so now you can do:
+    ```bash
+    choco install neovim
+    ```
+    You will need to add nvim to your Path on Windows, so search for "Edit the system environment variables" in the Search Bar in Windows Settings, and Click the "Environment Variables..." button. Then click on Path in the User Variables table (the top one of the two displayed in this window), and click Edit. Now click the New button and add the following location followed by hitting the Ok button in that window and in the previously opened window with the tables:
+    ```bash
+    C:\tools\neovim\nvim-win64\bin
+    ```
+    If `nvim` is not working on the PowerShell, try restarting the PowerShell and make sure that the new path you added is indeed in the path variable we were just modifying by navigating back to the same window with the same steps and confirming it is there.
 24. Go to the nvim directory. Powershell will require that you download my dotfiles in this step, because you only have them on the WSL at this point, and then do some modifying of what 
 
     Linux

@@ -45,14 +45,14 @@ return require('packer').startup(function(use)
     }
     use("windwp/nvim-ts-autotag")
 
+    use("mg979/vim-visual-multi")
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("nvim-treesitter/playground")
     use("theprimeagen/harpoon")
     use("theprimeagen/refactoring.nvim")
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
-    use("nvim-treesitter/nvim-treesitter-context")
-    use("mg979/vim-visual-multi")
+    use("nvim-treesitter/nvim-treesitter-context");
 
     use {
         'VonHeikemen/lsp-zero.nvim',
