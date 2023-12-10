@@ -47,3 +47,7 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- This is to keymap basic ctrl functions
+vim.keymap.set("n", "<c-a>", "ggVG")
+vim.keymap.set("n", "<c-v>, '"+p')
