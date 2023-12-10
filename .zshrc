@@ -10,11 +10,6 @@ plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-<<<<<<< HEAD
-export PATH=$PATH:/home/toofaeded/julia-1.8.5/bin
-
-=======
->>>>>>> origin/master
 # User configuration
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -40,31 +35,9 @@ compinit
 
 # Load Starship
 eval "$(starship init zsh)"
-<<<<<<< HEAD
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/toofaeded/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/toofaeded/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/toofaeded/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/toofaeded/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-=======
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=~/julia-1.8.5/bin:$PATH
->>>>>>> origin/master
 export PATH=$PATH:/usr/local/zig
