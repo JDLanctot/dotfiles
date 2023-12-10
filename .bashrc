@@ -164,3 +164,6 @@ fi
 export TOPAS_G4_DATA_DIR=$HOME/G4Data
 export PATH=$HOME/topas/bin:$PATH
 export DISPLAY=:0
+
+export PATH=~/julia-1.8.5/bin:$PATH
+export PATH=$PATH:/usr/local/zig
