@@ -50,4 +50,4 @@ end)
 
 -- This is to keymap basic ctrl functions
 vim.keymap.set("n", "<c-a>", "ggVG")
-vim.keymap.set("n", "<c-v>, '"+p')
+vim.keymap.set("n", "<c-v>", '"+p')
