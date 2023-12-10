@@ -10,15 +10,7 @@ lsp.ensure_installed({
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('lua-language-server', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
+lsp.nvim_workspace()
 
 
 local cmp = require('cmp')
@@ -67,4 +59,3 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
-
