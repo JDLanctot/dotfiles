@@ -49,9 +49,12 @@ eval "$(starship init bash)"
 #export PATH="$PATH:/home/ansible/.local/bin"
 #export PATH="$PATH:/home/xcad/.cargo/bin"
 
+<<<<<<< HEAD
 # PATH for Julia
 export PATH="$PATH:~/julia-1.8.5/bin"
 
+=======
+>>>>>>> origin/master
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -141,9 +144,12 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+<<<<<<< HEAD
 # add alias for python3
 alias p='python3'
 
+=======
+>>>>>>> origin/master
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -167,7 +173,15 @@ fi
 # Source goto
 [[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
 
+<<<<<<< HEAD
 #export TOPAS_G4_DATA_DIR=$HOME/G4Data
 #export PATH=$HOME/topas/bin:$PATH
 export DISPLAY=:0
+=======
+export TOPAS_G4_DATA_DIR=$HOME/G4Data
+export PATH=$HOME/topas/bin:$PATH
+export DISPLAY=:0
+
+export PATH=~/julia-1.8.5/bin:$PATH
+>>>>>>> origin/master
 export PATH=$PATH:/usr/local/zig
