@@ -31,13 +31,14 @@ require('lualine').setup {
             {
                 'diagnostics',
                 sources = { 'nvim_diagnostic' },
-                sections = { 'error', 'warn', 'info' },
+                sections = { 'error', 'warn', 'info', 'hint' },
                 diagnostics_color = {
                     error = { fg = colors.red },
                     warn  = { fg = colors.orange },
                     info  = { fg = colors.white },
+                    hing  = { fg = colors.blue },
                 },
-                symbols = { error = ' ', warn = ' ', info = ' ' },
+                symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
                 colored = true,
                 update_in_insert = false,
             }
