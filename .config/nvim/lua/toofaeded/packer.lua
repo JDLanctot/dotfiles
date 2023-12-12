@@ -13,12 +13,38 @@ return require('packer').startup(function(use)
     }
 
     use({
+        "coffebar/neovim-project",
+        config = function()
+            -- enable saving the state of plugins in the session
+            vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
+            -- setup neovim-project plugin
+            require("neovim-project").setup {
+                projects = { -- define project roots
+                    "~/research/*",
+                    "~/.config/*",
+                    "~/webdev/*"
+                },
+            }
+        end,
+        requires = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope.nvim", tag = "0.1.4" },
+            { "Shatur/neovim-session-manager" },
+        }
+    })
+
+    use({
         'rose-pine/neovim',
         as = 'rose-pine',
         config = function()
             vim.cmd('colorscheme rose-pine')
         end
     })
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 
     use({
         "folke/trouble.nvim",
@@ -38,6 +64,13 @@ return require('packer').startup(function(use)
             'nvim-tree/nvim-web-devicons',
         },
     })
+
+    use {
+        "echasnovski/mini.indentscope",
+        config = function()
+            require("mini.indentscope").setup()
+        end
+    }
 
     use {
         "windwp/nvim-autopairs",
@@ -77,7 +110,15 @@ return require('packer').startup(function(use)
         }
     }
 
+    use {
+        "folke/todo-comments.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+        }
+    }
     use("folke/zen-mode.nvim")
+
+    use("numToStr/Comment.nvim")
     use("github/copilot.vim")
     use("eandrju/cellular-automaton.nvim")
     use("laytan/cloak.nvim")
