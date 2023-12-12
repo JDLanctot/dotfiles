@@ -17,7 +17,7 @@ autocmd("BufWinEnter", {
         local function git_commit_with_message()
             local message = vim.fn.input("Commit message: ")
             if message ~= "" then
-                vim.cmd("Git commit -m " .. vim.fn.shellescape(message))
+                vim.cmd("Git commit -m '" .. vim.fn.shellescape(message) .. "'")
             else
                 print("Commit aborted: No message provided.")
             end
@@ -27,6 +27,6 @@ autocmd("BufWinEnter", {
         vim.keymap.set("n", "<leader>ga", ":Git add .<CR>", opts)
         vim.keymap.set("n", "<leader>gc", git_commit_with_message, opts)
         vim.keymap.set("n", "<leader>gP", ":Git pull --rebase<CR>", opts)
-        vim.keymap.set("n", "<leader>t", ":Git push -u origin ", opts)
+        vim.keymap.set("n", "<leader>gt", ":Git push -u origin ", opts)
     end,
 })
