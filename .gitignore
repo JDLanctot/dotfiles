@@ -1,0 +1,15 @@
+# Ignore everything
+*
+
+# But don't ignore these files
+!.bashrc
+!.zshenv
+!.zshrc
+!LICENSE
+!README.md
+!.config/starship.toml
+!.gitignore
+
+# And don't ignore these directories and their contents
+!.config/nvim/*
+!.zsh/
