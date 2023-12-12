@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.keymap.set("n", "<leader>gs", ":Git<CR>")
 
 local TooFaeded_Fugitive = vim.api.nvim_create_augroup("TooFaeded_Fugitive", {})
 
@@ -7,23 +7,26 @@ autocmd("BufWinEnter", {
     group = TooFaeded_Fugitive,
     pattern = "*",
     callback = function()
-        if vim.bo.ft ~= "fugitive" then
+        if vim.bo.filetype ~= "fugitive" then
             return
         end
 
         local bufnr = vim.api.nvim_get_current_buf()
-        local opts = {buffer = bufnr, remap = false}
-        vim.keymap.set("n", "<leader>p", function()
-            vim.cmd.Git('push')
-        end, opts)
+        local opts = { buffer = bufnr, remap = false, silent = true }
 
-        -- rebase always
-        vim.keymap.set("n", "<leader>P", function()
-            vim.cmd.Git({'pull',  '--rebase'})
-        end, opts)
+        local function git_commit_with_message()
+            local message = vim.fn.input("Commit message: ")
+            if message ~= "" then
+                vim.cmd("Git commit -m " .. vim.fn.shellescape(message))
+            else
+                print("Commit aborted: No message provided.")
+            end
+        end
 
-        -- NOTE: It allows me to easily set the branch i am pushing and any tracking
-        -- needed if i did not set the branch up correctly
-        vim.keymap.set("n", "<leader>t", ":Git push -u origin ", opts);
+        vim.keymap.set("n", "<leader>gp", ":Git push<CR>", opts)
+        vim.keymap.set("n", "<leader>ga", ":Git add .<CR>", opts)
+        vim.keymap.set("n", "<leader>gc", git_commit_with_message, opts)
+        vim.keymap.set("n", "<leader>gP", ":Git pull --rebase<CR>", opts)
+        vim.keymap.set("n", "<leader>t", ":Git push -u origin ", opts)
     end,
 })
