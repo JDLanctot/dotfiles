@@ -150,12 +150,9 @@ return require('packer').startup(function(use)
 
             -- Set menu
             dashboard.section.buttons.val = { dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-                dashboard.button("f", "  > Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
-                dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
-                dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
+                dashboard.button("<leader>pf", "  > Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
+                dashboard.button("<leader>ph", "  > Recent Directories", ":Telescope neovim-project discover<CR>"),
                 dashboard.button("⎵pv", "  > Open Project Viewer", "<leader>pv"), -- Remapped
-                dashboard.button("⎵vwm", "  > Start Vim-With-Me", "<leader>vwm"), -- Remapped
-                dashboard.button("⎵svwm", "  > Stop Vim-With-Me", "<leader>svwm"), -- Remapped
                 dashboard.button("⎵y", "  > Copy to Clipboard", "<leader>y"), -- Remapped
                 dashboard.button("⎵p", "  > Paste from Clipboard", "<leader>p"), -- Remapped
                 dashboard.button("⎵x", "  > Make Executable", "<leader>x"), -- Remapped

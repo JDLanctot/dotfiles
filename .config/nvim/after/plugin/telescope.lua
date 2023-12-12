@@ -5,6 +5,6 @@ vim.keymap.set('n', '<leader>ps', function()
     builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
-
+vim.keymap.set('n', '<leader>pb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>pd', '<CMD>Telescope neovim-project discover<CR>')
 vim.keymap.set('n', '<leader>ph', '<CMD>Telescope neovim-project history<CR>')
