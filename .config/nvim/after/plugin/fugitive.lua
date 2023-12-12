@@ -17,7 +17,7 @@ autocmd("BufWinEnter", {
         local function git_commit_with_message()
             local message = vim.fn.input("Commit message: ")
             if message ~= "" then
-                vim.cmd("Git commit -m '" .. vim.fn.shellescape(message) .. "'")
+                vim.cmd("Git commit -m " .. '"' .. vim.fn.shellescape(message) .. '"')
             elseif vim.cmd("Git diff --name-only --cached") then
                 print("You haven't staged any files to commit")
             else
