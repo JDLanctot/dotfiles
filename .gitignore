@@ -11,5 +11,6 @@
 !.gitignore
 
 # And don't ignore these directories and their contents
+!.config/nvim
 !.config/nvim/*
 !.zsh/
