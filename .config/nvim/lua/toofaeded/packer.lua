@@ -8,9 +8,9 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Terminal
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-      require("toggleterm").setup()
-    end}
+    -- use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+    --   require("toggleterm").setup()
+    -- end}
 
     -- Git
     use("tpope/vim-fugitive")
@@ -19,7 +19,7 @@ return require('packer').startup(function(use)
     ------------------------ Navigation ------------------------
     -- Telescoping
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.5',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -41,7 +41,7 @@ return require('packer').startup(function(use)
         end,
         requires = {
             { "nvim-lua/plenary.nvim" },
-            { "nvim-telescope/telescope.nvim", tag = "0.1.4" },
+            { "nvim-telescope/telescope.nvim", tag = "0.1.5" },
             { "Shatur/neovim-session-manager" },
         }
     })
@@ -120,7 +120,7 @@ return require('packer').startup(function(use)
     -- Undo
     use("mbbill/undotree")
 
-    -- Comments 
+    -- Comments
     use("numToStr/Comment.nvim")
     use {
         "folke/todo-comments.nvim",
