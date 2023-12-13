@@ -3,15 +3,28 @@
 vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
+    ------------------------ Processes -------------------------
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- Terminal
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+      require("toggleterm").setup()
+    end}
+
+    -- Git
+    use("tpope/vim-fugitive")
+    ------------------------ Processes -------------------------
+
+    ------------------------ Navigation ------------------------
+    -- Telescoping
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
+    -- Telescope Project Directories
     use({
         "coffebar/neovim-project",
         config = function()
@@ -33,6 +46,20 @@ return require('packer').startup(function(use)
         }
     })
 
+    -- File folder browser (only on toggle not default browsing)
+    use({
+        "nvim-tree/nvim-tree.lua",
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+        },
+    })
+
+    -- Quick file access
+    use("theprimeagen/harpoon")
+    ------------------------ Navigation ------------------------
+
+    -------------------------- VISUAL --------------------------
+    -- Theme and Layout
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -40,12 +67,15 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme rose-pine')
         end
     })
+    use("folke/zen-mode.nvim")
 
+    -- Infobar
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
+    -- Errors
     use({
         "folke/trouble.nvim",
         config = function()
@@ -58,13 +88,7 @@ return require('packer').startup(function(use)
         end
     })
 
-    use({
-        "nvim-tree/nvim-tree.lua",
-        requires = {
-            'nvim-tree/nvim-web-devicons',
-        },
-    })
-
+    -- Indenting visual indicator
     use {
         "echasnovski/mini.indentscope",
         config = function()
@@ -72,21 +96,50 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- Overlay characters to hide secrets
+    use("laytan/cloak.nvim")
+
+    -- Useless screen saver kind of effect
+    use("eandrju/cellular-automaton.nvim")
+    -------------------------- VISUAL --------------------------
+
+    ----------------------- Functionality ----------------------
+    -- Pairs and tags
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
     use("windwp/nvim-ts-autotag")
 
+    -- Multi Line
     use("mg979/vim-visual-multi")
+
+    -- Refactor
+    use("theprimeagen/refactoring.nvim")
+
+    -- Undo
+    use("mbbill/undotree")
+
+    -- Comments 
+    use("numToStr/Comment.nvim")
+    use {
+        "folke/todo-comments.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+        }
+    }
+
+    -- AI
+    use("github/copilot.vim")
+    ----------------------- Functionality ----------------------
+
+    --------------------------- LSP ----------------------------
+    -- for lsp and in file navigation
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("nvim-treesitter/playground")
-    use("theprimeagen/harpoon")
-    use("theprimeagen/refactoring.nvim")
-    use("mbbill/undotree")
-    use("tpope/vim-fugitive")
     use("nvim-treesitter/nvim-treesitter-context");
 
+    -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
@@ -109,20 +162,9 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
+    --------------------------- LSP ----------------------------
 
-    use {
-        "folke/todo-comments.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim",
-        }
-    }
-    use("folke/zen-mode.nvim")
-
-    use("numToStr/Comment.nvim")
-    use("github/copilot.vim")
-    use("eandrju/cellular-automaton.nvim")
-    use("laytan/cloak.nvim")
-
+    ------------------------ Dashboard -------------------------
     use {
         'goolord/alpha-nvim',
         config = function()
@@ -170,4 +212,5 @@ return require('packer').startup(function(use)
             alpha.setup(dashboard.opts)
         end
     }
+    ------------------------ Dashboard -------------------------
 end)
