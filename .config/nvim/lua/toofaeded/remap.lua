@@ -23,7 +23,7 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -44,3 +44,10 @@ end)
 -- This is to keymap basic ctrl functions
 vim.keymap.set("n", "<c-a>", "ggVG")
 vim.keymap.set("n", "<c-v>", '"+p')
+
+-- terminal remap
+vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>')
+vim.keymap.set('n', '<leader>th', ':ToggleTerm direction=horizontal<CR>')
+vim.keymap.set('n', '<leader>tv', ':ToggleTerm direction=vertical<CR>')
+vim.keymap.set('n', '<leader>tf', ':ToggleTerm direction=float<CR>')
+
