@@ -1,4 +1,4 @@
-return {
+local Ms = {
     ------------------------ Processes -------------------------
     -- Terminal
     -- {'akinsho/toggleterm.nvim', version = "*", config = true},
@@ -39,3 +39,5 @@ return {
     "github/copilot.vim",
     ---------------------- Functionality ----------------------
 }
+
+return Ms

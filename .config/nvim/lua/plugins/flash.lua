@@ -1,4 +1,4 @@
-return {
+local M = {
   'folke/flash.nvim',
   event = 'VeryLazy',
   opts = {},
@@ -21,3 +21,5 @@ return {
     },
   },
 }
+
+return M

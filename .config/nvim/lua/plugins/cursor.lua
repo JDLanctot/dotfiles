@@ -1,4 +1,4 @@
-return {
+local M = {
   'yamatsum/nvim-cursorline',
   opts = {
     cursorline = {
@@ -13,3 +13,5 @@ return {
     },
   },
 }
+
+return M
