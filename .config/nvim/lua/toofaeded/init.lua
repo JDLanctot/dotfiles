@@ -1,5 +1,32 @@
 require("toofaeded.remap")
 require("toofaeded.set")
+require("toofaeded.launch")
+
+-- Spec the plugins individually so we can choose to disable them
+spec("plugins.noconfig")
+spec("plugins.cloak")
+spec("plugins.cmp")
+spec("plugins.colors")
+spec("plugins.comment")
+spec("plugins.cursor")
+spec("plugins.dashboard")
+spec("plugins.devicons")
+spec("plugins.flash")
+spec("plugins.fugitive")
+spec("plugins.harpoon")
+spec("plugins.lint")
+spec("plugins.lsp")
+spec("plugins.lualine")
+spec("plugins.mason")
+spec("plugins.nvim-tree")
+spec("plugins.refactoring")
+spec("plugins.telescope")
+spec("plugins.treesitter")
+spec("plugins.trouble")
+spec("plugins.undotree")
+spec("plugins.zenmode")
+
+-- Require the lazy after so it setups the spec'd plugins
 require("toofaeded.lazy")
 
 local augroup = vim.api.nvim_create_augroup
