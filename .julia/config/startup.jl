@@ -3,8 +3,8 @@ ENV["EDITOR"] = "nvim"
 ENV["PYTHON"] = "/home/toofaeded/anaconda3/bin/python3"
 #using Reduce
 #@force using Reduce.Algebra
-#using OhMyREPL
-#using Revise
+using OhMyREPL
+using Revise
 using BenchmarkTools, SyntaxTree
 
 # Check if we are in a project directory with a Project.toml file
