@@ -1,81 +1,90 @@
-# dotfiles
 My Dotfiles is a collection of configurations for various applications and tools I use on my workstation. This repository contains my personal dotfiles, which can be used as a starting point for setting up a new workstation.
   
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Less Bloated Windows Install](#windows-install)
+- [Less Bloated Windows Install](#less-bloated-windows-install)
 - [Prerequisites](#prerequisites)
 - [Installation Steps](#installation-steps)
   - [Programs](#programs)
-  - [Make the Terminal Better (Autocomplete and Header Info)](#make-the-terminal-better-(autocomplete-and-header-info))
+  - [Make the Terminal Better (Autocomplete and Header Info)](#make-the-terminal-better-autocomplete-and-header-info)
   - [Python and Anaconda Environments](#python-and-anaconda-environments)
   - [Julia](#julia)
-  - [Neovim (Better Code Editting on the Command Line)](#neovim-better-code-editting-on-the-command-line)
-  - [Webdev with React and NextJs](#webdev-with-react-and-nextJs)
+  - [Neovim - Better Code Editing on the Command Line](#neovim---better-code-editing-on-the-command-line)
+  - [Webdev with React and NextJs](#webdev-with-react-and-nextjs)
 - [GitHub SSH Setup for PowerShell and WSL](#github-ssh-setup-for-powershell-and-wsl)
   - [SSH Prerequisites](#ssh-prerequisites)
   - [Common Steps](#common-steps)
-  - [For Powershell](#for-powershell)
+  - [For PowerShell](#for-powershell)
   - [For WSL](#for-wsl)
   - [Repository Configuration](#repository-configuration)
 - [Terminal Settings JSON](#terminal-settings-json)
 - [Academic Resources](#academic-resources)
-	- [LaTex Template](#latex-template)
-	- [Scholarship Applications](#scholarship-applications)
-	- [Portfolio Website](#portfolio-website)
+  - [LaTex Template](#latex-template)
+  - [Scholarship Applications](#scholarship-applications)
+  - [Portfolio Website](#portfolio-website)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
 
-Setting up a new workstation can be a time-consuming process. My dotfiles contain pre-configured settings and tools that can help you get up and running quickly.
+Welcome to my Dotfiles repository! Setting up a new workstation is often a daunting and time-consuming task, especially for developers and researchers who require a highly personalized and efficient working environment. This collection of dotfiles is designed to streamline that process, offering pre-configured settings and tools that I've refined over time to enhance productivity and ease the setup of new machines.
 
-## Windows Install
+Whether you're setting up a system for coding, writing, or research, these configurations can serve as a solid foundation or inspiration for your own setup. They are the result of countless hours of tweaking and optimizing, aimed at creating a seamless development experience across various platforms.
 
-If you would like to have a cleaner Windows 11 experience:
+By using these dotfiles, you'll be able to quickly replicate my setup on your own machine, saving you the hassle of manual configuration while also introducing you to best practices and tools that you might not have been aware of. Let's dive into making your workstation setup as painless and efficient as possible!
 
-1. Install with windows using the [ISO](https://www.microsoft.com/en-ca/software-download/windows11).
-2. Choose languague as English (World) instead of a regional english to avoid installing programs like Amazon Prime on install (You will need to change it to a regional English in your settings later to use the Windows Store).
-3. Right Click on the Windows Button on the taskbar and open terminal as admin.
-4. Run the following command in the Terminal to open Chris Titus install program -- this will give you a GUI to install useful Programs, Programming Languages, etc.
+## Less Bloated Windows Install
+
+To achieve a cleaner and more streamlined Windows 11 experience, follow these steps:
+
+1. Begin by installing Windows using the [ISO from Microsoft's official site](https://www.microsoft.com/en-ca/software-download/windows11).
+2. During installation, select English (World) as your language to avoid pre-installed regional-specific programs (e.g., Amazon Prime). You can switch to a regional English variant later in settings for Windows Store access.
+3. After installation, right-click the Windows button on the taskbar and open Terminal as an administrator.
+4. Execute the following command in the Terminal to launch Chris Titus's install program, which provides a GUI for installing various programs and programming languages:
     ```bash
     irm christitus.com/win | iex
     ```
-5. DO NOT USE THIS GUI TO INSTALL THE LANGUAGES UNLESS YOU WANT TO BE ACCESSING THEM FROM POWERSHELL. WE WILL BE INSTALLING OUR LANGUAGES ON LINUX IN A LATER STEP.
-6. Use the GUI to Install your favourite browser.
-7. Go to the Tweaks tab of the GUI and click the Desktop Recommended Selections button and it will check the good tweaks you should be running.
-8. Also add Remove Cortana as one of the selected Tweaks.
-9. Click the Run Tweaks Button.
-10. Restart your computer to have the tweaks take effect.
-11. OPTIONAL - Buy and Install [Start11](https://www.stardock.com/products/start11/) which will allow you to improve the look of the windows start menu and give improved features such as grouping the pinned programs in custom groups.
-12. OPTIONAL - Install and Run [Rectifier11](https://github.com/Rectify11/Installer) which will clean up aesthetic of control panel and other legacy OS parts of windows 11. (Make sure to choose Micah Alt for the Darkmode for best results)
+5. **Important:** Avoid using this GUI to install programming languages if you plan to access them primarily through Linux environments. We will cover language installation on Linux in a later step.
+6. Use the GUI to install your preferred web browser.
+7. Navigate to the Tweaks tab within the GUI, and select the "Desktop Recommended Selections" for optimal system tweaks.
+8. Additionally, select "Remove Cortana" from the tweaks list.
+9. Apply the tweaks by clicking the "Run Tweaks" button.
+10. Restart your computer to ensure all changes take effect.
+11. **Optional:** Consider purchasing and installing [Start11](https://www.stardock.com/products/start11/) to enhance the Windows start menu with features like custom grouping for pinned programs.
+12. **Optional:** Install [Rectifier11](https://github.com/Rectify11/Installer) to refine the aesthetics of the control panel and other legacy components of Windows 11. For the best dark mode experience, choose Micah Alt during setup.
 
 ## Prerequisites
 
-Before you begin, ensure that the following prerequisites are met:
+Before diving into the setup process, ensure you meet the following prerequisites to ensure a smooth installation:
 
-- Windows Subsystem for Linux (WSL) and Virtual Machine Platform are enabled. To enable these, open Control Panel, select Programs, then Turn Windows features on or off, and check the boxes next to Windows Subsystem for Linux and Virtual Machine Platform.
+- **Windows Subsystem for Linux (WSL) and Virtual Machine Platform**: These features must be enabled to allow for Linux and virtualization support on Windows. To enable them:
+  1. Open the Control Panel.
+  2. Navigate to Programs > Turn Windows features on or off.
+  3. Check the boxes next to **Windows Subsystem for Linux** and **Virtual Machine Platform**.
 
-- Install the newest version of [Powershell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1) on Windows.
+- **PowerShell**: Install the latest version of [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1) on Windows to ensure compatibility with modern scripts and tools.
 
-- Install [Git for Windows](https://gitforwindows.org/).
+- **Git for Windows**: Essential for version control and managing code repositories. Download and install from [Git for Windows](https://gitforwindows.org/).
 
-- Nerd Fonts (I use JetBrainsMono Nerd Font) is installed on Windows. There are a few different options:
-    - EASIEST -- You can install it by downloading it manually from the [Nerd Fonts Download Page](https://www.nerdfonts.com/font-downloads) and installing the fonts contained in the download. 
-    - Alternatively, you can setup your Git Account on the command line and running the following command in PowerShell to get all of the fonts (PowerShell needs to be opened as administrator by right clicking on it):
+- **Nerd Fonts**: Enhance your terminal's appearance with customizable fonts. JetBrainsMono Nerd Font is recommended, but any Nerd Font will do. Installation options include:
+  - **Easiest Method**: Download your preferred font directly from the [Nerd Fonts Download Page](https://www.nerdfonts.com/font-downloads) and install it on your system.
+  - **Via Git**: If you prefer to have access to a wide variety of fonts, clone the Nerd Fonts repository with the following command in PowerShell (run as administrator):
     ```bash
     git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
     ```
-    - Or you can see more options on the [Nerd Fonts Github Repo](https://github.com/ryanoasis/nerd-fonts).
+  - For more options, visit the [Nerd Fonts GitHub Repository](https://github.com/ryanoasis/nerd-fonts).
 
-- Install Ubuntu and Windows Terminal from the Microsoft Store on Windows.
+- **Ubuntu and Windows Terminal**: Install both from the Microsoft Store to ensure a seamless development environment across Windows and Linux.
+  - [Ubuntu for WSL](https://www.microsoft.com/store/productId/9NBLGGH4MSV6)
+  - [Windows Terminal](https://www.microsoft.com/store/productId/9N0DX20HK701)
 
-- Install [VSCode](https://code.visualstudio.com/) on Windows.
-- Install the following extensions in VSCode:
-  - [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
-  - [Git](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-  - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+- **Visual Studio Code (VSCode)**: A powerful and versatile code editor that supports a wide range of programming languages and tools. Download and install from [VSCode's official site](https://code.visualstudio.com/).
+
+- **VSCode Extensions**: Enhance your coding experience by installing the following extensions in VSCode:
+  - [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) for seamless integration with WSL.
+  - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) for enhanced Git capabilities.
+  - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) for comprehensive Python development support.
 
 ## Installation Steps
 
@@ -85,88 +94,133 @@ Follow the steps below to set up a new workstation:
 1. add WSL, Git, python extensions for VSCODE.
 2. Replace JSON file in the Terminal applications settings with JSON content contained below
 
-### Make the Terminal Better (Autocomplete and Header Info)
-All of these steps should also make it so that when `Powershell` is run from `Terminal`, you will have better formatting and autocomplete -- not just when `Terminal` is running an instance of the `WSL terminal`.
-A small note if you plan to use both: You will need to install `conda` on the PC side of things as well (which you can do through just installing the `Anaconda Navigator`, and this will give you `Anaconda Prompt`
-for `Terminal` as well to be able to set up Conda environments for your PC/Powershell -- which can be useful if some packages you want are not released on Linux. If you choose to do this: 
+## Installation Steps
 
-3. ***OPTIONAL*** -- Install Anaconda Navigator, Open `Anaconda Prompt` and run 
-  ```bash
-  conda init powershell
-  ```
-This will make it so `Powershell` can run all of the conda commands and you will never have to open `Anaconda Prompt` again.
+Follow these steps to efficiently set up your new workstation:
 
-THE FOLLOWING STEPS ARE ALL LINUX UNLESS LINUX AND POWERSHELL OPTIONS ARE GIVEN. I FIND IT USEFUL TO SETUP BOTH TO BE ABLE TO BE FLEXIBLE DEPENDING ON IF YOU NEED TO CODE IN SOMETHING THAT MIGHT ONLY HAVE PACKAGES FOR ONE OS.
+### Programs
 
-4. From the Ubuntu Command Line install Zsh  
+1. Add WSL, Git, and Python extensions for VSCode.
+2. Replace the JSON file in the Terminal application's settings with the JSON content provided below.
+
+### Enhancing the Terminal
+
+This section is divided into enhancements for PowerShell and WSL Terminal. These improvements include better formatting, autocomplete, and a customizable prompt, ensuring a more efficient and pleasant command-line experience.
+
+#### PowerShell Enhancements
+
+3. **Optional (For PowerShell users):** If you plan to use both PowerShell and WSL Terminal and wish to manage Conda environments in PowerShell, install Anaconda Navigator on Windows. Then, open `Anaconda Prompt` and initialize Conda for PowerShell:
+    ```PowerShell
+    conda init powershell
+    ```
+   This allows PowerShell to run all Conda commands, making `Anaconda Prompt` unnecessary for future use.
+
+**Installing Starship in PowerShell:**
+
+4. **Install Starship using Chocolatey:** If you've followed the earlier steps, you should already have Chocolatey installed. If not, install Chocolatey by following the instructions on Chocolatey's Installation Page. Once Chocolatey is installed, install Starship by running:
+    ```PowerShell
+    choco install starship
+    ```
+    
+5. **Configure Starship in PowerShell:** To have Starship run automatically when you open PowerShell, you need to add its initialization script to your PowerShell profile.
+
+    First, check if you have a profile set up by running:
+    ```PowerShell
+    Test-Path $PROFILE
+    ```
+  
+    If this returns `False`, create a new profile by running:
+    ```PowerShell
+    New-Item -path $PROFILE -type file -force
+    ```
+    
+    Next, open your profile for editing. You can do this with any text editor; for example, to open it with Notepad, run:
+    ```PowerShell
+    notepad $PROFILE
+    ```
+
+    Add the following line to the end of your PowerShell profile:
+    ```PowerShell
+    Invoke-Expression (&starship init powershell)
+    ```
+
+    **Note:** If you encounter an error stating that scripts cannot be run because the execution policy is restricted, you can change the execution policy to allow scripts to run by executing the following command in PowerShell as an administrator:
+    ```PowerShell
+    Set-ExecutionPolicy RemoteSigned
+    ```
+
+    This command allows scripts downloaded from the internet with a trusted signature to run on your system, as well as scripts created locally.
+    
+    Download the `starship.toml` from the `.config` folder of this GitHub repository and put it in `C:\Users\USERNAME\.julia\config\startup.jl`. This file sets up a bunch of the Starship configuration for you.
+	To locate or create this directory, you can use File Explorer or run the following in a Command Prompt: 
+    ```PowerShell
+    cmd mkdir %USERPROFILE%\.starship
+    ```
+
+These steps will install Starship using Chocolatey and configure it to run automatically, enhancing your PowerShell prompt with Starship's features. Remember to restart your PowerShell terminal to see the changes take effect.
+#### WSL Terminal Enhancements
+
+The following steps are intended for setting up the WSL Terminal environment. They focus on installing Zsh, Oh My Zsh, plugins, and Starship for a rich terminal experience.
+
+1. **Install Zsh (WSL Terminal):**
     ```bash
     sudo apt install zsh
     ```
-5. Get my dotfiles
+
+2. **Retrieve and apply my dotfiles (WSL Terminal):**
     ```bash
     git clone https://github.com/JDLanctot/dotfiles.git
+    cd dotfiles && mv {.,}* .. && cd ..
+    rm -rf .git dotfiles
     ```
-    ```bash
-    mv dotfiles/{.,}* .
-    ```
-    ```bash
-    rm -r .git
-    ```
-    ```bash
-    rm -r dotfiles
-    ```
-6. Install ohmyzsh  
+
+3. **Install Oh My Zsh (WSL Terminal):**
     ```bash
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     ```
-7. Install zsh-autocompletions  
+
+4. **Install zsh-autosuggestions (WSL Terminal):**
     ```bash
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     ```
-8. Add it to the plugins list in .zshrc
-9. Install zsh-completions  
+
+5. **Add `zsh-autosuggestions` to the plugins list in `.zshrc` (WSL Terminal).**
+
+6. **Install zsh-completions (WSL Terminal):**
     ```bash
     git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
     ```
     ```bash
     fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
     ```
-10. Ohmyzsh likely overwrote the .zshrc and .zshenv so make sure that the .zshrc and .zshenv files you have now still contain the contents of my .zshrc and .zshenv from my github and that you still have the .zsh folder from my github with the same contents. This will now allow you to change between the bash shell (the default one) and the zsh shell (the one I prefer), but both should be customized. Just type either of the following to switch to the desired shell:
-    ```
-    bash
-    ```
-    ```
-    zsh
-    ```
-  Note that if there are issues that any of the aliases aren't working in the respective shell, you can do the following to make sure that the correct rc file is in the path while using the shell that should source it:
+
+7. **Ensure `.zshrc` and `.zshenv` from my GitHub are correctly applied (WSL Terminal).** This setup allows for easy switching between `bash` and `zsh`, both customized. To switch, type `bash` or `zsh` accordingly. If aliases or settings don't work, source the configuration files:
     ```bash
-    source ~/.bashrc
+    source ~/.bashrc # For bash
+    source ~/.zshrc  # For zsh
     ```
-    ```bash
-    source ~/.zshrc
-    ```
-    
-11. Install Starship
+
+8. **Install Starship for a customizable prompt (WSL Terminal):**
     ```bash
     curl -sS https://starship.rs/install.sh | sh
     ```
-    
-12. Install Unzip
+
+9. **Install Unzip, a utility for extracting compressed files (WSL Terminal):**
     ```bash
     sudo apt-get install unzip
     ```
-    
-13. Install Exa 
+
+10. **Install Exa, a modern replacement for 'ls' (WSL Terminal):**
     ```bash
     sudo apt-get update
-    ```
-    ```bash
     sudo apt-get -y install exa
     ```
-    
+
 ### Python and Anaconda Environments
-14. Install anaconda on WSL. Kauffmanes describes this process well [here](https://gist.github.com/kauffmanes/5e74916617f9993bc3479f401dfec7da).
-15. Pull from a git repo to get a code base for a Python project and `cd` into it. I don't have any public Python GitRepos at the moment, so you'll want probably want to make a directory, `cd` into it and have a file called `environment.devenv.yml` inside it that looks something like these two yaml examples (This will install of the packages listed in the yaml and the packages that they depend on. This yaml probably has things you don't need like Pytorch, TorchGeometric, tensorboard, cudatoolkit, etc):
+
+1. **Install Anaconda (WSL only).** This step is specific to WSL as Anaconda should already be installed and initialized in PowerShell from a previous step (`conda init powershell`). For WSL, follow the comprehensive guide by Kauffmanes [here](https://gist.github.com/kauffmanes/5e74916617f9993bc3479f401dfec7da) to install Anaconda.
+
+2. **Setup for Python projects (Terminal Agnostic).** To start with a Python project, pull from a git repo or create a new directory and `cd` into it. Include a file named `environment.devenv.yml` with necessary dependencies. Here are two examples of what the contents might look like:
     ```yaml
     name: assignments
 
@@ -222,97 +276,95 @@ THE FOLLOWING STEPS ARE ALL LINUX UNLESS LINUX AND POWERSHELL OPTIONS ARE GIVEN.
           - simple-parsing
           - wurlitzer
     ```
-16. Create an env from the repo  
+
+3. **Create and activate an environment (Terminal Agnostic).** Use the following commands to create and activate the specified environment:
     ```bash
     conda env create --name name --file=environment.devenv.yml
-    ```
-17. Activate the environment. You will need to do this in the terminal everytime you want python to have access to all these packages, but this means that as you add new environments for different purposes, conda is allowing Python to have access to different bundles of packages. This also means that different environments could even have different versions of packages in the case where something you are working on old works with old packages and not any of the recent updates.
-    ```bash
     conda activate name
     ```
-  If you aren't sure of the name you can list all of the environments you have set up with:
+   To view all available environments:
     ```bash
     conda env list
     ```
-    
-18. As long as you are still `cd` into the folder, you can add the folder you are working on as a package it can call. This is useful when you want to be able to do python imports of scripts in the folder itself, allowing you to have calls to your own functions from other scripts. Eg. I can do something like `from netrl.visualize import Visualize` in one script in the folder so that it has access to the Visualize method. Note the `netrl` here will be based on the `--name` you did in the previous step, or the name from the yaml if you didn't use the `--name` flag in the previous step.
+
+4. **Install the current folder as a package (Terminal Agnostic).** This allows for Python imports from scripts within the same directory:
     ```bash
     pip install -e .
     ```
-    
-19. You can now run any python script that you have cd into the same folder as using:
+
+5. **Run Python scripts (Terminal Agnostic).** Execute any script in the current directory using Python. If zsh configurations from my dotfiles are applied, `p` can be used as an alias for `python3`:
     ```bash
     python3 filename.py
-    ```
-  If you have setup my zsh configs then you can do, because I have set p to be an alias for python3:
-    ```bash
+    # Or using the alias:
     p filename.py
     ```
-    
+
 ### Julia
-20. Install Julia  
+
+**WSL Installation:**
+
+1. **Install Julia on WSL** by downloading and extracting the binary:
     ```bash
     curl -O https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.5-linux-x86_64.tar.gz
-    ```
-    ```bash
     tar -xvzf julia-1.8.5-linux-x86_64.tar.gz
     ```
+   Note: My dotfiles setup includes a `.julia/config/startup.jl` file which should now be in your home folder.
 
-### Neovim - Better Code Editting on the Command Line
-21. Install version 0.9+ of Neovim (Here I use the unstable ppa because Ubuntu only has up to 0.6 in the stable repository but in the future /unstable will be sufficient. Last command here echos the version to check if you have installed a version that is 0.9+.)
+**Windows Installation:**
+
+1. **Download Julia for Windows** from the [official Julia website](https://julialang.org/downloads/). Choose the Windows installer and follow the installation instructions.
+
+2. **Configure `startup.jl` for Julia on Windows.** If you're setting up Julia on Windows, ensure the `.julia/config/startup.jl` file from my dotfiles is placed in `C:\Users\USERNAME\.julia\config\startup.jl`. This file enhances Julia's startup configuration for an optimized experience.
+
+    To locate or create this directory, you can use File Explorer or run the following in a Command Prompt:
+    ```cmd
+    mkdir %USERPROFILE%\.julia\config
+    ```
+    Then, copy the `startup.jl` file into this directory.
+
+### Neovim - Better Code Editing on the Command Line
+
+**WSL Installation:**
+
+1. **Install Neovim (version 0.9+):** This version is required for compatibility with LazyNvim. Ubuntu's stable repository might not have the latest version, so use the unstable PPA:
     ```bash
     sudo add-apt-repository ppa:neovim-ppa/unstable
-    ```
-    ```bash
     sudo apt-get update
-    ```
-    ```bash
     sudo apt-get install neovim
+    nvim --version  # Check if the installed version is 0.9+
     ```
-    ```bash
-    nvim --version
-    ```
-22. Install Packer (This is currently not maintained and I may have to move over to Lazy NVIM at some point, but works fine for now)
 
-    Linux
+2. **Setup Neovim with LazyNvim:** Since the dotfiles now use LazyNvim, the previous step for installing Packer is obsolete. Proceed to configuring Neovim with the provided dotfiles:
     ```bash
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    cd ~/.config/nvim
+    # Assuming dotfiles have been cloned as per previous instructions
     ```
-    PowerShell
+
+3. **Install Plugins with LazyNvim:** Open Neovim and execute `:Lazy` then press `Shift + I` to install all plugins based on the configuration files:
     ```bash
-    git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+    nvim .
     ```
-    You should have Chocolatey installed from the Chris Titus debloat tool run during the prequisite steps, so now you can do:
-    ```bash
+
+**PowerShell (Windows) Installation:**
+
+1. **Install Neovim:** Ensure Chocolatey is installed (from the Chris Titus debloat tool run during the prerequisite steps), then install Neovim:
+    ```powershell
     choco install neovim
     ```
-    You will need to add nvim to your Path on Windows, so search for "Edit the system environment variables" in the Search Bar in Windows Settings, and Click the "Environment Variables..." button. Then click on Path in the User Variables table (the top one of the two displayed in this window), and click Edit. Now click the New button and add the following location followed by hitting the Ok button in that window and in the previously opened window with the tables:
-    ```bash
-    C:\tools\neovim\nvim-win64\bin
-    ```
-    If `nvim` is not working on the PowerShell, try restarting the PowerShell and make sure that the new path you added is indeed in the path variable we were just modifying by navigating back to the same window with the same steps and confirming it is there.
-24. Go to the nvim directory. Powershell will require that you download my dotfiles in this step, because you only have them on the WSL at this point, and then do some modifying of what 
+   
+2. **Add Neovim to your Path:** To ensure Neovim runs from any directory in PowerShell, add it to your system's Path variable:
+    - Search for "Edit the system environment variables" in the Windows search bar.
+    - Click "Environment Variables..."
+    - In the "User Variables" section, select "Path" and click "Edit..."
+    - Click "New" and add the path `C:\tools\neovim\Neovim\bin`
+    - Confirm with "OK" and restart PowerShell if necessary.
 
-    Linux
-    ```bash
-    cd .config/nvim
-    ```
-    PowerShell
-    ```bash
-    cd C:\Users\Jordi\AppData\Local
-    ```
-    ```bash
+3. **Configure Neovim for Windows:** Clone the dotfiles and set up Neovim to use them:
+    ```powershell
+    cd $env:LOCALAPPDATA
     git clone https://github.com/JDLanctot/dotfiles.git nvim
-    ```
-    ```bash
     cd nvim
-    ```
-    Move only the items we need for Windows to the top level
-    ```bash
     Move-Item .config/nvim/* .
-    ```
-    Remove Linux related files and reference to the Github repo
-    ```bash
     Remove-Item .config -Recurse -Force
     Remove-Item .zsh -Recurse -Force
     Remove-Item .bashrc -Force
@@ -321,97 +373,122 @@ THE FOLLOWING STEPS ARE ALL LINUX UNLESS LINUX AND POWERSHELL OPTIONS ARE GIVEN.
     Remove-Item README.md -Force
     Remove-Item .git -Recurse -Force
     ```
-26. Open this directory in Neovim
-    ```bash
+
+4. **Install Plugins with LazyNvim:** Open Neovim, ignore any startup errors, and install the plugins:
+    ```powershell
     nvim .
+    # Inside nvim, run :Lazy followed by Shift + I
     ```
-27. There will be a ton of errors. Navigate past them and navigate into the toofaeded folder in lua and open the packer.lua file.
-28. Source it and synch the packages (you may also have to source the init.lua in the .config/nvim folder).
-    ```vim
-    :so
-    ```
-    ```vim
-    :PackerSync
-    ```
-29. Quit nvim and restart it and all of the changes should be implemented.
 
 ### Webdev with React and NextJs
-28. If you want to install NPM and NodeJS on WSL to allow you to do web-development, following the guide on [Installing Node.js on Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl).
-29. If you installed npm, install pnpm using npm so that you can use pnpm instead of npm which makes it so that it doesn't duplicate node modules being installed when they are used in multiple projects.
+
+**Setting up Node.js and pnpm on WSL:**
+
+1. **Install Node.js on WSL:** For web development, including working with React and Next.js, Node.js is a prerequisite. Follow the comprehensive guide provided by Microsoft for [Installing Node.js on Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl). This guide covers the installation process and ensures that Node.js runs smoothly within the WSL environment.
+
+2. **Install pnpm:** After installing Node.js, it's recommended to use pnpm as your package manager. pnpm offers efficiency advantages over npm, particularly in how it handles node modules to prevent duplication across projects. Install pnpm globally using npm with the following command:
     ```bash
     npm install -g pnpm
     ```
+
+**Why pnpm?**
+
+- **Efficiency:** pnpm creates a single copy of a module for your system and then links it wherever it's needed. This approach saves disk space and speeds up the installation process compared to npm, which duplicates modules in each project's `node_modules` directory.
+- **Performance:** By reducing the amount of data to copy during installations, pnpm not only speeds up the setup of new projects but also makes package installation faster and more reliable.
+
+**Next Steps:**
+
+- With Node.js and pnpm installed, you're now ready to start developing with React and Next.js. Create your first project by initializing a new Next.js app or cloning an existing repository.
+- For a new Next.js project, you can use the following pnpm command to create a new application:
+    ```bash
+    pnpm create next-app your-nextjs-app
+    ```
+- Navigate into your project directory and start the development server to see your new Next.js application in action:
+    ```bash
+    cd your-nextjs-app
+    pnpm run dev
+    ```
+
+This setup ensures you have a modern and efficient development environment for working on web projects using React and Next.js within the WSL environment.
+
 ## GitHub SSH Setup for PowerShell and WSL
-This is a step-by-step walkthrough for setting up SSH keys to access GitHub repositories in PowerShell and WSL (Windows Subsystem for Linux).
+
+This guide provides a step-by-step walkthrough for setting up SSH keys to securely access GitHub repositories from both PowerShell and WSL (Windows Subsystem for Linux).
 
 ### SSH Prerequisites
+Before you begin, ensure you have:
 - A GitHub account.
-- PowerShell for Windows `Run as Administrator`.
-- WSL installed for Linux commands.
+- PowerShell for Windows (run as Administrator).
+- WSL installed for executing Linux commands.
 
 ### Common Steps
-30. **Generate an SSH Key**:
+
+1. **Generate an SSH Key**:
+    Generate a new SSH key pair using the following command. Replace `"your_email@example.com"` with your GitHub email address. This email will be associated with the SSH key, helping to identify the key's purpose.
     ```bash
     ssh-keygen -t ed25519 -C "your_email@example.com"
     ```
-    - Follow the prompts to save the key to the default location.
-    - Set a passphrase (optional but recommended).
+    - Follow the prompts to save the key to the default location (`~/.ssh/id_ed25519`).
+    - When prompted, setting a passphrase is optional but recommended for added security.
 
-31. **Add SSH Key to GitHub**:
+2. **Add SSH Key to GitHub**:
+    Display your new public SSH key and copy it to your clipboard:
     ```bash
     cat ~/.ssh/id_ed25519.pub
     ```
-    - Copy the displayed key to your clipboard.
-    - In GitHub, go to Settings → SSH and GPG keys → New SSH key.
-    - Paste the key and save it.
+    - Navigate to your GitHub account settings.
+    - Go to **SSH and GPG keys** → **New SSH key**.
+    - Paste your copied key into the field and save it.
 
 ### For PowerShell
-32. **Start and Configure ssh-agent**:
-    - Open PowerShell as Administrator.
-    - Enable `ssh-agent` service:
-      ```powershell
-      Set-Service -Name ssh-agent -StartupType Automatic
-      ```
-    - Start the service:
-      ```powershell
-      Start-Service ssh-agent
-      ```
 
-33. **Add SSH Key to ssh-agent**:
+3. **Start and Configure ssh-agent**:
+    In PowerShell (run as Administrator), set the `ssh-agent` service to start automatically, then start the service:
+    ```powershell
+    Set-Service -Name ssh-agent -StartupType Automatic
+    Start-Service ssh-agent
+    ```
+
+4. **Add SSH Key to ssh-agent**:
+    Add your new SSH key to the ssh-agent to manage your keys:
     ```powershell
     ssh-add ~/.ssh/id_ed25519
     ```
 
-34. **Test SSH Connection**:
+5. **Test SSH Connection**:
+    Test your SSH connection to GitHub:
     ```powershell
     ssh -T git@github.com
     ```
+    If successful, you'll receive a welcome message from GitHub.
 
 ### For WSL
-32. **Start and Configure ssh-agent**:
-    - Open WSL terminal.
-    - Start ssh-agent:
-      ```bash
-      eval "$(ssh-agent -s)"
-      ```
 
-33. **Add SSH Key to ssh-agent**:
+3. **Start and Configure ssh-agent**:
+    In your WSL terminal, start the ssh-agent:
+    ```bash
+    eval "$(ssh-agent -s)"
+    ```
+
+4. **Add SSH Key to ssh-agent**:
+    Similarly, add your SSH key to the ssh-agent in WSL:
     ```bash
     ssh-add ~/.ssh/id_ed25519
     ```
 
-34. **Test SSH Connection**:
+5. **Test SSH Connection**:
+    Test your connection to GitHub via SSH:
     ```bash
     ssh -T git@github.com
     ```
+    Look for a welcome message from GitHub to confirm the connection is successful.
 
 ### Repository Configuration
-For each Git repository:
-- Change the remote URL to SSH if needed:
-  ```bash
-  git remote set-url origin git@github.com:username/repo.git
-  ```
 
+For each Git repository you work with, ensure the remote URL is set to use SSH. This enables secure, key-based authentication for your Git operations:
+```bash
+git remote set-url origin git@github.com:username/repo.git
+```
 ## Terminal Settings JSON
 Just copy and paste the content below into the Terminal (the app) settings json.
 
