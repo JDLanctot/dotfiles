@@ -26,5 +26,10 @@ alias grep='grep --color'
 alias python="/usr/bin/python3"
 alias distro='cat /etc/*-release'
 alias sapu='sudo apt-get update'
-alias zshc='code $HOME/.zshrc'
+alias zshc='nvim $HOME/.zshrc'
 alias p='python3'
+
+# Movements Aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
