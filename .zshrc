@@ -39,6 +39,25 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Load zoxide
+eval "$(zoxide init zsh)"
+
+# Setup Fzf
+source <(fzf --zsh)
+# Function to open files with neovim using fzf
+fzn() {
+    local file
+    file=$(fzf --preview 'bat --color=always {}')
+    [ -n "$file" ] && nvim "$file"
+}
+# Set Fzf to use ag and ignore git
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# Aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
 export PATH=~/julia-1.8.5/bin:$PATH
 export PATH=$PATH:/usr/local/zig
 
