@@ -53,11 +53,6 @@ fzn() {
 # Set Fzf to use ag and ignore git
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
-# Aliases
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
 export PATH=~/julia-1.8.5/bin:$PATH
 export PATH=$PATH:/usr/local/zig
 
