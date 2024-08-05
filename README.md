@@ -19,6 +19,7 @@ My Dotfiles is a collection of configurations for various applications and tools
   - [For WSL](#for-wsl)
   - [Repository Configuration](#repository-configuration)
 - [Terminal Settings JSON](#terminal-settings-json)
+- [CLI Tools](#cli-tools)
 - [Academic Resources](#academic-resources)
   - [LaTex Template](#latex-template)
   - [Scholarship Applications](#scholarship-applications)
@@ -875,6 +876,59 @@ Just copy and paste the content below into the Terminal (the app) settings json.
     "useAcrylicInTabRow": true
   }
   ```
+## CLI Tools
+### Silver Surfer
+Could use ripgrep instead if you want, but I am using ag for searching.
+#### Powershell
+	```powershell
+	choco install ag
+	```
+#### Linux
+
+### Bat
+Cat replacement with syntax highlighting.
+#### Powershell
+	```powershell
+	choco install bat
+	```
+#### Linux
+	```bash
+	apt-get install silversearcher-ag
+	```
+
+### Bat
+Cat replacement with syntax highlighting.
+#### Powershell
+	```powershell
+	choco install bat
+	```
+#### Linux
+	```bash
+	sudo apt install bat
+	```
+
+### FZF
+Fuzzy finding for files or for previous commands on command line.
+#### Powershell
+	```powershell
+	choco install fzf
+	Install-Module -Name PSFzf
+	```
+#### Linux
+	```bash
+	sudo apt install fzf
+	```
+
+### Zoxide
+Better cd command.
+#### Powershell
+	```powershell
+	choco install zoxide
+	```
+#### Linux
+	```bash
+	sudo apt install zoxide
+	```
 
 ## Academic Resources
 Other GitHub repos to help you with Academic Success.
