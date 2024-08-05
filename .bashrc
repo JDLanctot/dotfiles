@@ -45,6 +45,20 @@ export STARSHIP_DISTRO="$ICON "
 export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init bash)"
 
+# Load zoxide
+eval "$(zoxide init zsh)"
+
+# Setup Fzf
+source $(fzf --zsh)
+# Function to open files with neovim using fzf
+fzn() {
+    local file
+    file=$(fzf --preview 'bat --color=always {}')
+    [ -n "$file" ] && nvim "$file"
+}
+# Set Fzf to use ag and ignore git
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
 # PATH Variable
 #export PATH="$PATH:/home/ansible/.local/bin"
 #export PATH="$PATH:/home/xcad/.cargo/bin"
@@ -132,17 +146,19 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
+# Aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias p='python3'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# add alias for python3
-alias p='python3'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
