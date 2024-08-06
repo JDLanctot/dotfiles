@@ -884,14 +884,6 @@ Could use ripgrep instead if you want, but I am using ag for searching.
 	choco install ag
 	```
 #### Linux
-
-### Bat
-Cat replacement with syntax highlighting.
-#### Powershell
-	```powershell
-	choco install bat
-	```
-#### Linux
 	```bash
 	apt-get install silversearcher-ag
 	```
