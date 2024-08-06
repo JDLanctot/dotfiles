@@ -880,47 +880,47 @@ Just copy and paste the content below into the Terminal (the app) settings json.
 ### Silver Surfer
 Could use ripgrep instead if you want, but I am using ag for searching.
 #### Powershell
-	```powershell
-	choco install ag
-	```
+```powershell
+choco install ag
+```
 #### Linux
-	```bash
-	apt-get install silversearcher-ag
-	```
+```bash
+apt-get install silversearcher-ag
+```
 
 ### Bat
 Cat replacement with syntax highlighting.
 #### Powershell
-	```powershell
-	choco install bat
-	```
+```powershell
+choco install bat
+```
 #### Linux
-	```bash
-	sudo apt install bat
-	```
+```bash
+sudo apt install bat
+```
 
 ### FZF
 Fuzzy finding for files or for previous commands on command line.
 #### Powershell
-	```powershell
-	choco install fzf
-	Install-Module -Name PSFzf
-	```
+```powershell
+choco install fzf
+Install-Module -Name PSFzf
+```
 #### Linux
-	```bash
-	sudo apt install fzf
-	```
+```bash
+sudo apt install fzf
+```
 
 ### Zoxide
 Better cd command.
 #### Powershell
-	```powershell
-	choco install zoxide
-	```
+```powershell
+choco install zoxide
+```
 #### Linux
-	```bash
-	sudo apt install zoxide
-	```
+```bash
+sudo apt install zoxide
+```
 
 ## Academic Resources
 Other GitHub repos to help you with Academic Success.
