@@ -13,6 +13,10 @@ function .. { Set-Location .. }
 function ... { Set-Location ../.. }
 function .... { Set-Location ../../.. }
 function fzn {nvim $(fzf --preview="bat --color=always {}")}
+function ca {
+    param([string]$envName)
+    conda activate $envName
+}
 
 $env:FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
