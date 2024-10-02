@@ -1,6 +1,5 @@
 $ENV:STARSHIP_CONFIG = "$HOME\.starship\starship.toml"
 $ENV:STARSHIP_DISTRO = "者 "
-# Invoke-Expression (&starship init powershell)
 Invoke-Expression (&'C:\Program Files\starship\bin\starship.exe' init powershell)
 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
@@ -17,6 +16,12 @@ function ca {
     param([string]$envName)
     conda activate $envName
 }
+function caz {
+    param([string]$envName)
+    z $envName
+    conda activate $envName
+}
+
 
 $env:FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
