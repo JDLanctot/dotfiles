@@ -20,6 +20,7 @@ My Dotfiles is a collection of configurations for various applications and tools
   - [Repository Configuration](#repository-configuration)
 - [Terminal Settings JSON](#terminal-settings-json)
 - [CLI Tools](#cli-tools)
+- [Problems When Upgrading Ubuntu](#problems-when-upgrading-ubuntu)
 - [Academic Resources](#academic-resources)
   - [LaTex Template](#latex-template)
   - [Scholarship Applications](#scholarship-applications)
@@ -920,6 +921,32 @@ choco install zoxide
 #### Linux
 ```bash
 sudo apt install zoxide
+```
+
+## Problems When Upgrading Ubuntu
+When upgrading Ubuntu:
+```bash
+sudo apt update && sudo apt full-upgrade && sudo do-release-upgrade
+```
+There can be some hanging issues when going from 22 to 24 on WSL2 so I made sure to remove snapd first by doing:
+```bash
+sudo apt remove snapd
+```
+This package can be added back after upgrade if needed.
+
+Neovim unstable releases can be broken and make an error when trying to run `nvim .` after upgrading.
+In my case it was due to having neovim installed from old (jammy) unstable PPA:
+remove old repository list, but there may be others so likely better to remove all neovim-ppa ones with the file explorer: 
+```bash
+sudo rm /etc/apt/sources.list.d/neovim-ppa-unstable-jammy.list
+```
+add new repository list: 
+```bash
+sudo add-apt-repository ppa:neovim-ppa/unstable
+```
+upgrade neovim package: 
+```bash
+sudo apt update && sudo apt upgrade neovim
 ```
 
 ## Academic Resources
