@@ -5,7 +5,9 @@ function colormap() {
 
 # Fuzzy find and open to nvim
 function fzn() {
-    nvim $(fzf --preview="bat --color=always {}")
+    local file
+    file=$(fzf --preview="bat --color=always {}")
+    [ -n "$file" ] && nvim "$file"
 }
 
 # Short hand for conda activate

@@ -28,10 +28,12 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # Set up fzf key bindings and fuzzy completion
-eval "$(fzf --zsh)"
 [[ -f ~/.fzf.zsh ]] && source ~.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 export FZF_DEFAULT_OPTS="--height 40% --reverse --border"
 export FZF_DEFAULT_SORT="true"
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # Source various files for zsh
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh

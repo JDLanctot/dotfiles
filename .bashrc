@@ -8,54 +8,18 @@ case $- in
       *) return;;
 esac
 
-# find out which distribution we are running on
-LFILE="/etc/*-release"
-MFILE="/System/Library/CoreServices/SystemVersion.plist"
-_distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
-
-# set an icon based on the distro
-# make sure your font is compatible with https://github.com/lukas-w/font-logos
-case $_distro in
-    *kali*)                  ICON="ﴣ";;
-    *arch*)                  ICON="";;
-    *debian*)                ICON="";;
-    *raspbian*)              ICON="";;
-    *ubuntu*)                ICON="";;
-    *elementary*)            ICON="";;
-    *fedora*)                ICON="";;
-    *coreos*)                ICON="";;
-    *gentoo*)                ICON="";;
-    *mageia*)                ICON="";;
-    *centos*)                ICON="";;
-    *opensuse*|*tumbleweed*) ICON="";;
-    *sabayon*)               ICON="";;
-    *slackware*)             ICON="";;
-    *linuxmint*)             ICON="";;
-    *alpine*)                ICON="";;
-    *aosc*)                  ICON="";;
-    *nixos*)                 ICON="";;
-    *devuan*)                ICON="";;
-    *manjaro*)               ICON="";;
-    *rhel*)                  ICON="";;
-    *macos*)                 ICON="";;
-    *)                       ICON="";;
-esac
-
-export STARSHIP_DISTRO="$ICON "
-export STARSHIP_CONFIG=~/.config/starship.toml
+# Load starship
 eval "$(starship init bash)"
 
 # Load zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init bash)"
 
-# Setup Fzf
-source $(fzf --zsh)
-# Function to open files with neovim using fzf
-fzn() {
-    local file
-    file=$(fzf --preview 'bat --color=always {}')
-    [ -n "$file" ] && nvim "$file"
-}
+# Set up fzf key bindings and fuzzy completion
+[[ -f ~/.fzf.bash ]] && source ~.fzf.bash
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
+export FZF_DEFAULT_OPTS="--height 40% --reverse --border"
+export FZF_DEFAULT_SORT="true"
 # Set Fzf to use ag and ignore git
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
@@ -63,8 +27,17 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 #export PATH="$PATH:/home/ansible/.local/bin"
 #export PATH="$PATH:/home/xcad/.cargo/bin"
 
-# PATH for Julia
-export PATH="$PATH:~/julia-1.8.5/bin"
+# Julia Directory
+export PATH=~/julia-1.8.5/bin:$PATH
+
+# Zig Directory
+export PATH=$PATH:/usr/local/zig
+
+# NVM directory
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -146,18 +119,10 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.bash ]; then
+    . ~/.bash/aliases.bash
+    . ~/.bash/functions.bash
+    . ~/.bash/starship.bash
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -173,5 +138,3 @@ fi
 
 # Source goto
 [[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
-
-export PATH=$PATH:/usr/local/zig
