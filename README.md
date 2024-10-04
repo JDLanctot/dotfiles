@@ -212,10 +212,10 @@ The following steps are intended for setting up the WSL Terminal environment. Th
     sudo apt-get install unzip
     ```
 
-10. **Install Exa, a modern replacement for 'ls' (WSL Terminal):**
+10. **Install Eza, a modern replacement for 'ls' (WSL Terminal):**
     ```bash
     sudo apt-get update
-    sudo apt-get -y install exa
+    sudo apt-get -y install eza
     ```
 
 ### Python and Anaconda Environments
