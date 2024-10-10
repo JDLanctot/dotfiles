@@ -95,6 +95,19 @@ function M.config()
 			require("neodev").setup({})
 		end
 
+		if server == "pylsp" then
+			opts.settings = {
+				pylsp = {
+					plugins = {
+						pycodestyle = {
+							ignore = { "W391" },
+							maxLineLength = 100,
+						},
+					},
+				},
+			}
+		end
+
 		lspconfig[server].setup(opts)
 	end
 end
