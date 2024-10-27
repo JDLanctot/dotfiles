@@ -153,7 +153,7 @@ This section is divided into enhancements for PowerShell and WSL Terminal. These
 
     This command allows scripts downloaded from the internet with a trusted signature to run on your system, as well as scripts created locally.
     
-    Download the `starship.toml` from the `.config` folder of this GitHub repository and put it in `C:\Users\USERNAME\.julia\config\startup.jl`. This file sets up a bunch of the Starship configuration for you.
+    Download the `starship.toml` from the `.config` folder of this GitHub repository and put it in `C:\Users\USERNAME\.starship`. This file sets up a bunch of the Starship configuration for you.
 	To locate or create this directory, you can use File Explorer or run the following in a Command Prompt: 
     ```PowerShell
     cmd mkdir %USERPROFILE%\.starship
