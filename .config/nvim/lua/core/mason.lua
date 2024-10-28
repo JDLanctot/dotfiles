@@ -14,11 +14,11 @@ function M.config()
         },
     }
     require('mason-lspconfig').setup {
-        ensure_installed = require("utils").servers,
+        ensure_installed = require("utils.servers"),
     }
 
     require('mason-tool-installer').setup {
-        ensure_installed = require("utils").linters,
+        ensure_installed = require("utils.linters"),
     }
 end
 

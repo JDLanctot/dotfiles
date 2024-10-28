@@ -22,7 +22,7 @@ M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 
 	if client.supports_method("textDocument/inlayHint") then
-		vim.lsp.inlay_hint.enable(bufnr, true)
+		vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
 	end
 
 	-- Typescript specific settings
@@ -39,14 +39,14 @@ end
 
 M.toggle_inlay_hints = function()
 	local bufnr = vim.api.nvim_get_current_buf()
-	vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr=bufnr}), {bufnr=bufnr})
 end
 
 function M.config()
 	local lspconfig = require("lspconfig")
 
 	local icons = require("toofaeded.icons")
-	diagnostic_config = {
+	local diagnostic_config = {
 		signs = {
 			active = true,
 			values = {
@@ -71,7 +71,7 @@ function M.config()
 	}
 	vim.diagnostic.config(diagnostic_config)
 
-	for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
+	for _, sign in ipairs(vim.tbl_get({vim.diagnostic.config()}, "signs", "values") or {}) do
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
 	end
 
@@ -80,7 +80,8 @@ function M.config()
 		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 	require("lspconfig.ui.windows").default_options.border = "rounded"
 
-	for _, server in pairs(require("utils").servers) do
+	local servers = require("utils.servers")
+	for _, server in pairs(servers) do
 		local opts = {
 			on_attach = M.on_attach,
 			capabilities = M.common_capabilities(),

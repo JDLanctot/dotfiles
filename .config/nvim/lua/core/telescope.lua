@@ -29,11 +29,7 @@ local C = {
     -- Telescope Project Directories
     "coffebar/neovim-project",
     opts = {
-        projects = { -- define project roots
-                "~/research/*",
-                "~/.config/*",
-                "~/webdev/*"
-        },
+        projects = require("utils.directories")
     },
     dependencies = {
         { "nvim-lua/plenary.nvim" },

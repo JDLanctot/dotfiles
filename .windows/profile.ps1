@@ -12,6 +12,7 @@ function .. { Set-Location .. }
 function ... { Set-Location ../.. }
 function .... { Set-Location ../../.. }
 function fzn {nvim $(fzf --preview="bat --color=always {}")}
+function fzc {code $(fzf --preview="bat --color=always {}")}
 function ca {
     param([string]$envName)
     conda activate $envName
