@@ -37,6 +37,19 @@ function Test-InstallationState {
                 return ($null -ne $gitEmail -and $null -ne $gitName)
             }
 
+            "Git and SSH" {
+                # Check Git config
+                $gitEmail = git config --global user.email
+                $gitName = git config --global user.name
+                if (-not ($gitEmail -and $gitName)) {
+                    return $false
+                }
+    
+                # Check SSH
+                $sshDir = "$env:USERPROFILE\.ssh"
+                return (Test-Path $sshDir)
+            }
+
             "Dotfiles" {
                 # Check for essential dotfiles
                 $paths = @(
@@ -102,14 +115,22 @@ function Test-InstallationState {
             }
 
             "Miniconda" {
-                if (-not (Get-Command -Name conda -ErrorAction SilentlyContinue)) {
+                # Check both Anaconda and Miniconda paths
+                $anacondaPath = "C:\ProgramData\anaconda3\Scripts\conda.exe"
+                $minicondaPath = "$env:USERPROFILE\Miniconda3\Scripts\conda.exe"
+    
+                if (-not (Test-Path $anacondaPath) -and -not (Test-Path $minicondaPath)) {
+                    Write-Log "Conda command not found" -Level "DEBUG"
                     return $false
                 }
-                # Check if conda initialization is in profile
-                if (Test-Path $PROFILE) {
-                    return (Select-String -Path $PROFILE -Pattern "conda initialize" -Quiet)
+    
+                # Check profile initialization
+                if (-not (Test-Path $PROFILE) -or -not (Select-String -Path $PROFILE -Pattern "conda.*initialize" -Quiet)) {
+                    Write-Log "Conda initialization not found in profile" -Level "DEBUG"
+                    return $false
                 }
-                return $false
+    
+                return $true
             }
 
             "Starship" {

@@ -3,19 +3,26 @@ function Install-Miniconda {
     param()
 
     $didInstallSomething = $false
+    $anacondaPath = "C:\ProgramData\anaconda3"
+    $minicondaPath = "$env:USERPROFILE\Miniconda3"
 
     try {
-        Write-ColorOutput "Checking Miniconda installation..." "Status"
+        Write-ColorOutput "Checking Conda installation..." "Status"
+
+        # Check for existing installations
+        $hasAnaconda = Test-Path "$anacondaPath\Scripts\conda.exe"
+        $hasMiniconda = Test-Path "$minicondaPath\Scripts\conda.exe"
+        $hasCommand = Get-Command -Name conda -ErrorAction SilentlyContinue
 
         if (Test-InstallationState "miniconda") {
-            Write-ColorOutput "Miniconda already installed and configured" "Status"
+            Write-ColorOutput "Conda already installed and configured" "Status"
             return $false
         }
 
-        Write-ColorOutput "Installing Miniconda..." "Status"
+        Write-ColorOutput "Installing Conda..." "Status"
 
-        # Check if conda is already installed
-        if (-not (Get-Command conda -ErrorAction SilentlyContinue)) {
+        # Only install if neither Anaconda nor Miniconda is present
+        if (-not ($hasAnaconda -or $hasMiniconda -or $hasCommand)) {
             # Download Miniconda installer
             $installerUrl = "https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe"
             $installerPath = Join-Path $env:TEMP "miniconda.exe"
@@ -45,7 +52,7 @@ function Install-Miniconda {
                 "/S", # Silent installation
                 "/AddToPath=1", # Add to PATH
                 "/RegisterPython=1", # Register as system Python
-                "/D=$env:USERPROFILE\Miniconda3"  # Installation directory
+                "/D=$minicondaPath"  # Installation directory
             )
             
             $result = Start-Process -FilePath $installerPath -ArgumentList $installArgs -Wait -PassThru
@@ -67,17 +74,21 @@ function Install-Miniconda {
             }
         }
 
+        # Determine which conda to use for initialization
+        $condaPath = if ($hasAnaconda) { $anacondaPath } else { $minicondaPath }
+
         # Initialize conda for PowerShell if not already initialized
         Write-ColorOutput "Checking conda initialization..." "Status"
         
-        if (-not (Test-Path $PROFILE) -or -not (Select-String -Path $PROFILE -Pattern "conda initialize" -Quiet)) {
+        if (-not (Test-Path $PROFILE) -or -not (Select-String -Path $PROFILE -Pattern "conda.*initialize" -Quiet)) {
             Write-ColorOutput "Initializing conda for PowerShell..." "Status"
             
             # Create a temporary script to run conda init
             $initScript = Join-Path $env:TEMP "conda-init.ps1"
             @"
-`$env:Path = "${env:USERPROFILE}\Miniconda3;${env:USERPROFILE}\Miniconda3\Scripts;${env:USERPROFILE}\Miniconda3\Library\bin;$env:Path"
-conda init powershell
+If (Test-Path "$condaPath\Scripts\conda.exe") {
+    (& "$condaPath\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{`$_} | Invoke-Expression
+}
 "@ | Set-Content $initScript
 
             # Execute the init script in a new PowerShell process
@@ -95,14 +106,14 @@ conda init powershell
 
         if ($didInstallSomething) {
             Save-InstallationState "miniconda"
-            Write-ColorOutput "Miniconda installation completed" "Success"
+            Write-ColorOutput "Conda installation completed" "Success"
             Write-ColorOutput "Please restart your terminal to use conda" "Status"
+            return $true
         }
         else {
-            Write-ColorOutput "Miniconda was already properly configured" "Status"
+            Write-ColorOutput "Conda was already properly configured" "Status"
+            return $false
         }
-
-        return $didInstallSomething
     }
     catch {
         # Restore backup if it exists
@@ -111,7 +122,7 @@ conda init powershell
         }
           
         Handle-Error -ErrorRecord $_ `
-            -ComponentName "MiniConda" `
+            -ComponentName "Conda" `
             -Operation "Installation" `
             -Critical
         throw

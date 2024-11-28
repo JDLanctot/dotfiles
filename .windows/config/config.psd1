@@ -39,6 +39,7 @@
         @{
             Name        = "zoxide"
             Required    = $true
+            Alias       = "zoxide"
             ConfigCheck = "zoxide init"
             ConfigText  = @"
 # Zoxide Configuration
@@ -51,6 +52,7 @@ Invoke-Expression (& {
         @{
             Name        = "fzf"
             Required    = $true
+            Alias       = "fzf"
             ConfigCheck = "PSFzf"
             ConfigText  = @"
 # PSFzf Configuration
@@ -61,54 +63,63 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
         @{
             Name        = "ag"
             Required    = $false
+            Alias       = "ag"
             ConfigCheck = $null
             ConfigText  = $null
         }
         @{
             Name        = "bat"
             Required    = $false
+            Alias       = "bat"
             ConfigCheck = $null
             ConfigText  = $null
         }
         @{
             Name        = "ripgrep"
             Required    = $true
+            Alias       = "rg"
             ConfigCheck = $null
             ConfigText  = $null
         }
         @{
             Name        = "7zip"
             Required    = $true
+            Alias       = "7z"
             ConfigCheck = $null
             ConfigText  = $null
         }
         @{
             Name        = "unzip"
             Required    = $true
+            Alias       = "unzip"
             ConfigCheck = $null
             ConfigText  = $null
         }
         @{
             Name        = "gzip"
             Required    = $true
+            Alias       = "gzip"
             ConfigCheck = $null
             ConfigText  = $null
         }
         @{
             Name        = "wget"
             Required    = $true
+            Alias       = "wget"
             ConfigCheck = $null
             ConfigText  = $null
         }
         @{
             Name        = "fd"
             Required    = $true
+            Alias       = "fd"
             ConfigCheck = $null
             ConfigText  = $null
         }
         @{
             Name        = "neovim"
             Required    = $true
+            Alias       = "nvim"
             ConfigCheck = "Set-Alias.*vim.*nvim"
             ConfigText  = @"
 # Neovim alias
@@ -116,11 +127,12 @@ Set-Alias vim nvim
 "@
         }
         @{
-            Name        = "miniconda3"
-            Required    = $true
-            Alias       = "conda"
-            ConfigCheck = "conda initialize"
-            ConfigText  = $null
+            Name          = "miniconda3"
+            Required      = $true
+            Alias         = "conda"
+            ConfigCheck   = "conda initialize"
+            ConfigText    = $null
+            DirectInstall = $true  # Add this flag to indicate it's not installed via chocolatey
         }
     )
 

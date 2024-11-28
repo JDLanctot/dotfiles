@@ -20,11 +20,6 @@ function Install-PowerShellProfile {
                 Write-ColorOutput "Git clone failed to create directory: $cloneOutput" "Error"
                 throw "Git clone failed: Directory not created"
             }
-            Write-ColorOutput "Contents of temp directory:" "Status"
-            Get-ChildItem $tempPath -Force | ForEach-Object { Write-ColorOutput $_.FullName "Status" }
-
-            Write-ColorOutput "Contents of .windows directory:" "Status"
-            Get-ChildItem (Join-Path $tempPath ".windows") -Recurse | ForEach-Object { Write-ColorOutput $_.FullName "Status" }
 
             $profileSource = Join-Path $tempPath ".windows" "config" "profile.ps1"
             Write-ColorOutput "Looking for profile at: $profileSource" "Status"
