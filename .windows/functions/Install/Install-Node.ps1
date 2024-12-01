@@ -7,7 +7,7 @@ function Install-Node {
     try {
         Write-ColorOutput "Checking Node.js and pnpm installation..." "Status"
 
-        if (Test-InstallationState "nodejs") {
+        if (Test-InstallationState "Node.js and pnpm") {
             Write-ColorOutput "Node.js and pnpm already installed" "Status"
             return $false
         }
@@ -76,7 +76,7 @@ function Install-Node {
         }
 
         if ($didInstallSomething) {
-            Save-InstallationState "nodejs"
+            Save-InstallationState "Node.js and pnpm"
             Write-ColorOutput "Node.js environment setup completed" "Success"
         }
 

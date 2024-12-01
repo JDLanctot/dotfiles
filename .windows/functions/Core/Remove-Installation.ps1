@@ -57,7 +57,7 @@ function Remove-Installation {
                 $results.Removed += $component
             }
             catch {
-                Write-Log "Failed to remove $(component): $_" -Level "ERROR"
+                Write-Log "Failed to verify $ComponentName installation" -Level "ERROR"
                 $results.Failed += @{
                     Component = $component
                     Error     = $_.Exception.Message

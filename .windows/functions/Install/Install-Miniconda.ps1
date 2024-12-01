@@ -14,7 +14,7 @@ function Install-Miniconda {
         $hasMiniconda = Test-Path "$minicondaPath\Scripts\conda.exe"
         $hasCommand = Get-Command -Name conda -ErrorAction SilentlyContinue
 
-        if (Test-InstallationState "miniconda") {
+        if (Test-InstallationState "Miniconda") {
             Write-ColorOutput "Conda already installed and configured" "Status"
             return $false
         }
@@ -105,7 +105,7 @@ If (Test-Path "$condaPath\Scripts\conda.exe") {
         }
 
         if ($didInstallSomething) {
-            Save-InstallationState "miniconda"
+            Save-InstallationState "Miniconda"
             Write-ColorOutput "Conda installation completed" "Success"
             Write-ColorOutput "Please restart your terminal to use conda" "Status"
             return $true

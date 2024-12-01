@@ -14,7 +14,7 @@ function Get-UninstallScript {
         return $null
     }
     catch {
-        Write-Log "Failed to get uninstall script for $(Component): $_" -Level "ERROR"
+        Write-Log "Failed to verify $ComponentName installation" -Level "ERROR"
         return $null
     }
 }

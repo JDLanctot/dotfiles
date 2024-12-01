@@ -25,7 +25,7 @@ function Confirm-Installation {
         return $result
     }
     catch {
-        Write-Log "Verification failed for $(Component): $_" -Level "ERROR"
+        Write-Log "Failed to verify $ComponentName installation" -Level "ERROR"
         return $false
     }
 }

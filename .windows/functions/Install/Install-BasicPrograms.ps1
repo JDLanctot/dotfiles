@@ -23,7 +23,7 @@ function Install-BasicPrograms {
 
         if ($missingPrograms.Count -eq 0) {
             Write-ColorOutput "All basic programs are already installed" "Status"
-            Save-InstallationState "basic_programs"
+            Save-InstallationState "Basic Programs"
             return $false  # Explicitly return false when skipping
         }
 
@@ -62,7 +62,7 @@ function Install-BasicPrograms {
         }
 
         if ($didInstallSomething) {
-            Save-InstallationState "basic_programs"
+            Save-InstallationState "Basic Programs"
             Write-ColorOutput "Basic programs installation completed" "Success"
             return $true  # Explicitly return true when we installed something
         }

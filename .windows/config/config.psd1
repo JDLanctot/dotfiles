@@ -25,6 +25,17 @@
             'target' = '.starship\starship.toml'
             'type'   = 'file'
         }
+        'alacritty'  = @{
+            'source'      = '.config\alacritty'
+            'target'      = 'AppData\Roaming\alacritty'
+            'type'        = 'file'
+            'colorscheme' = 'rose-pine-moon'
+        }
+        'glazewm'    = @{
+            'source' = '.config\glazewm\config.yaml'
+            'target' = '.glzr\glazewm\config.yaml'
+            'type'   = 'file'
+        }
     }
 
     Programs             = @(
@@ -33,6 +44,8 @@
         @{Name = "starship"; Alias = "starship"; Required = $true }
         @{Name = "zig"; Alias = "zig"; Required = $true }
         @{Name = "julia"; Alias = "julia"; Required = $false }
+        @{Name = "alacritty"; Alias = "alacritty"; Required = $false }
+        @{Name = "glazewm"; Alias = "glazewm"; Required = $false }
     )
 
     CliTools             = @(
@@ -141,8 +154,7 @@ Set-Alias vim nvim
             Steps = @(
                 @{ Name = "Chocolatey"; Function = "Install-Chocolatey"; Required = $true }
                 @{ Name = "Basic Programs"; Function = "Install-BasicPrograms"; Required = $true }
-                @{ Name = "Credentials"; Function = "Initialize-DevelopmentCredentials"; Required = $true }
-                @{ Name = "Git and SSH"; Function = "Install-GitSSH"; Required = $true }
+                @{ Name = "Git Environment"; Function = "Initialize-GitEnvironment"; Required = $true }
                 @{ Name = "PowerShell Profile"; Function = "Install-PowerShellProfile"; Required = $true }
             )
         }
@@ -150,36 +162,36 @@ Set-Alias vim nvim
             Steps = @(
                 @{ Name = "Chocolatey"; Function = "Install-Chocolatey"; Required = $true }
                 @{ Name = "Basic Programs"; Function = "Install-BasicPrograms"; Required = $true }
-                @{ Name = "Credentials"; Function = "Initialize-DevelopmentCredentials"; Required = $true }
-                @{ Name = "Git and SSH"; Function = "Install-GitSSH"; Required = $true }
-                @{ Name = "Dotfiles"; Function = "Initialize-Dotfiles"; Required = $true }
+                @{ Name = "Git Environment"; Function = "Initialize-GitEnvironment"; Required = $true }
                 @{ Name = "CLI Tools"; Function = "Install-CliTools"; Required = $false }
                 @{ Name = "Nerd Fonts"; Function = "Install-NerdFonts"; Required = $false }
                 @{ Name = "Starship"; Function = "Install-Starship"; Required = $true }
-                @{ Name = "PowerShell Profile"; Function = "Install-PowerShellProfile"; Required = $true }
                 @{ Name = "Neovim"; Function = "Install-Neovim"; Required = $false }
                 @{ Name = "Node.js and pnpm"; Function = "Install-Node"; Required = $false }
                 @{ Name = "Julia"; Function = "Install-Julia"; Required = $false }
                 @{ Name = "Zig"; Function = "Install-Zig"; Required = $false }
                 @{ Name = "Miniconda"; Function = "Install-Miniconda"; Required = $false }
+                @{ Name = "Alacritty"; Function = "Install-Alacritty"; Required = $true }
+                @{ Name = "GlazeWM"; Function = "Install-GlazeWM"; Required = $false }
+                @{ Name = "Dotfiles"; Function = "Initialize-Dotfiles"; Required = $true }
             )
         }
         Full     = @{
             Steps           = @(
                 @{ Name = "Chocolatey"; Function = "Install-Chocolatey"; Required = $true }
                 @{ Name = "Basic Programs"; Function = "Install-BasicPrograms"; Required = $true }
-                @{ Name = "Credentials"; Function = "Initialize-DevelopmentCredentials"; Required = $true }
-                @{ Name = "Git and SSH"; Function = "Install-GitSSH"; Required = $true }
-                @{ Name = "Dotfiles"; Function = "Initialize-Dotfiles"; Required = $true }
+                @{ Name = "Git Environment"; Function = "Initialize-GitEnvironment"; Required = $true }
                 @{ Name = "CLI Tools"; Function = "Install-CliTools"; Required = $true }
                 @{ Name = "Nerd Fonts"; Function = "Install-NerdFonts"; Required = $true }
                 @{ Name = "Starship"; Function = "Install-Starship"; Required = $true }
-                @{ Name = "PowerShell Profile"; Function = "Install-PowerShellProfile"; Required = $true }
                 @{ Name = "Neovim"; Function = "Install-Neovim"; Required = $true }
                 @{ Name = "Node.js and pnpm"; Function = "Install-Node"; Required = $true }
                 @{ Name = "Julia"; Function = "Install-Julia"; Required = $true }
                 @{ Name = "Zig"; Function = "Install-Zig"; Required = $true }
                 @{ Name = "Miniconda"; Function = "Install-Miniconda"; Required = $true }
+                @{ Name = "Alacritty"; Function = "Install-Alacritty"; Required = $true }
+                @{ Name = "GlazeWM"; Function = "Install-GlazeWM"; Required = $false }
+                @{ Name = "Dotfiles"; Function = "Initialize-Dotfiles"; Required = $true }
             )
             InheritFrom     = "Standard"
             MakeAllRequired = $true

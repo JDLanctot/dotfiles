@@ -92,10 +92,10 @@ function Install-CliTools {
         Write-ColorOutput "Please restart your PowerShell session to apply changes" "Warn"
     }
 
-    Save-InstallationState "cli_tools"
+    Save-InstallationState "CLI Tools"
     Write-ColorOutput "CLI tools configuration completed" "Success"
     if ($installed.Count -gt 0) {
-        Save-InstallationState "cli_tools"
+        Save-InstallationState "CLI Tools"
         Write-ColorOutput "CLI tools configuration completed" "Success"
         return $true
     }

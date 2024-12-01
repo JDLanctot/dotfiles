@@ -7,7 +7,7 @@ function Install-Zig {
     try {
         Write-ColorOutput "Checking Zig installation..." "Status"
 
-        if (Test-InstallationState "zig") {
+        if (Test-InstallationState "Zig") {
             Write-ColorOutput "Zig already installed" "Status"
             return $false
         }
@@ -43,7 +43,7 @@ function Install-Zig {
         if ($didInstallSomething) {
             $zigVersion = (zig version)
             Write-ColorOutput "Zig $zigVersion installed" "Success"
-            Save-InstallationState "zig"
+            Save-InstallationState "Zig"
         }
         else {
             Write-ColorOutput "Zig was already properly configured" "Status"

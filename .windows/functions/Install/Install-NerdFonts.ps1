@@ -7,7 +7,7 @@ function Install-NerdFonts {
     try {
         Write-ColorOutput "Checking NerdFonts installation..." "Status"
 
-        if (Test-InstallationState "nerdfonts") {
+        if (Test-InstallationState "Nerd Fonts") {
             Write-ColorOutput "JetBrainsMono Nerd Font already installed" "Status"
             return $false
         }
@@ -46,7 +46,7 @@ function Install-NerdFonts {
             if ($installedCount -gt 0) {
                 $didInstallSomething = $true
                 Write-ColorOutput "$installedCount fonts installed successfully" "Success"
-                Save-InstallationState "nerdfonts"
+                Save-InstallationState "Nerd Fonts"
             }
             else {
                 Write-ColorOutput "No new fonts needed to be installed" "Status"

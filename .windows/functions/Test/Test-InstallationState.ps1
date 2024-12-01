@@ -28,23 +28,17 @@ function Test-InstallationState {
                 return $true
             }
 
-            "Credentials" {
+            "Git Environment" {
                 if (-not (Get-Command -Name git -ErrorAction SilentlyContinue)) {
                     return $false
                 }
-                $gitEmail = git config --global user.email
-                $gitName = git config --global user.name
-                return ($null -ne $gitEmail -and $null -ne $gitName)
-            }
-
-            "Git and SSH" {
                 # Check Git config
                 $gitEmail = git config --global user.email
                 $gitName = git config --global user.name
                 if (-not ($gitEmail -and $gitName)) {
                     return $false
                 }
-    
+
                 # Check SSH
                 $sshDir = "$env:USERPROFILE\.ssh"
                 return (Test-Path $sshDir)
@@ -143,28 +137,40 @@ function Test-InstallationState {
                        (Select-String -Path $PROFILE -Pattern "starship init" -Quiet))
             }
 
-            "PowerShell Profile" {
-                if (-not (Test-Path $PROFILE)) {
-                    return $false
-                }
-                # Check for essential configurations
-                $requiredPatterns = @(
-                    "Invoke-Expression \(&starship init powershell\)",
-                    "Import-Module PSFzf",
-                    "Set-Alias.*vim.*nvim"
-                )
-                foreach ($pattern in $requiredPatterns) {
-                    if (-not (Select-String -Path $PROFILE -Pattern $pattern -Quiet)) {
-                        Write-Log "Missing profile configuration: $pattern" -Level "DEBUG"
-                        return $false
-                    }
-                }
-                return $true
-            }
-
             "Nerd Fonts" {
                 $fontPath = "$env:LOCALAPPDATA\Microsoft\Windows\Fonts\JetBrainsMono*.ttf"
                 return (Test-Path $fontPath)
+            }
+
+            "Alacritty" {
+                if (-not (Get-Command -Name alacritty -ErrorAction SilentlyContinue)) {
+                    return $false
+                }
+                $configPath = "$env:USERPROFILE\AppData\Roaming\alacritty\alacritty.toml"
+                $colorPath = "$env:USERPROFILE\AppData\Roaming\alacritty\rose-pine-moon.toml"
+                return (Test-Path $configPath -and Test-Path $colorPath)
+            }
+
+            "GlazeWM" {
+                if (-not (Get-Command -Name glazewm -ErrorAction SilentlyContinue)) {
+                    # Check common installation paths for winget
+                    $glazePaths = @(
+                        "${env:ProgramFiles}\GlazeWM\glazewm.exe",
+                        "${env:LocalAppData}\Programs\GlazeWM\glazewm.exe"
+                    )
+                    $installed = $false
+                    foreach ($path in $glazePaths) {
+                        if (Test-Path $path) {
+                            $installed = $true
+                            break
+                        }
+                    }
+                    if (-not $installed) {
+                        return $false
+                    }
+                }
+                $configPath = "$env:USERPROFILE\.glzr\glazewm\config.yaml"
+                return (Test-Path $configPath)
             }
 
             default {
@@ -174,7 +180,7 @@ function Test-InstallationState {
         }
     }
     catch {
-        Write-Log "Error checking installation state for $(Component): $_" -Level "ERROR"
+        Write-Log "Failed to verify $ComponentName installation" -Level "ERROR"
         return $false
     }
 }

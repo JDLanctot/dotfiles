@@ -1,5 +1,5 @@
 function Initialize-Dotfiles {
-    if (Test-InstallationState "dotfiles") {
+    if (Test-InstallationState "Dotfiles") {
         Write-ColorOutput "Dotfiles already configured" "Status"
         return $true
     }
@@ -24,7 +24,7 @@ function Initialize-Dotfiles {
             }
         }
 
-        Save-InstallationState "dotfiles"
+        Save-InstallationState "Dotfiles"
         Write-ColorOutput "Dotfiles setup completed" "Success"
         return $true
     }

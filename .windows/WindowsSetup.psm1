@@ -313,7 +313,7 @@ Export-ModuleMember -Function @(
     'Start-Installation',
     'Install-BasicPrograms',
     'Install-CliTools',
-    'Install-GitSSH',
+    'Install-GitEnvironment',
     'Install-Neovim',
     'Install-Node',
     'Install-PowerShellProfile',

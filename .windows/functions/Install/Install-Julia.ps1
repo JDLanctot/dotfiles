@@ -7,7 +7,7 @@ function Install-Julia {
     try {
         Write-ColorOutput "Checking Julia installation..." "Status"
 
-        if (Test-InstallationState "julia") {
+        if (Test-InstallationState "Julia") {
             Write-ColorOutput "Julia already installed and configured" "Status"
             return $false
         }
@@ -28,45 +28,10 @@ function Install-Julia {
             }
         }
 
-        # Setup Julia configuration
-        $juliaConfigPath = "$env:USERPROFILE\.julia\config"
-        if (-not (Test-Path $juliaConfigPath)) {
-            New-SafeDirectory -Path $juliaConfigPath
-            $didInstallSomething = $true
-        }
-
-        # Get and copy startup.jl from dotfiles
-        $startupPath = "$juliaConfigPath\startup.jl"
-        if (-not (Test-Path $startupPath)) {
-            $tempPath = "$env:TEMP\dotfiles"
-            
-            try {
-                if (Test-Path $tempPath) {
-                    Remove-Item $tempPath -Recurse -Force
-                }
-                
-                git clone https://github.com/JDLanctot/dotfiles.git $tempPath
-
-                if (Test-Path "$tempPath\.julia\config\startup.jl") {
-                    Copy-Item "$tempPath\.julia\config\startup.jl" $juliaConfigPath -Force
-                    Write-ColorOutput "Julia configuration installed" "Success"
-                    $didInstallSomething = $true
-                }
-                else {
-                    Write-ColorOutput "Julia startup.jl not found in dotfiles" "Warn"
-                }
-            }
-            finally {
-                if (Test-Path $tempPath) {
-                    Remove-Item $tempPath -Recurse -Force
-                }
-            }
-        }
-
         if ($didInstallSomething) {
             $juliaVersion = (julia --version)
             Write-ColorOutput "Julia $juliaVersion installed and configured" "Success"
-            Save-InstallationState "julia"
+            Save-InstallationState "Julia"
         }
         else {
             Write-ColorOutput "Julia was already installed and configured" "Status"
