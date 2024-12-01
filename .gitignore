@@ -15,5 +15,8 @@
 !.config/nvim
 !.config/nvim/*
 !.zsh/
+!.windows/
 !.windows/**
 
+*.log
+*.txt
