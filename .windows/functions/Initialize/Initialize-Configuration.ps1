@@ -22,7 +22,9 @@ function Initialize-Configuration {
         }
         
         $script:Config = $loadedConfig
-        Write-Log "Configuration loaded successfully" -Level "SUCCESS"
+        if (-not $script:Silent) {
+            Write-Log "Configuration loaded successfully" -Level "SUCCESS"
+        }
         
         # Process and validate paths
         $processedPaths = @{}
@@ -52,7 +54,9 @@ function Initialize-Configuration {
 
         $script:CONFIG_PATHS = $processedPaths
 
-        Write-Log "Configuration processed successfully" -Level "SUCCESS"
+        if (-not $script:Silent) {
+            Write-Log "Configuration processed successfully" -Level "SUCCESS"
+        }
         return $true
     }
     catch {

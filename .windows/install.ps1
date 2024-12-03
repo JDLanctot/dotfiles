@@ -7,7 +7,7 @@ param(
     [string]$InstallationType = 'Standard',
     [switch]$Force,
     [switch]$NoBackup,
-    [switch]$Silent,
+    [switch]$Silent = $true,
     [string]$LogPath
 )
 

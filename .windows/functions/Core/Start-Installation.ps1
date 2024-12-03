@@ -9,112 +9,157 @@ function Start-Installation {
     )
     
     try {
-        # Initialize installation
-        $initResult = Initialize-Installation -InstallationType $InstallationType -Force:$Force
-        if (-not $initResult) {
-            throw "Installation initialization failed"
-        }
+        $script:Silent = $Silent
 
-        Write-Log "Starting $InstallationType installation" -Level "INFO"
-
-        # Verify configuration
-        if (-not $script:Config -or -not $script:Config.InstallationProfiles) {
-            throw "Invalid configuration state: Installation profiles not found"
-        }
-
-        # Get installation profile
-        $profile = $script:Config.InstallationProfiles[$InstallationType]
-        if (-not $profile) {
-            throw "Installation profile not found: $InstallationType"
-        }
-
-        # Get steps
-        $steps = $profile.Steps
-        if (-not $steps -or $steps.Count -eq 0) {
-            throw "No installation steps found for profile: $InstallationType"
-        }
-
-        Write-Log "Found $($steps.Count) steps for profile $InstallationType" -Level "INFO"
-
-        # Show installation plan if not silent
+        
         if (-not $Silent) {
-            Show-InstallationPlan -Steps $steps -Type $InstallationType
+            Write-Host "`n" # Add initial spacing
         }
-
+        
+        # Initialize installation state
+        $initResult = Initialize-Installation -InstallationType $InstallationType -Force:$Force
+        
+        # Use the config from the initialization result
+        $configToUse = if ($script:Config) { $script:Config } else { $initResult.Config }
+        
+        if (-not $configToUse) {
+            throw "No configuration available"
+        }
+        
+        # Get installation steps from config
+        $steps = $configToUse.InstallationProfiles[$InstallationType].Steps
+        Write-Log "Found $($steps.Count) steps for profile $InstallationType" -Level "INFO"
+        
+        # Initialize results tracking
         $results = @{
-            Total       = $steps.Count
-            Successful  = 0
-            Failed      = 0
-            Skipped     = 0
-            FailedSteps = @()
+            Total      = $steps.Count
+            Successful = [System.Collections.ArrayList]::new()
+            Failed     = [System.Collections.ArrayList]::new()
+            Skipped    = [System.Collections.ArrayList]::new()
         }
 
-        # Execute installation steps
-        $stepNumber = 0
+        # Track progress
+        $currentStep = 0
+        $totalSteps = $steps.Count
+        $status = @{}
+
         foreach ($step in $steps) {
-            $stepNumber++
-            Write-Log "Executing step $stepNumber of $($steps.Count): $($step.Name)" -Level "INFO"
+            $currentStep++
+            $percentComplete = [math]::Floor(($currentStep / $totalSteps) * 100)        
+            $progressBar = "["
+            $progressBar += "█" * [math]::Floor($percentComplete / 2)
+            $progressBar += "░" * (50 - [math]::Floor($percentComplete / 2))
+            $progressBar += "]"
+
+            if (-not $Silent) {
+                Write-Progress -Activity $Phase -Status "$Current of $Total steps complete" -PercentComplete ($Current / $Total * 100)
+            }
 
             try {
-                if (-not $Silent) {
-                    $response = Show-Checkpoint -Message "Installing $($step.Name)" -Confirm:(-not $Force)
-                    if ($response -eq "Skip" -and -not $step.Required) {
-                        $results.Skipped++
-                        Write-Log "Skipped optional step: $($step.Name)" -Level "INFO"
-                        continue
-                    }
+                # Check if already installed
+                $isInstalled = Test-InstallationState $step.Name
+                if ($isInstalled) {
+                    Write-Log "$($step.Name) is already installed" -Level "INFO"
+                    [void]$results.Skipped.Add($step.Name)
+                    $status[$step.Name] = "Skipped"
+                    continue
                 }
-
-                # Convert string function name to scriptblock if necessary
-                $action = $step.Function
-                if ($action -is [string]) {
-                    $action = [ScriptBlock]::Create($action)
-                }
-
-                # Execute step
-                $success = & $action
-                
-                if ($success) {
-                    $results.Successful++
-                    Write-Log "Step completed successfully: $($step.Name)" -Level "SUCCESS"
+        
+                # Get the function to execute
+                $function = $step.Function
+                if ($function -is [ScriptBlock]) {
+                    Write-Log "Executing script block for $($step.Name)" -Level "DEBUG"
+                    $result = & $function
                 }
                 else {
-                    throw "Step returned false"
+                    # Try to get function by name
+                    $functionName = $function.ToString().Trim('{}') # Remove braces if present
+                    Write-Log "Looking for function: $functionName" -Level "DEBUG"
+                    $functionToExecute = Get-Command $functionName -ErrorAction SilentlyContinue
+                    if ($functionToExecute) {
+                        $result = & $functionToExecute
+                    }
+                    else {
+                        throw "Function not found: $functionName"
+                    }
+                }
+        
+                if ($null -eq $result) {
+                    Write-Log "Warning: $($step.Name) returned no value, assuming success" -Level "WARN"
+                    $result = $true
+                }
+        
+                if ($result -eq $true) {
+                    [void]$results.Successful.Add($step.Name)
+                    $status[$step.Name] = "Success"
+                    Write-Log "$($step.Name) installed successfully" -Level "SUCCESS"
+                }
+                elseif ($result -eq $false) {
+                    [void]$results.Skipped.Add($step.Name)
+                    $status[$step.Name] = "Skipped"
+                    Write-Log "$($step.Name) was skipped" -Level "INFO"
+                }
+                else {
+                    Write-Log "Unexpected return value from $($step.Name): $result" -Level "WARN"
+                    # Determine status based on verification
+                    if (Test-InstallationState $step.Name) {
+                        [void]$results.Skipped.Add($step.Name)
+                        $status[$step.Name] = "Skipped"
+                    }
+                    else {
+                        [void]$results.Successful.Add($step.Name)
+                        $status[$step.Name] = "Success"
+                    }
                 }
             }
             catch {
-                $results.Failed++
-                $results.FailedSteps += $step.Name
+                [void]$results.Failed.Add($step.Name)
+                $status[$step.Name] = "Failed"
+                Write-Log "Failed to execute $($step.Name): $_" -Level "ERROR"
                 
-                $errorDetails = Handle-Error -ErrorRecord $_ `
-                    -ComponentName $step.Name `
-                    -Operation "Installation" `
-                    -Critical:$step.Required `
-                    -Continue:(-not $step.Required)
-
                 if ($step.Required -and -not $Force) {
-                    throw "Required step '$($step.Name)' failed: $($errorDetails.Message)"
+                    throw
                 }
             }
         }
 
-        # Show summary
-        Show-Summary -Results $results
+        # Show final summary
+        Write-Host "`n╔════════════════════════════════════════════════════════════════╗"
+        Write-Host "║                      Installation Summary                       ║"
+        Write-Host "╠════════════════════════════════════════════════════════════════╣"
+        Write-Host "║ Total Steps:    $($results.Total.ToString().PadRight(4)) ║"
+        Write-Host "║ Successful:     $($results.Successful.Count.ToString().PadRight(4)) ║"
+        Write-Host "║ Failed:         $($results.Failed.Count.ToString().PadRight(4)) ║"
+        Write-Host "║ Skipped:        $($results.Skipped.Count.ToString().PadRight(4)) ║"
+        Write-Host "╚════════════════════════════════════════════════════════════════╝"
 
-        if ($results.Failed -eq 0) {
-            Write-Log "Installation completed successfully" -Level "SUCCESS"
+        if ($results.Successful.Count -gt 0) {
+            Write-Host "`nSuccessfully Completed:"
+            foreach ($step in $results.Successful) {
+                Write-Host "  • $step"
+            }
         }
-        else {
-            Write-Log "Installation completed with $($results.Failed) failed steps" -Level "WARN"
+        
+        if ($results.Skipped.Count -gt 0) {
+            Write-Host "`nSkipped Steps:"
+            foreach ($step in $results.Skipped) {
+                Write-Host "  • $step"
+            }
+        }
+        
+        if ($results.Failed.Count -gt 0) {
+            Write-Host "`nFailed Steps:" -ForegroundColor Red
+            foreach ($step in $results.Failed) {
+                Write-Host "  • $step" -ForegroundColor Red
+            }
         }
 
+        Write-Host "`nLog File: $script:SCRIPT_LOG_PATH"
+        
         return $results
     }
     catch {
-        Handle-Error -ErrorRecord $_ `
-            -ComponentName "Installation" `
-            -Operation "Start-Installation" `
-            -Critical
-        return $false
+        Write-Log "Installation failed: $_" -Level "ERROR"
+        throw
     }
 }

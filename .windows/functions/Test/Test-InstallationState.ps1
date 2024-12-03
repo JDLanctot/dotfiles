@@ -2,7 +2,8 @@ function Test-InstallationState {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
-        [string]$Component
+        [string]$Component,
+        [switch]$IncludePartialState
     )
     
     try {
@@ -143,12 +144,28 @@ function Test-InstallationState {
             }
 
             "Alacritty" {
+                # First check if command exists in PATH
                 if (-not (Get-Command -Name alacritty -ErrorAction SilentlyContinue)) {
-                    return $false
+                    # If not in PATH, check MSI installation paths
+                    $msiPath = @(
+                        "${env:ProgramFiles}\Alacritty\alacritty.exe",
+                        "${env:LocalAppData}\Programs\Alacritty\alacritty.exe"
+                    )
+                    $installed = $false
+                    foreach ($path in $msiPath) {
+                        if (Test-Path $path) {
+                            $installed = $true
+                            break
+                        }
+                    }
+                    if (-not $installed) {
+                        return $false
+                    }
                 }
-                $configPath = "$env:USERPROFILE\AppData\Roaming\alacritty\alacritty.toml"
-                $colorPath = "$env:USERPROFILE\AppData\Roaming\alacritty\rose-pine-moon.toml"
-                return (Test-Path $configPath -and Test-Path $colorPath)
+                
+                # Only verify directory exists, since files come later
+                $configDir = "$env:USERPROFILE\AppData\Roaming\alacritty"
+                return (Test-Path $configDir)
             }
 
             "GlazeWM" {

@@ -6,6 +6,11 @@ function Write-ColorOutput {
         [string]$Type
     )
 
+    # Skip if in silent mode and not an error/warning
+    if ($script:Silent -and $Type -notin @("Error", "Warning")) {
+        return
+    }
+
     $level = switch ($Type) {
         "Error" { "ERROR" }
         "Success" { "SUCCESS" }
