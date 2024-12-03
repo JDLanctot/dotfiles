@@ -1,20 +1,3 @@
-function Test-RequiredPrograms {
-    $missing = @()
-    foreach ($program in $Config.Programs.Where({ $_.Required })) {
-        if (-not (Get-Command -Name $program.Alias -ErrorAction SilentlyContinue)) {
-            $missing += $program.Name
-        }
-    }
-
-    return $missing
-}
-
-# Function to check if a command exists
-function Test-Command {
-    param($Command)
-    return [bool](Get-Command -Name $Command -ErrorAction SilentlyContinue)
-}
-
 function Test-SystemRequirements {
     Write-Log "Checking system requirements..." -Level "INFO"
 

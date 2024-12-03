@@ -35,18 +35,6 @@ function Initialize-Installation {
             New-Item -ItemType Directory -Path $logPath -Force | Out-Null
         }
         
-        # Check for existing recovery points if not forced
-        if (-not $Force) {
-            $recoveryPoint = Get-LatestRecoveryPoint
-            if ($recoveryPoint) {
-                Write-Log "Found existing recovery point from: $($recoveryPoint.Timestamp)" -Level "WARN"
-                return @{
-                    RecoveryAvailable = $true
-                    RecoveryPoint     = $recoveryPoint
-                }
-            }
-        }
-        
         # Load configuration
         Write-Log "Loading configuration..." -Level "DEBUG"
         Initialize-Configuration
