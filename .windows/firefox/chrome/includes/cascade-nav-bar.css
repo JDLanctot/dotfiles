@@ -1,0 +1,176 @@
+#navigator-toolbox:not(:-moz-lwtheme) { 
+  background: var(--toolbar-field-background-color) !important; 
+}
+
+#nav-bar {
+  padding-block-start: 0px !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  position: relative !important;
+  margin: 0 !important;
+  padding: 2px !important;
+  z-index: 1 !important;
+}
+
+/* Basic URL bar styling */
+#urlbar,
+#urlbar * {
+  padding-block-start: var(--uc-urlbar-top-spacing) !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: background-color 0.2s ease !important;
+}
+
+#urlbar-background { 
+  border: transparent !important;
+  margin: 0 !important;
+}
+
+/* Regular URL bar states */
+#urlbar[focused='true'] > #urlbar-background,
+#urlbar:not([open]) > #urlbar-background { 
+  background: var(--toolbar-field-background-color) !important;
+}
+
+/* Open/popup state */
+#urlbar[open] > #urlbar-background { 
+  background: var(--toolbar-field-background-color) !important;
+}
+
+#urlbar[open] {
+  height: auto !important;
+  position: relative !important;
+  inset: unset !important;
+}
+
+/* Keep URL bar input stable */
+#urlbar-input-container {
+  height: var(--urlbar-min-height) !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+
+#urlbar[breakout][breakout-extend] > #urlbar-background {
+  background: var(--toolbar-field-background-color) !important;
+  border: 1px solid var(--arrowpanel-border-color) !important;
+  border-radius: var(--uc-border-radius) !important;
+  margin: 0 6px !important;
+}
+
+/* URL bar popup styling */
+.urlbarView {
+  /* Position relative to the original URL bar */
+  position: absolute !important;
+  margin-top: 0 !important;
+  top: 100% !important;
+  width: calc(100% - 12px) !important;
+  background: var(--toolbar-field-background-color) !important;
+  border: 1px solid var(--arrowpanel-border-color) !important;
+  border-radius: var(--uc-border-radius) !important;
+  color: var(--toolbar-field-color) !important;
+  padding: 6px 0 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Recent searches header and spacing */
+.urlbarView-results {
+  padding-block: 4px !important;
+  opacity: 0.9 !important;
+}
+
+/* URL bar results container */
+.urlbarView-body-outer {
+  --item-padding-start: 0 !important;
+  --item-padding-end: 0 !important;
+}
+
+/* URL bar result rows */
+.urlbarView-row {
+  padding: 2px 0 !important;
+  margin: 0 !important;
+  color: var(--toolbar-field-color) !important;
+}
+
+.urlbarView-row-inner {
+  color: var(--toolbar-field-color) !important;
+  padding: 8px 12px !important;
+  margin: 0 4px !important;
+  border-radius: 4px !important;
+  transition: background-color 0.15s ease !important;
+}
+
+/* Search with... header */
+.search-one-offs {
+  padding: 8px !important;
+  padding-left: 12px !important;
+}
+
+/* Fix header padding */
+.search-panel-header {
+  padding-left: 4px !important;
+}
+
+/* Fix gear icon alignment */
+.search-setting-button {
+  margin-right: 8px !important;
+}
+
+/* Rest of the styles remain the same */
+.urlbarView-row[selected],
+.urlbarView-row[row-selectable]:not([selected]):hover {
+  background-color: transparent !important;
+}
+
+.urlbarView-row:hover > .urlbarView-row-inner,
+.urlbarView-row[selected] > .urlbarView-row-inner {
+  background: var(--toolbar-field-focus-background-color) !important;
+  color: var(--toolbar-field-color) !important;
+}
+
+/* Fix input alignment with popup */
+#urlbar-input {
+  padding: 0 8px !important;
+  margin-left: 4px !important;
+}
+.urlbarView-title,
+.urlbarView-secondary,
+.urlbarView-title-separator {
+  color: var(--toolbar-field-color) !important;
+}
+
+.urlbarView-url {
+  color: var(--urlbar-popup-url-color) !important;
+  font-size: 0.92em !important;
+  opacity: 0.8 !important;
+}
+
+.urlbarView-type-icon {
+  opacity: 0.8 !important;
+  margin-inline-end: 8px !important;
+}
+
+.urlbar-icon,
+#urlbar-go-button { 
+  margin: auto !important;
+  padding: 0 4px !important;
+}
+
+.urlbar-page-action { 
+  padding: 0 inherit !important;
+}
+
+.urlbarView-row:not(:last-child) {
+  position: relative !important;
+}
+
+.urlbarView-row:not(:last-child)::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: -1px !important;
+  left: 12px !important;
+  right: 12px !important;
+  height: 1px !important;
+  background: var(--uc-seperator-colour) !important;
+  opacity: 0.2 !important;
+}
