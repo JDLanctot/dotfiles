@@ -1,0 +1,26 @@
+@OBSThemeMeta {
+    name: 'RosePine Moon';
+    id: 'com.obsproject.RosePine.Moon';
+    extends: 'com.obsproject.RosePine';
+    author: 'TooFaeded';
+    dark: 'true';
+}
+
+@OBSThemeVars {
+    /* RosePine Moon Color Overrides */
+    --base: rgb(35, 33, 54);
+    --surface: rgb(42, 39, 63);
+    --overlay: rgb(57, 53, 82);
+    --muted: rgb(118, 115, 145);
+    --subtle: rgb(144, 140, 170);
+    --text: rgb(224, 222, 244);
+    
+    /* Override specific theme elements */
+    --bg_window: var(--base);
+    --bg_base: var(--surface);
+    --bg_preview: var(--overlay);
+    
+    --button_bg: var(--surface);
+    --button_bg_hover: var(--overlay);
+    --button_bg_pressed: var(--muted);
+}

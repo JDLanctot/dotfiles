@@ -1,0 +1,7 @@
+@OBSThemeMeta {
+    name: 'RosePine Default';
+    id: 'com.obsproject.RosePine.Default';
+    extends: 'com.obsproject.RosePine';
+    author: 'TooFaeded';
+    dark: 'true';
+}

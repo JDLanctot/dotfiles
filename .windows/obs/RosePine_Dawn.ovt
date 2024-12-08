@@ -1,0 +1,61 @@
+@OBSThemeMeta {
+    name: 'RosePine Dawn';
+    id: 'com.obsproject.RosePine.Dawn';
+    extends: 'com.obsproject.RosePine';
+    author: 'TooFaeded';
+    dark: 'false';
+}
+
+@OBSThemeVars {
+    /* Rose Pine Dawn Colors */
+    --base: rgb(250, 244, 237);
+    --surface: rgb(242, 233, 222);
+    --overlay: rgb(234, 220, 204);
+    --muted: rgb(152, 147, 165);
+    --subtle: rgb(120, 110, 125);
+    --text: rgb(87, 82, 121);
+    --love: rgb(180, 99, 122);
+    --gold: rgb(234, 157, 52);
+    --rose: rgb(215, 130, 126);
+    --pine: rgb(86, 148, 159);
+    --foam: rgb(156, 207, 216);
+    --iris: rgb(144, 122, 169);
+
+    /* Override base theme variables with Dawn colors */
+    --bg_window: var(--base);
+    --bg_base: var(--surface);
+    --bg_preview: var(--overlay);
+
+    --primary: var(--pine);
+    --primary_light: var(--foam);
+    --primary_lighter: rgb(176, 227, 236);
+    --primary_dark: rgb(76, 138, 149);
+    --primary_darker: rgb(66, 128, 139);
+
+    --warning: var(--gold);
+    --danger: var(--love);
+
+    --text: var(--text);
+    --text_light: var(--subtle);
+    --text_muted: var(--muted);
+    --text_disabled: var(--muted);
+    --text_inactive: var(--subtle);
+
+    /* Override input/control colors for light theme */
+    --input_bg: var(--overlay);
+    --input_bg_hover: var(--surface);
+    --input_bg_focus: var(--surface);
+
+    --button_bg: var(--overlay);
+    --button_bg_hover: var(--muted);
+    --button_bg_down: var(--surface);
+    --button_bg_disabled: var(--surface);
+
+    /* Volume Meters with Dawn colors */
+    --meter_bg_nominal: rgba(86, 148, 159, 0.5);
+    --meter_bg_warning: rgba(234, 157, 52, 0.5);
+    --meter_bg_error: rgba(180, 99, 122, 0.5);
+    --meter_fg_nominal: rgb(86, 148, 159);
+    --meter_fg_warning: rgb(234, 157, 52);
+    --meter_fg_error: rgb(180, 99, 122);
+}
