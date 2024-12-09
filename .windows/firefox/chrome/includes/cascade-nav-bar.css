@@ -33,13 +33,7 @@
   background: var(--toolbar-field-background-color) !important;
 }
 
-/* Open/popup state */
-#urlbar[open] > #urlbar-background { 
-  background: var(--toolbar-field-background-color) !important;
-}
-
 #urlbar[open] {
-  height: auto !important;
   position: relative !important;
   inset: unset !important;
 }
@@ -64,7 +58,6 @@
   position: absolute !important;
   margin-top: 0 !important;
   top: 100% !important;
-  width: calc(100% - 12px) !important;
   background: var(--toolbar-field-background-color) !important;
   border: 1px solid var(--arrowpanel-border-color) !important;
   border-radius: var(--uc-border-radius) !important;
