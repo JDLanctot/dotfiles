@@ -43,7 +43,7 @@ gaps:
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: "44px"
+    top: "46px"
     right: "8px"
     bottom: "8px"
     left: "8px"
@@ -55,7 +55,7 @@ window_effects:
     # ** Exclusive to Windows 11 due to API limitations.
     border:
       enabled: true
-      color: "#8dbcff"
+      color: "#c4a7e7"
 
     # Remove the title bar from the window's frame. Note that this can
     # cause rendering issues for some applications.
@@ -73,7 +73,7 @@ window_effects:
   other_windows:
     border:
       enabled: true
-      color: "#a1a1a1"
+      color: "#232136"
     hide_title_bar:
       enabled: false
     corner_style:
@@ -105,12 +105,44 @@ window_behavior:
       shown_on_top: false
 
 workspaces:
+  # This is the unique ID for the workspace. It's used in keybinding
+  # commands, and is also the label shown in 3rd-party apps (e.g. Zebar) if
+  # `display_name` is not provided.
   - name: "1"
+    # Optional override for the workspace label used in 3rd-party apps.
+    # Does not need to be unique.
+    display_name: "1. 🌐Browser"
+    # Optionally prevent workspace from being deactivated when empty.
+    keep_alive: true
+    # Optionally force the workspace on a specific monitor if it exists.
+    # 0 is your leftmost screen, 1 is the next one to the right, and so on.
+    bind_to_monitor: 0
+
   - name: "2"
+    display_name: "2. 💻Code"
+    keep_alive: true
+    bind_to_monitor: 1
+
   - name: "3"
+    display_name: "3. 📂Explorer"
+    keep_alive: true
+    bind_to_monitor: 0
+
   - name: "4"
+    display_name: "4. 💬Connect"
+    keep_alive: true
+    bind_to_monitor: 0
+
   - name: "5"
+    display_name: "5. 📝Productivity"
+    keep_alive: true
+    bind_to_monitor: 1
+
   - name: "6"
+    display_name: "6. 🎮Gaming"
+    keep_alive: true
+    bind_to_monitor: 0
+
   - name: "7"
   - name: "8"
   - name: "9"
@@ -132,6 +164,38 @@ window_rules:
         window_title: { regex: ".*? - Peek" }
       - window_process: { equals: "Lively" }
         window_class: { regex: "HwndWrapper" }
+
+  # move to workspaces
+  # Move to workspace 1
+  - commands: ['move --workspace 1']
+    match:
+      - window_process: { regex: 'msedge|brave|chrome|firefox' }
+
+  # Move to workspace 2
+  - commands: ['move --workspace 2']
+    match:
+      - window_process: { regex: 'pycharm64|Code|WindowsTerminal|alacritty|cmd|powershell|pwsh' }
+
+  # Move to workspace 3
+  - commands: ['move --workspace 3']
+    match:
+      - window_process: { regex: 'explorer|Files' }
+
+  # Move to workspace 4
+  - commands: ['move --workspace 4']
+    match:
+      - window_process: { regex: 'Messenger|messenger|Discord|olk|msedgewebview2|ms-teams|thunderbird' }
+
+  # Move to workspace 5
+  - commands: ['move --workspace 5']
+    match:
+      - window_process: { regex: 'Task Manager|WINWORD|EXCEL|POWERPOINT|Obsidian|WebViewHost|RemotePCSuite|RemotePC Codec Engine' }
+
+  # Move to workspace 6
+  - commands: ['move --workspace 6']
+    match:
+      - window_process: { regex: 'Riot Client|League of Legends|steam|Steam|steamwebhelper|steamservice|Epic|epic|DSX|SelfService|CDViewer|REDLauncher' }
+
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
@@ -158,10 +222,12 @@ binding_modes:
 
 keybindings:
   # Open programs
-  - commands: ["shell-exec alacritty"]
-    bindings: ["Ctrl+Alt+T"]
-  - commands: ["shell-exec firefox"]
-    bindings: ["Ctrl+Alt+F"]
+  # - commands: ["shell-exec alacritty"]
+  #   bindings: ["Ctrl+Alt+T"]
+  # - commands: ["shell-exec firefox"]
+  #   bindings: ["Ctrl+Alt+W"]
+  # - commands: ["shell-exec files"]
+  #   bindings: ["Ctrl+Alt+F"]
 
   # Shift focus in a given direction.
   - commands: ["focus --direction left"]
