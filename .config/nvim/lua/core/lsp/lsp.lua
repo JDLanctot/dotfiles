@@ -3,7 +3,6 @@ local M = {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"folke/neodev.nvim",
-		"j-hui/fidget.nvim",
 	},
 }
 
@@ -22,12 +21,17 @@ M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 
 	if client.supports_method("textDocument/inlayHint") then
-		vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
+		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
 
 	-- Typescript specific settings
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
+	end
+
+	-- Add navic attachment
+	if client.server_capabilities.documentSymbolProvider then
+		require("nvim-navic").attach(client, bufnr)
 	end
 end
 
@@ -39,7 +43,7 @@ end
 
 M.toggle_inlay_hints = function()
 	local bufnr = vim.api.nvim_get_current_buf()
-	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr=bufnr}), {bufnr=bufnr})
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
 end
 
 function M.config()
@@ -71,7 +75,7 @@ function M.config()
 	}
 	vim.diagnostic.config(diagnostic_config)
 
-	for _, sign in ipairs(vim.tbl_get({vim.diagnostic.config()}, "signs", "values") or {}) do
+	for _, sign in ipairs(vim.tbl_get({ vim.diagnostic.config() }, "signs", "values") or {}) do
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
 	end
 

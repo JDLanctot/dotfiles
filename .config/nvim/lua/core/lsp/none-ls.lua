@@ -15,14 +15,14 @@ function M.config()
     debug = false,
     sources = {
       formatting.stylua,
-      formatting.prettierd,
-      formatting.biome,
+      -- formatting.prettierd,
+      -- formatting.biome,
       -- formatting.black,
       -- formatting.prettier.with {
       --   extra_filetypes = { "toml" },
       --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
       -- },
-      formatting.eslint_d,
+      -- formatting.eslint_d,
       -- formatting.eslint,
       -- null_ls.builtins.diagnostics.flake8,
       -- diagnostics.flake8,

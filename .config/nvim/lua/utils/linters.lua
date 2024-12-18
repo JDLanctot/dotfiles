@@ -1,8 +1,11 @@
 local linters = {
 	"stylua",
-	"eslint_d",
-	"prettierd",
-	"biome",
+    -- "pylint",
+	"ruff",
+    "ts-standard",
+    -- "eslint_d",
+	-- "prettierd",
+	-- "biome",
 	-- "flake8",
 }
 

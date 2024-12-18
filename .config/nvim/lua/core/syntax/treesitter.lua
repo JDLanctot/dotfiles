@@ -8,14 +8,14 @@ function T.config()
     require('nvim-treesitter.configs').setup({
         -- A list of parser names, or "all"
         ensure_installed = {
-            "javascript",
-            "typescript",
+            -- "javascript",
+            -- "typescript",
             "lua",
-            "markdown",
-            "markdown_inline",
-            "bash",
+            -- "markdown",
+            -- "markdown_inline",
+            -- "bash",
             "python",
-            "julia"
+            -- "julia"
         },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
