@@ -54,6 +54,21 @@ function pst { Get-Clipboard }
 # Neofetch
 function ff { fastfetch }
 
+# Clear corrupted SHADA Files
+function cltmp {
+    param(
+        [string]$Path = (Join-Path $env:LOCALAPPDATA 'nvim-data\shada')
+    )
+
+    # Get all files that match the pattern 'main.shada.tmp.*'
+    $files = Get-ChildItem -Path $Path -Filter "main.shada.tmp.*" -File -ErrorAction SilentlyContinue
+
+    # Remove all matching files if found
+    if ($files) {
+        Remove-Item -Path $files.FullName -Force
+    }
+}
+
 $env:FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 Register-ArgumentCompleter -CommandName 'datree' -ScriptBlock {
