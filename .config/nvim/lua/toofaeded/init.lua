@@ -18,7 +18,7 @@ spec("core.func.undotree")
 
 spec("core.git.diffview")
 -- spec("core.git.fugitive")
-spec("core.git.gitsigns")
+-- spec("core.git.gitsigns")
 spec("core.git.lazygit")
 
 spec("core.install.mason")
