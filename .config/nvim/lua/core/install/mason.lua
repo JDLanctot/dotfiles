@@ -15,6 +15,7 @@ function M.config()
     }
     require('mason-lspconfig').setup {
         ensure_installed = require("utils.servers"),
+        automatic_enable = false,
     }
 
     require('mason-tool-installer').setup {

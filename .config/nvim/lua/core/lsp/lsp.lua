@@ -25,7 +25,7 @@ M.on_attach = function(client, bufnr)
 	end
 
 	-- Typescript specific settings
-	if client.name == "tsserver" then
+	if client.name == "ts_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
@@ -96,7 +96,7 @@ function M.config()
 			opts = vim.tbl_deep_extend("force", settings, opts)
 		end
 
-		if server == "lua_lsp" then
+		if server == "lua_ls" then
 			require("neodev").setup({})
 		end
 

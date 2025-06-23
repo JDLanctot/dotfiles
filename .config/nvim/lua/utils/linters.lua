@@ -1,7 +1,7 @@
 local linters = {
 	"stylua",
     -- "pylint",
-	"ruff",
+	-- "ruff",
     "ts-standard",
     -- "eslint_d",
 	-- "prettierd",

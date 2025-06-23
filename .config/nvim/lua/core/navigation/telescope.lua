@@ -24,6 +24,9 @@ function T.config()
 	vim.keymap.set("n", "<leader>pb", builtin.buffers, {})
 	vim.keymap.set("n", "<leader>pd", "<CMD>Telescope neovim-project discover<CR>")
 	vim.keymap.set("n", "<leader>ph", "<CMD>Telescope neovim-project history<CR>")
+	vim.keymap.set("n", "<leader>n", function()
+		require("telescope").extensions.notify.notify()
+	end, { desc = "Notification History" })
 end
 
 local directories = require("utils.directories")
@@ -33,6 +36,18 @@ local C = {
 	"coffebar/neovim-project",
 	opts = {
 		projects = directories,
+		-- Disable auto session loading for dashboard compatibility
+		session_manager_opts = {
+			autosave_ignore_dirs = {
+				vim.fn.expand("~"), -- Don't auto-restore when opening home directory
+			},
+			autosave_ignore_filetypes = {
+				"alpha",
+				"dashboard",
+			},
+		},
+		-- Only load last session if explicitly opening a project, not for general usage
+		last_session_on_startup = false,
 	},
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },

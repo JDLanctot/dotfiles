@@ -8,6 +8,7 @@ spec("core.completion.cmp")
 
 spec("core.errors.trouble")
 
+spec("core.func.bigfile")
 spec("core.func.matchup")
 spec("core.func.middleclass")
 spec("core.func.multiline")
@@ -18,11 +19,11 @@ spec("core.func.undotree")
 spec("core.git.diffview")
 -- spec("core.git.fugitive")
 spec("core.git.gitsigns")
-spec("core.git.neogit")
+spec("core.git.lazygit")
 
 spec("core.install.mason")
 
--- spec("core.lsp.fidget")
+spec("core.lsp.fidget")
 spec("core.lsp.lint")
 spec("core.lsp.lsp")
 spec("core.lsp.none-ls")
@@ -46,7 +47,7 @@ spec("core.ui.dressing")
 spec("core.ui.illuminate")
 spec("core.ui.indentscope")
 spec("core.ui.lualine")
-spec("core.ui.scrollbar")
+-- spec("core.ui.scrollbar")
 spec("core.ui.notify")
 spec("core.ui.pairs")
 spec("core.ui.whichkey")
@@ -54,10 +55,10 @@ spec("core.ui.windows")
 
 -- Spec the core plugins individually so we can choose to disable them
 spec("extras.breadcrumbs")
--- spec("extras.dashboard")
+spec("extras.dashboard")
 -- spec("extras.flash")
 -- spec("extras.tabby")
--- spec("extras.schemastore")
+spec("extras.schemastore")
 -- spec("extras.zenmode")
 
 -- Require the lazy after so it setups the spec'd plugins

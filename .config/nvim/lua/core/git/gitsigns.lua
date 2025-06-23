@@ -22,11 +22,10 @@ local G = {
                 map("n", "[h", gs.prev_hunk, "Prev Hunk")
                 map("n", "<leader>gh", gs.preview_hunk, "Preview Hunk")
                 map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame Line")
-                map("n", "<leader>gd", gs.diffthis, "Diff This")
+                -- map("n", "<leader>gd", gs.diffthis, "Diff This")
             end,
         },
     },
 }
 
 return G
-

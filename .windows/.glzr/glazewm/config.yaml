@@ -139,13 +139,24 @@ workspaces:
     bind_to_monitor: 1
 
   - name: "6"
-    display_name: "6. 🎮Gaming"
-    keep_alive: true
-    bind_to_monitor: 0
+    display_name: "6. 📼Editting"
+    keep_alive: false
+    bind_to_monitor: 1
 
   - name: "7"
+    display_name: "7. 🔧Utilities"
+    keep_alive: false
+    bind_to_monitor: 0
+
   - name: "8"
+    display_name: "8. ⏺ Recording"
+    keep_alive: false
+    bind_to_monitor: 0
+
   - name: "9"
+    display_name: "9. 🎮Gaming"
+    keep_alive: false
+    bind_to_monitor: 0
 
 window_rules:
   - commands: ["ignore"]
@@ -189,13 +200,27 @@ window_rules:
   # Move to workspace 5
   - commands: ['move --workspace 5']
     match:
-      - window_process: { regex: 'Task Manager|WINWORD|EXCEL|POWERPOINT|Obsidian|WebViewHost|RemotePCSuite|RemotePC Codec Engine' }
+      - window_process: { regex: 'EXCEL|POWERPOINT|Obsidian|WebViewHost|RemotePCSuite|RemotePC Codec Engine' }
 
   # Move to workspace 6
   - commands: ['move --workspace 6']
     match:
-      - window_process: { regex: 'Riot Client|League of Legends|steam|Steam|steamwebhelper|steamservice|Epic|epic|DSX|SelfService|CDViewer|REDLauncher' }
+      - window_process: { regex: 'DaVinci Resolve|Affinity Designer 2|Affinity Photo 2|Affiniti Publisher 2' }
 
+  # Move to workspace 7
+  - commands: ['move --workspace 7']
+    match:
+      - window_process: { regex: 'Task Manager|Docker' }
+
+  # Move to workspace 8
+  - commands: ['move --workspace 8']
+    match:
+      - window_process: { regex: 'OBS Studio' }
+
+  # Move to workspace 9
+  - commands: ['move --workspace 9']
+    match:
+      - window_process: { regex: 'Riot Client|League of Legends|steam|Steam|steamwebhelper|steamservice|Epic|epic|DSX|SelfService|CDViewer|REDLauncher' }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.

@@ -1,6 +1,9 @@
 local M = {
 	{
 		"rcarriga/nvim-notify",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
 		keys = {
 			{
 				"<leader>un",
@@ -19,6 +22,10 @@ local M = {
 				return math.floor(vim.o.columns * 0.75)
 			end,
 		},
+		config = function(_, opts)
+			require("notify").setup(opts)
+			require("telescope").load_extension("notify")
+		end,
 	},
 }
 

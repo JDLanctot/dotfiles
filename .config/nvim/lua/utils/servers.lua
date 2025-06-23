@@ -1,12 +1,12 @@
 local servers = {
 	"lua_ls",
-	"rust_analyzer",
+	-- "rust_analyzer",
 	"pylsp",
-    "ruff_lsp",
+    -- "ruff",
     -- "vtsls",
-    "tsserver",
+    "ts_ls",
 	"tailwindcss",
-	-- "jsonls",
+	"jsonls",
 	-- "pyright",
 	-- "julials",
 }
