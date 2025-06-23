@@ -36,18 +36,6 @@ local C = {
 	"coffebar/neovim-project",
 	opts = {
 		projects = directories,
-		-- Disable auto session loading for dashboard compatibility
-		session_manager_opts = {
-			autosave_ignore_dirs = {
-				vim.fn.expand("~"), -- Don't auto-restore when opening home directory
-			},
-			autosave_ignore_filetypes = {
-				"alpha",
-				"dashboard",
-			},
-		},
-		-- Only load last session if explicitly opening a project, not for general usage
-		last_session_on_startup = false,
 	},
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
