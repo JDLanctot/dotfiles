@@ -1,0 +1,36 @@
+# Theme
+theme = rose-pine-moon
+
+# Shell (uncomment and adapt for your setup)
+# command = /opt/homebrew/bin/zsh
+
+# Window settings
+window-decoration = true
+window-padding-x = 25
+window-padding-y = 20
+
+# Font configuration
+font-family = "JetBrainsMono Nerd Font"
+font-style = medium
+font-style-bold = heavy
+font-style-italic = medium italic
+font-style-bold-italic = heavy italic
+font-size = 14
+
+# Working directory (adapt for your needs)
+# working-directory = ~/
+
+# Selection
+copy-on-select = true
+
+# Cursor
+cursor-style = block
+cursor-style-blink = true
+cursor-opacity = 1.0
+
+# Scrolling
+scrollback-limit = 10000
+
+# Keybindings (using Cmd for macOS)
+keybind = cmd+v=paste_from_clipboard
+keybind = cmd+c=copy_to_clipboard
