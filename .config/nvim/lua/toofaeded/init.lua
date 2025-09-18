@@ -60,6 +60,7 @@ spec("extras.dashboard")
 -- spec("extras.tabby")
 spec("extras.schemastore")
 -- spec("extras.zenmode")
+spec("extras.vimtex")
 
 -- Require the lazy after so it setups the spec'd plugins
 require("core.install.lazy")

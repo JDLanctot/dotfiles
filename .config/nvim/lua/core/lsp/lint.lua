@@ -8,6 +8,10 @@ function M.config()
         typescript = { 'eslint' },
         javascriptreact = { 'eslint' },
         typescriptreact = { 'eslint' },
+        -- LaTeX
+        tex       = { 'vale' },
+        plaintex  = { 'vale' },
+        latex     = { 'vale' },
     }
     vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
         callback = function()

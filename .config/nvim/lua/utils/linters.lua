@@ -7,6 +7,7 @@ local linters = {
 	-- "prettierd",
 	-- "biome",
 	-- "flake8",
+    "vale",
 }
 
 return linters

@@ -9,6 +9,7 @@ local servers = {
 	"jsonls",
 	-- "pyright",
 	-- "julials",
+    "texlab",
 }
 
 return servers
