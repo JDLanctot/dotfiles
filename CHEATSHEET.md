@@ -150,6 +150,74 @@ Prereq: Node.js 20+ recommended.
 | `uv` not found | Is installer run? | Re-run uv install command and restart terminal |
 | `ruff` not found | Installed with `uv tool install ruff`? | Run install command and restart shell |
 
+## Claude CLI quick start
+
+### Open Claude
+
+| Task | Command |
+|---|---|
+| Start Claude in current folder | `claude` |
+| Start Claude in a specific folder | `claude` (run after `cd /path/to/project`) |
+| Start with a direct prompt | `claude "explain this repo structure"` |
+
+Tip: open Claude from the project root so it sees the right files.
+
+### Useful slash commands
+
+| Command | What it does | Typical use |
+|---|---|---|
+| `/help` | Shows available commands | First command to run in a new install |
+| `/clear` | Clears current chat context | Start fresh on a new task |
+| `/model` | Shows or changes model | Switch models for speed/quality |
+| `/status` | Shows session/tool status | Check environment and current state |
+| `/diff` | Shows pending file changes | Review edits before commit |
+| `/review` | Requests a code review pass | Catch issues before merging |
+
+Note: exact slash commands can vary by Claude CLI version. Run `/help` to see the commands available on your machine.
+
+### Good prompts to use in this dotfiles repo
+
+| Goal | Example prompt |
+|---|---|
+| Explain shell setup | `Explain how .zshrc, .bashrc, and PowerShell profile differ in this repo.` |
+| Add a new alias/function | `Add a zsh + PowerShell helper for running my common git pull workflow.` |
+| Improve docs | `Update CHEATSHEET.md with a section for tmux basics and examples.` |
+| Safe review before commit | `Review all modified files and list risks before I commit.` |
+
+## OpenCode CLI quick start
+
+### Open OpenCode
+
+| Task | Command |
+|---|---|
+| Start OpenCode in current folder | `opencode` |
+| Start OpenCode in a specific folder | `opencode` (run after `cd /path/to/project`) |
+| Start with a direct prompt | `opencode "summarize this project and suggest next improvements"` |
+
+Tip: like Claude, start OpenCode from the repo root for best context.
+
+### Useful slash commands
+
+| Command | What it does | Typical use |
+|---|---|---|
+| `/help` | Shows available commands | First check in a new install |
+| `/clear` | Clears current chat context | Start fresh task context |
+| `/model` | Shows or changes model | Balance speed vs quality |
+| `/status` | Shows session/tool status | Confirm environment state |
+| `/diff` | Shows pending file changes | Review edits before commit |
+| `/review` | Requests a code review pass | Catch issues before merge |
+
+Note: available slash commands can differ by OpenCode version/config. Run `/help` in your local install to confirm.
+
+### Good OpenCode prompts for this repo
+
+| Goal | Example prompt |
+|---|---|
+| Explain repo conventions | `List key shell conventions and helper commands in this dotfiles repo.` |
+| Add cross-shell helper | `Add matching zsh and PowerShell helpers for running uv lint + tests.` |
+| Tighten docs | `Rewrite README quick start to be copy-paste friendly for beginners.` |
+| Pre-commit safety check | `Review my staged changes and highlight breaking risks.` |
+
 ## Where things are configured
 
 | Area | File |
