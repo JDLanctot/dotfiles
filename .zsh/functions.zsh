@@ -20,3 +20,20 @@ function caz() {
     z $1
     conda activate $1
 }
+
+# uv + Ruff helpers
+function uvs() {
+    uv sync "$@"
+}
+
+function uvr() {
+    uv run "$@"
+}
+
+function uvt() {
+    uv run pytest "$@"
+}
+
+function rufffix() {
+    uv run ruff check . --fix && uv run ruff format .
+}
