@@ -10,6 +10,7 @@ If you are onboarding to this setup, start here:
 - [What this repo includes](#what-this-repo-includes)
 - [Quick start](#quick-start)
 - [Platform installs](#platform-installs)
+- [AI coding CLIs and skills](#ai-coding-clis-and-skills)
 - [Shell setup](#shell-setup)
 - [Neovim and editor workflow](#neovim-and-editor-workflow)
 - [Python environments (uv first, conda legacy)](#python-environments-uv-first-conda-legacy)
@@ -26,6 +27,7 @@ If you are onboarding to this setup, start here:
   - PowerShell: `.windows/powershell/profile.ps1`
 - Prompt config: `.config/starship.toml`
 - Package baseline for macOS: `Brewfile`, `setup.sh`
+- AI assistant config/skills: `.claude/skills/`
 - Optional Windows app/config customizations in `.windows/`
 
 Core CLI stack used by these configs:
@@ -127,6 +129,73 @@ Ruff install:
 ```bash
 uv tool install ruff
 ```
+
+## AI coding CLIs and skills
+
+This repo supports both Claude CLI and OpenCode. Install at least one, then sync local skills.
+
+### Install Claude CLI
+
+Official installers:
+
+- macOS / Linux / WSL:
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+- Windows PowerShell:
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+Alternative package manager options are available in official docs.
+
+### Install OpenCode
+
+Official installers:
+
+- Cross-platform install script:
+
+```bash
+curl -fsSL https://opencode.ai/install | bash
+```
+
+- Node-based install:
+
+```bash
+npm install -g opencode-ai
+```
+
+- Windows alternatives include `choco install opencode`.
+
+### Verify install
+
+```bash
+claude --version
+opencode --version
+```
+
+### Install shared skills into `~/.claude`
+
+If this repo includes `.claude/skills`, copy or symlink it into your user-level Claude directory.
+
+Linux/macOS:
+
+```bash
+mkdir -p ~/.claude
+ln -sfn ~/dotfiles/.claude/skills ~/.claude/skills
+```
+
+PowerShell:
+
+```powershell
+New-Item -ItemType Directory -Force -Path "$HOME\.claude" | Out-Null
+New-Item -ItemType SymbolicLink -Force -Path "$HOME\.claude\skills" -Target "$HOME\dotfiles\.claude\skills"
+```
+
+After linking, restart Claude/OpenCode so the skills are picked up.
 
 ## Shell setup
 

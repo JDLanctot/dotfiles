@@ -227,6 +227,7 @@ Note: available slash commands can differ by OpenCode version/config. Run `/help
 | Zsh functions | `.zsh/functions.zsh` |
 | Bash config | `.bashrc` |
 | PowerShell profile | `.windows/powershell/profile.ps1` |
+| Claude/OpenCode shared skills | `.claude/skills/` |
 | Starship prompt config | `.config/starship.toml` |
 | macOS package baseline | `Brewfile` |
 
