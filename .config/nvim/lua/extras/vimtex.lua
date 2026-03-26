@@ -2,9 +2,13 @@ local M = { "lervag/vimtex", ft = { "tex", "plaintex", "latex" } }
 
 function M.config()
   -- Viewer (Sumatra) + compiler (Tectonic)
-  vim.g.vimtex_view_method = "sumatra"
-  vim.g.vimtex_view_general_viewer = "SumatraPDF"
-  vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
+  if vim.fn.has("macunix") == 1 then
+    vim.g.vimtex_view_method = "sioyek"
+  elseif vim.fn.has("win32") == 1 then
+    vim.g.vimtex_view_method = "sumatra"
+    vim.g.vimtex_view_general_viewer = "SumatraPDF"
+    vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
+  end
   vim.g.vimtex_quickfix_mode = 0
 
   vim.g.vimtex_compiler_method = "tectonic"
