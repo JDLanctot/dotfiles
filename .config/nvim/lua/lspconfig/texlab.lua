@@ -1,4 +1,17 @@
--- Works with Tectonic + SumatraPDF on Windows
+local forward_search
+
+if vim.fn.has("macunix") == 1 then
+  forward_search = {
+    executable = "sioyek",
+    args = { "--forward-search-file", "%f", "--forward-search-line", "%l", "%p" },
+  }
+else
+  forward_search = {
+    executable = "SumatraPDF.exe", -- assumes on PATH (Chocolatey usually adds it)
+    args = { "-reuse-instance", "-forward-search", "%f", "%l", "%p" },
+  }
+end
+
 return {
   settings = {
     texlab = {
@@ -24,10 +37,7 @@ return {
       latexFormatter = "latexindent",
       latexindent = { ["local"] = nil, modifyLineBreaks = true },
 
-      forwardSearch = {
-        executable = "SumatraPDF.exe", -- assumes on PATH (Chocolatey usually adds it)
-        args = { "-reuse-instance", "-forward-search", "%f", "%l", "%p" },
-      },
+      forwardSearch = forward_search,
 
       diagnosticsDelay = 300,
     },
