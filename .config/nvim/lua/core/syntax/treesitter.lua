@@ -15,7 +15,7 @@ function T.config()
             -- "markdown_inline",
             -- "bash",
             "python",
-            -- "julia"
+            "julia"
         },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
