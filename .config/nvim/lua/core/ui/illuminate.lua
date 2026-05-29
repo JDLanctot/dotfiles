@@ -8,6 +8,9 @@ local M = {
             large_file_overrides = {
                 providers = { "lsp" },
             },
+            providers_override = {
+                julia = { "lsp" },
+            },
         },
         config = function(_, opts)
             require("illuminate").configure(opts)

@@ -24,12 +24,10 @@ M.on_attach = function(client, bufnr)
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
 
-	-- Typescript specific settings
 	if client.name == "ts_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
-	-- Add navic attachment
 	if client.server_capabilities.documentSymbolProvider then
 		require("nvim-navic").attach(client, bufnr)
 	end
@@ -47,8 +45,6 @@ M.toggle_inlay_hints = function()
 end
 
 function M.config()
-	local lspconfig = require("lspconfig")
-
 	local icons = require("toofaeded.icons")
 	local diagnostic_config = {
 		signs = {
@@ -79,37 +75,40 @@ function M.config()
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
 	end
 
+	vim.lsp.config("*", {
+		on_attach = M.on_attach,
+		capabilities = M.common_capabilities(),
+	})
+
 	local servers = require("utils.servers")
 	for _, server in pairs(servers) do
-		local opts = {
-			on_attach = M.on_attach,
-			capabilities = M.common_capabilities(),
-		}
-
-		local require_ok, settings = pcall(require, "lspconfig." .. server)
-		if require_ok then
-			opts = vim.tbl_deep_extend("force", settings, opts)
-		end
-
 		if server == "lua_ls" then
 			require("neodev").setup({})
 		end
 
 		if server == "pylsp" then
-			opts.settings = {
-				pylsp = {
-					plugins = {
-						pycodestyle = {
-							ignore = { "W391" },
-							maxLineLength = 164,
+			vim.lsp.config("pylsp", {
+				settings = {
+					pylsp = {
+						plugins = {
+							pycodestyle = {
+								ignore = { "W391" },
+								maxLineLength = 164,
+							},
 						},
 					},
 				},
-			}
+			})
 		end
 
-		lspconfig[server].setup(opts)
+		local require_ok, settings = pcall(require, "lspconfig." .. server)
+		if require_ok then
+			settings.on_attach = nil
+			vim.lsp.config(server, settings)
+		end
 	end
+
+	vim.lsp.enable(servers)
 end
 
 return M
