@@ -1,5 +1,9 @@
 local M = {
     "theprimeagen/refactoring.nvim",
+    dependancies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+    },
 }
 
 function M.config()

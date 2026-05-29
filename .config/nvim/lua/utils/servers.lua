@@ -8,7 +8,7 @@ local servers = {
 	"tailwindcss",
 	"jsonls",
 	-- "pyright",
-	-- "julials",
+	"julials",
     "texlab",
 }
 
