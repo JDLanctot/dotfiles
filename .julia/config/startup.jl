@@ -7,7 +7,7 @@ using OhMyREPL
 using SoftGlobalScope
 using Revise
 using Infiltrator
-using LanguageServer
+using LanguageServer, SymbolServer
 using BenchmarkTools, SyntaxTree
 
 # Check if we are in a project directory with a Project.toml file
