@@ -1,6 +1,6 @@
 local M = {
     "theprimeagen/refactoring.nvim",
-    dependancies = {
+    dependencies = {
         "lewis6991/async.nvim",
         "nvim-treesitter/nvim-treesitter",
     },

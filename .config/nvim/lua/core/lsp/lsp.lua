@@ -20,7 +20,7 @@ end
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 
-	if client.supports_method("textDocument/inlayHint") then
+	if client:supports_method("textDocument/inlayHint") then
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
 
@@ -97,6 +97,44 @@ function M.config()
 							},
 						},
 					},
+				},
+			})
+		end
+
+		if server == "tailwindcss" then
+			vim.lsp.config("tailwindcss", {
+				filetypes = {
+					"astro",
+					"blade",
+					"clojure",
+					"css",
+					"eelixir",
+					"elixir",
+					"eruby",
+					"haml",
+					"handlebars",
+					"heex",
+					"html",
+					"htmlangular",
+					"htmldjango",
+					"javascript",
+					"javascriptreact",
+					"less",
+					"liquid",
+					"markdown",
+					"mustache",
+					"php",
+					"razor",
+					"rescript",
+					"sass",
+					"scss",
+					"stylus",
+					"svelte",
+					"templ",
+					"twig",
+					"typescript",
+					"typescriptreact",
+					"vue",
 				},
 			})
 		end
