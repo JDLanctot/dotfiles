@@ -4,7 +4,10 @@ ENV["PYTHON"] = "/home/toofaeded/anaconda3/bin/python3"
 #using Reduce
 #@force using Reduce.Algebra
 using OhMyREPL
+using SoftGlobalScope
 using Revise
+using Infiltrator
+using LanguageServer, SymbolServer
 using BenchmarkTools, SyntaxTree
 
 # Check if we are in a project directory with a Project.toml file
