@@ -1,0 +1,6 @@
+Still need to add:
+- StartAllBack
+- Discord reskin via darkertheme github
+- reg edits
+- firefox edit
+- ultrausthemepatcher
