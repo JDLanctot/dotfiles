@@ -107,3 +107,10 @@ disabled = true
 [ruby]
 format = "via [ $version]($style) "
 disabled = true
+
+# Shows which Skill Foundry categories are activated (claude-activate)
+[env_var.CLAUDE_ACTIVE]
+variable = "CLAUDE_ACTIVE"
+symbol = "🧩 "
+format = "[$symbol$env_value](bold magenta) "
+disabled = false
