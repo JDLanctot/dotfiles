@@ -41,7 +41,7 @@ function T.config()
         auto_tag = {
             enabled = true,
         },
-        indent = { enable = true },
+        indent = { enable = true, disable = { "markdown" } },
         incremental_selection = {
             enable = true,
             keymaps = {
@@ -100,6 +100,11 @@ end
 
 local C = {
     "nvim-treesitter/nvim-treesitter-context",
+    opts = {
+        on_attach = function(bufnr)
+            return vim.bo[bufnr].filetype ~= "markdown"
+        end,
+    },
 }
 
 return { T, C }

@@ -3,7 +3,7 @@ require("toofaeded.set")
 require("toofaeded.launch")
 
 -- Spec the core plugins individually so we can choose to disable them
-spec("core.completion.copilot")
+-- spec("core.completion.copilot")
 spec("core.completion.cmp")
 
 spec("core.errors.trouble")

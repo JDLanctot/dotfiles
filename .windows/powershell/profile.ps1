@@ -99,3 +99,6 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
+# Skill Foundry - conda-style skill/agent category activation
+$ClaudeCategoriesScript = "C:\Users\jordi\Skill Foundry\tools\claude-categories.ps1"
+if (Test-Path $ClaudeCategoriesScript) { . $ClaudeCategoriesScript }
