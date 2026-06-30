@@ -4,7 +4,6 @@ local G = {
 		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
 		keys = {
 			{ "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "DiffView" },
-			{ "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "DiffView" },
 		},
 	},
 }

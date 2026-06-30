@@ -2,9 +2,6 @@ local T = {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
     build = ":TSUpdate",
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-    },
 }
 
 function T.config()
@@ -18,7 +15,7 @@ function T.config()
             -- "markdown_inline",
             -- "bash",
             "python",
-            "julia"
+            -- "julia"
         },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -41,7 +38,7 @@ function T.config()
         auto_tag = {
             enabled = true,
         },
-        indent = { enable = true, disable = { "markdown" } },
+        indent = { enable = true },
         incremental_selection = {
             enable = true,
             keymaps = {
@@ -100,11 +97,6 @@ end
 
 local C = {
     "nvim-treesitter/nvim-treesitter-context",
-    opts = {
-        on_attach = function(bufnr)
-            return vim.bo[bufnr].filetype ~= "markdown"
-        end,
-    },
 }
 
 return { T, C }

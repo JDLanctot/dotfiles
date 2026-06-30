@@ -1,3 +1,4 @@
+-- Deprecated - Moved to snacks.nvim
 local M = {
     {
         "stevearc/dressing.nvim",

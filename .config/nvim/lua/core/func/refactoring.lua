@@ -1,9 +1,5 @@
 local M = {
     "theprimeagen/refactoring.nvim",
-    dependencies = {
-        "lewis6991/async.nvim",
-        "nvim-treesitter/nvim-treesitter",
-    },
 }
 
 function M.config()

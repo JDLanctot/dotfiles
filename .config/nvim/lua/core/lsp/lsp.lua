@@ -20,14 +20,16 @@ end
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 
-	if client:supports_method("textDocument/inlayHint") then
+	if client.supports_method("textDocument/inlayHint") then
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
 
+	-- Typescript specific settings
 	if client.name == "ts_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
+	-- Add navic attachment
 	if client.server_capabilities.documentSymbolProvider then
 		require("nvim-navic").attach(client, bufnr)
 	end
@@ -75,6 +77,11 @@ function M.config()
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
 	end
 
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+	vim.lsp.handlers["textDocument/signatureHelp"] =
+		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+
+	-- Global defaults for all servers (on_attach, capabilities)
 	vim.lsp.config("*", {
 		on_attach = M.on_attach,
 		capabilities = M.common_capabilities(),
@@ -82,71 +89,31 @@ function M.config()
 
 	local servers = require("utils.servers")
 	for _, server in pairs(servers) do
+		local opts = {}
+
 		if server == "lua_ls" then
 			require("neodev").setup({})
 		end
 
 		if server == "pylsp" then
-			vim.lsp.config("pylsp", {
-				settings = {
-					pylsp = {
-						plugins = {
-							pycodestyle = {
-								ignore = { "W391" },
-								maxLineLength = 164,
-							},
+			opts.settings = {
+				pylsp = {
+					plugins = {
+						pycodestyle = {
+							ignore = { "W391" },
+							maxLineLength = 100,
 						},
 					},
 				},
-			})
+			}
 		end
 
-		if server == "tailwindcss" then
-			vim.lsp.config("tailwindcss", {
-				filetypes = {
-					"astro",
-					"blade",
-					"clojure",
-					"css",
-					"eelixir",
-					"elixir",
-					"eruby",
-					"haml",
-					"handlebars",
-					"heex",
-					"html",
-					"htmlangular",
-					"htmldjango",
-					"javascript",
-					"javascriptreact",
-					"less",
-					"liquid",
-					"markdown",
-					"mustache",
-					"php",
-					"razor",
-					"rescript",
-					"sass",
-					"scss",
-					"stylus",
-					"svelte",
-					"templ",
-					"twig",
-					"typescript",
-					"typescriptreact",
-					"vue",
-				},
-			})
+		if not vim.tbl_isempty(opts) then
+			vim.lsp.config(server, opts)
 		end
 
-		local require_ok, settings = pcall(require, "lspconfig." .. server)
-		if require_ok then
-			settings.on_attach = nil
-			vim.lsp.config(server, settings)
-		end
+		vim.lsp.enable(server)
 	end
-
-	vim.lsp.enable(servers)
 end
 
 return M
